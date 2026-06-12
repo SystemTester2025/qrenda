@@ -1,30 +1,53 @@
-/vendor/
+vendor/
 node_modules/
 npm-debug.log
 yarn-error.log
 
+# Laravel
+/bootstrap/cache/*
 # Laravel 4 specific
 bootstrap/compiled.php
-app/storage/
 
-# Laravel 5 & Lumen specific
+# Ignore compiled views / caches (Laravel default)
+storage/*.key
+storage/logs/
+storage/framework/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# Laravel uploads:
+# Ignore real uploads directory (generated at runtime)
+storage/app/public/
+# Keep public symlink target contents ignored (Laravel public/storage)
 public/storage
-public/hot
 
-# Laravel 5 & Lumen specific with changed public path
+# Laravel 5 & Lumen older public paths (keep for compatibility)
+public/hot
 public_html/storage
 public_html/hot
 
-storage/*.key
+# Env files
 .env
+.env.*.backup
+.env.production
+.env.backup
+
 Homestead.yaml
 Homestead.json
 /.vagrant
+
+# PHPUnit
 .phpunit.result.cache
 
-/public/build
-/storage/pail
-.env.backup
-.env.production
+# Composer / IDE / OS
 .phpactor.json
 auth.json
+/.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Web build outputs
+/public/build
+/public/hot
