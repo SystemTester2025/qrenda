@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let targetRot = 0;
     let currentRot = 0;
-    let idleAngle = 0;
+    let entranceAngle = 6.0;
     let lastMoveTime = 0;
 
     function getScale() {
@@ -394,13 +394,25 @@ document.addEventListener("DOMContentLoaded", function () {
         const maxR = Math.min(w, h) * 0.62;
         const scale = getScale();
 
-        // Direct continuous rotation when idle, mouse overrides temporarily
-        if (isDesktop && Date.now() - lastMoveTime > 300) {
-            currentRot += 0.025;
+        // Entrance spin — one smooth burst that decelerates and settles
+        if (entranceAngle > 0.01) {
+            entranceAngle *= 0.985;
+        } else {
+            entranceAngle = 0;
         }
+
+        // Mouse pull — rotate toward pointer while mouse moves
         let diff = targetRot - currentRot;
         diff = Math.atan2(Math.sin(diff), Math.cos(diff));
-        currentRot += diff * 0.08;
+        currentRot += diff * 0.15;
+
+        // Return to original position when idle
+        if (Date.now() - lastMoveTime > 300) {
+            targetRot *= 0.96;
+        }
+        currentRot *= 0.985;
+
+        const rot = entranceAngle + currentRot;
 
         // Draw layers back to front
         for (let i = layers.length - 1; i >= 0; i--) {
@@ -419,7 +431,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ctx.rect(0 - maxR * 0.5, 0 - maxR * 0.25, maxR * 1.0, maxR * 0.5);
             ctx.clip("evenodd");
 
-            ctx.rotate(currentRot * 0.003 * (4 - i) - 0.2 + (4 - i) * 0.06);
+            ctx.rotate(rot * 0.12 - 0.2 + (4 - i) * 0.06);
             ctx.scale(layer.scale * scale, layer.scale * scale);
             ctx.translate(-mWidth / 2, -mHeight / 2);
 
@@ -450,7 +462,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const cy = window.innerHeight / 2;
             targetRot = Math.atan2(e.clientY - cy, e.clientX - cx);
             lastMoveTime = Date.now();
-            idleAngle = 0;
         });
     }
 
