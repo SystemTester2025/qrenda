@@ -1,4 +1,3 @@
-/* ── About / Interface — Bento Grid ── */
 .q-about {
   padding: 100px 24px;
   background: var(--q-bg);
@@ -35,15 +34,11 @@
   border-color: rgba(139, 92, 246, 0.3);
 }
 
-/* Bento card sizes */
 .q-bento-1 { grid-column: span 7; min-height: 380px; }
 .q-bento-2 { grid-column: span 5; min-height: 380px; }
 .q-bento-3 { grid-column: span 5; min-height: 320px; }
 .q-bento-4 { grid-column: span 7; min-height: 320px; }
-.q-bento-5 { grid-column: span 12; min-height: 360px; }
-.q-bento-6 { grid-column: span 12; min-height: 360px; }
 
-/* Dark gradient overlay */
 .q-bento-overlay {
   position: absolute;
   inset: 0;
@@ -56,7 +51,6 @@
   background: linear-gradient(to top, var(--q-bg) 0%, rgba(139, 92, 246, 0.1) 40%, rgba(10, 10, 10, 0.1) 100%);
 }
 
-/* Subtle inner border glow on hover */
 .q-bento-card::after {
   content: "";
   position: absolute;
@@ -84,16 +78,6 @@
   padding: 32px;
 }
 
-.q-bento-num {
-  display: inline-block;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: var(--q-primary);
-  letter-spacing: 0.08em;
-  margin-bottom: 12px;
-  opacity: 0.8;
-}
-
 .q-bento-content h3 {
   font-size: clamp(1.125rem, 2vw, 1.5rem);
   font-weight: 700;
@@ -110,18 +94,15 @@
   max-width: 480px;
 }
 
-/* Responsive */
 @media (max-width: 960px) {
   .q-bento-card { min-height: 280px; }
   .q-bento-1, .q-bento-2,
   .q-bento-3, .q-bento-4 { grid-column: span 6; min-height: 280px; }
-  .q-bento-5, .q-bento-6 { grid-column: span 12; min-height: 300px; }
 }
 
 @media (max-width: 640px) {
   .q-bento-grid { gap: 12px; }
-  .q-bento-1, .q-bento-2, .q-bento-3, .q-bento-4,
-  .q-bento-5, .q-bento-6 { grid-column: span 12; min-height: 240px; }
+  .q-bento-1, .q-bento-2, .q-bento-3, .q-bento-4 { grid-column: span 12; min-height: 240px; }
   .q-bento-content { padding: 24px; }
   .q-bento-content p { font-size: 0.8125rem; }
 }

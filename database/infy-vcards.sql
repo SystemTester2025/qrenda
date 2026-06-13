@@ -50518,7 +50518,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
-(1, 'sub_text', 'Create your business digital card with lots of information.', '2025-12-02 04:27:31', '2025-12-02 04:27:31'),
+(1, 'sub_text', 'One tap. Your business', '2025-12-02 04:27:31', '2025-12-02 04:27:31'),
 (2, 'default_country_code', 'in', '2025-12-02 04:27:31', '2025-12-02 04:27:31'),
 (3, 'default_currency', 'INR', '2025-12-02 04:27:31', '2025-12-02 04:27:31'),
 (4, 'is_front_page', '1', '2025-12-02 04:27:31', '2025-12-02 04:27:31'),

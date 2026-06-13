@@ -1,75 +1,50 @@
+# v0 sandbox internal files
+__v0_runtime_loader.js
+__v0_devtools.tsx
+__v0_jsx-dev-runtime.ts
+.snowflake/
+.v0-trash/
+.vercel/
+
+# Environment variables
+.env*.local
+
+# opencode
+.opencode/
+
+# Composer dependencies
 vendor/
-node_modules/
-npm-debug.log
-yarn-error.log
 
-# Laravel
-/bootstrap/cache/*
-# Laravel 4 specific
-bootstrap/compiled.php
+# Playwright
+.playwright/
+.playwright-mcp/
 
-# Ignore compiled views / caches (Laravel default)
-storage/*.key
-storage/logs/
-storage/framework/
-storage/framework/cache/
-storage/framework/sessions/
-storage/framework/views/
-
-# Laravel uploads:
-# Ignore real uploads directory (generated at runtime)
-storage/app/public/
-# Keep public symlink target contents ignored (Laravel public/storage)
-public/storage
-
-# Laravel 5 & Lumen older public paths (keep for compatibility)
-public/hot
-public_html/storage
-public_html/hot
-
-# Env files
-.env
-.env.*.backup
-.env.production
-.env.backup
-
-Homestead.yaml
-Homestead.json
-/.vagrant
+# Kilo
+.kilo/
 
 # PHPUnit
 .phpunit.result.cache
 
-# Composer / IDE / OS
-.phpactor.json
-auth.json
-/.idea/
-.vscode/
+# Node / build
+node_modules
+.next/
+pnpm-lock.yaml
+
+# Next.js (if present)
+app/
+components/
+lib/
+components.json
+next.config.mjs
+tsconfig.json
+postcss.config.mjs
+
+# Storage (Laravel runtime)
+storage/app/
+storage/framework/
+storage/logs/
+
+# Other
 .DS_Store
-Thumbs.db
-
-# Laravel environment overrides
-.env.local
-.env.development.local
-.env.test.local
-
-# Optional: add if you generate these
-/public/mix-manifest.json
-
-# Local tooling / generated folders
-.opencode/
-.playwright-mcp/
-
-# Local salo-uk header package
-/salo-uk-header/
-/salo-uk-header.zip
-
-# Web build outputs
-
-/public/build
-/public/hot
-
-# Windows reserved names
+salo-uk-header/
 nul
-.kilo/
-

@@ -1,10 +1,10 @@
-/* ── Services / Features ── */
 .q-services {
   padding: 100px 24px;
   background: var(--q-bg);
 }
 
 .q-section-label {
+  font-family: var(--q-font-body);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -18,7 +18,7 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  margin: 0 0 48px;
+  margin: 0 0 56px;
   color: var(--q-text);
   max-width: 600px;
 }
@@ -31,7 +31,7 @@
 
 .q-services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -45,6 +45,21 @@
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+}
+
+.q-service-card:nth-child(1),
+.q-service-card:nth-child(2) {
+  grid-column: span 3;
+}
+
+.q-service-card:nth-child(3),
+.q-service-card:nth-child(4) {
+  grid-column: span 2;
+}
+
+.q-service-card:nth-child(5),
+.q-service-card:nth-child(6) {
+  grid-column: span 3;
 }
 
 .q-service-card::before {
@@ -93,11 +108,13 @@
   margin-bottom: 20px;
   color: var(--q-primary);
   transition: all 0.3s;
+  font-size: 1.125rem;
 }
 
 .q-service-card:hover .q-service-icon {
   background: rgba(139, 92, 246, 0.15);
   transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
 }
 
 .q-service-card h3 {
@@ -116,4 +133,24 @@
   margin: 0;
   position: relative;
   z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .q-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .q-service-card:nth-child(1),
+  .q-service-card:nth-child(2),
+  .q-service-card:nth-child(3),
+  .q-service-card:nth-child(4),
+  .q-service-card:nth-child(5),
+  .q-service-card:nth-child(6) {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .q-services-grid {
+    grid-template-columns: 1fr;
+  }
 }

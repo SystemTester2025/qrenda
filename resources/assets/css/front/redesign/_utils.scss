@@ -1,4 +1,3 @@
-/* ── RTL ── */
 [dir=rtl] .q-footer a,
 [dir=rtl] .q-contact-item a {
   text-align: right;
@@ -8,13 +7,10 @@
   transform: translateX(-4px);
 }
 
-/* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
   .q-reveal { opacity: 1; transform: none; transition: none; }
-  .q-hero-enter { animation: none; opacity: 1; }
-  .q-nav { transition: none; }
-  .q-logos-track { animation: none; }
-  .q-hero::before { animation: none; }
+  .q-hero-enter { opacity: 1; filter: none; transform: none; animation: none; }
+  .q-marquee-track { animation: none; }
 
   .q-pricing-grid .q-price-card,
   .q-services-grid .q-service-card,
@@ -39,7 +35,6 @@
   }
 }
 
-/* ── Responsive ── */
 @media (max-width: 480px) {
   .q-services,
   .q-trust,

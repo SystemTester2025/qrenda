@@ -375,6 +375,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let targetRot = 0;
     let currentRot = 0;
+    let idleAngle = 0;
+    let lastMoveTime = 0;
 
     function getScale() {
         const w = window.innerWidth;
@@ -392,6 +394,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const maxR = Math.min(w, h) * 0.62;
         const scale = getScale();
 
+        // Direct continuous rotation when idle, mouse overrides temporarily
+        if (isDesktop && Date.now() - lastMoveTime > 300) {
+            currentRot += 0.025;
+        }
         let diff = targetRot - currentRot;
         diff = Math.atan2(Math.sin(diff), Math.cos(diff));
         currentRot += diff * 0.08;
@@ -443,6 +449,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const cx = window.innerWidth / 2;
             const cy = window.innerHeight / 2;
             targetRot = Math.atan2(e.clientY - cy, e.clientX - cx);
+            lastMoveTime = Date.now();
+            idleAngle = 0;
         });
     }
 

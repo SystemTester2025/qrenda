@@ -1,4 +1,3 @@
-/* ── Pricing ── */
 .q-pricing {
   padding: 100px 24px;
   background: var(--q-bg-surface);
@@ -7,17 +6,19 @@
 .q-pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 24px;
   align-items: start;
 }
 
 .q-price-card {
-  padding: 32px;
+  padding: 40px 32px;
   background: var(--q-bg-card);
   border: 1px solid var(--q-border);
   border-radius: var(--q-radius);
   position: relative;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 .q-price-card.featured {
@@ -30,6 +31,7 @@
 .q-price-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+  border-color: rgba(139, 92, 246, 0.3);
 }
 
 .q-price-card.featured:hover {
@@ -44,17 +46,19 @@
   transform: translateX(-50%);
   background: linear-gradient(135deg, #8b5cf6, #7c3aed);
   color: white;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 700;
   padding: 5px 18px;
   border-radius: var(--q-radius-pill);
   box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
   white-space: nowrap;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .q-price-name {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.125rem;
+  font-weight: 600;
   margin-bottom: 16px;
   color: var(--q-text);
 }
@@ -65,6 +69,7 @@
   letter-spacing: -0.03em;
   margin-bottom: 4px;
   color: var(--q-text);
+  line-height: 1;
 }
 
 .q-price-period {
@@ -76,22 +81,44 @@
 .q-price-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 24px;
+  margin: 0 0 32px;
   display: grid;
-  gap: 10px;
+  gap: 12px;
+  flex: 1;
 }
 
 .q-price-features li {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: var(--q-text-dim);
 }
 
-.q-price-features .check { color: var(--q-success); }
-.q-price-features .muted { color: var(--q-text-muted); }
+.q-price-features .check {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--q-success);
+  font-size: 0.65rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.q-price-features .muted {
+  color: var(--q-text-muted);
+}
+
+.q-price-features .muted .check {
+  background: rgba(113, 113, 122, 0.08);
+  color: var(--q-text-muted);
+}
 
 .q-price-card .q-btn-primary {
   width: 100%;
+  justify-content: center;
 }
