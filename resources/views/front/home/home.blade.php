@@ -32,9 +32,9 @@
 
     {{-- Central Content --}}
     <div class="q-hero-content">
-        <p class="q-hero-name q-hero-enter">{{ getAppName() }}</p>
-        <h1 class="q-hero-enter">{{ $setting['home_page_title'] }}</h1>
-        <p class="q-hero-sub q-hero-enter">{{ $setting['sub_text'] ?? 'Create your digital business card and share it with the world.' }}</p>
+        <p class="q-hero-name q-hero-enter">Qrenda</p>
+        <h1 class="q-hero-enter">vCards, business cards &amp; QR codes — all in one place.</h1>
+        <p class="q-hero-sub q-hero-enter">Everything you need to share your identity, in one link.</p>
         <div class="q-hero-cta q-hero-enter">
             <a class="q-btn-primary" href="{{ route('register') }}" data-turbo="false">
                 <span class="q-btn-primary-glow" aria-hidden="true"></span>
@@ -380,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function getScale() {
         const w = window.innerWidth;
         const h = window.innerHeight;
-        return (w <= 1023 ? w * 0.9 : Math.min(h * 0.8, w * 0.8)) / Math.max(mWidth, mHeight);
+        return (w <= 1023 ? w * 0.85 : Math.min(h * 0.8, w * 0.8)) / Math.max(mWidth, mHeight);
     }
 
     function drawPath() {
@@ -396,16 +396,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let diff = targetRot - currentRot;
         diff = Math.atan2(Math.sin(diff), Math.cos(diff));
         currentRot += diff * 0.08;
-
-        // Purple ambient glow
-        const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR * 1.1);
-        glow.addColorStop(0, "rgba(124, 58, 237, 0.10)");
-        glow.addColorStop(0.6, "rgba(124, 58, 237, 0.03)");
-        glow.addColorStop(1, "rgba(0,0,0,0)");
-        ctx.fillStyle = glow;
-        ctx.beginPath();
-        ctx.arc(cx, cy, maxR * 1.1, 0, Math.PI * 2);
-        ctx.fill();
 
         // Draw layers back to front
         for (let i = layers.length - 1; i >= 0; i--) {

@@ -204,26 +204,6 @@ body .container {
   padding: 120px 24px 80px;
 }
 
-/* Subtle radial gradient accent */
-.q-hero::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px;
-  height: 800px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(109, 40, 217, 0.04) 40%, transparent 70%);
-  pointer-events: none;
-  animation: qHeroGlow 6s ease-in-out infinite alternate;
-}
-
-@keyframes qHeroGlow {
-  from { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-}
-
 .q-hero-content {
   position: relative;
   z-index: 1;
