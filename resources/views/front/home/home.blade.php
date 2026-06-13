@@ -417,8 +417,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             ctx.save();
             ctx.globalAlpha = layer.opacity;
-            ctx.translate(cx + Math.cos(currentRot * 0.008 * (i - 2)) * 4 * (i - 2), cy + Math.sin(currentRot * 0.008 * (i - 2)) * 4 * (i - 2));
-            ctx.rotate(currentRot * 0.004 * (i - 2));
+            ctx.translate(cx + Math.cos(currentRot * 0.006 * (4 - i)) * 3 * (4 - i), cy + Math.sin(currentRot * 0.006 * (4 - i)) * 3 * (4 - i));
+            ctx.rotate(currentRot * 0.003 * (4 - i) - 0.2 + (4 - i) * 0.06);
             ctx.scale(layer.scale * scale, layer.scale * scale);
             ctx.translate(-mWidth / 2, -mHeight / 2);
 
