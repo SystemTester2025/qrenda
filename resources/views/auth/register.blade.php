@@ -81,26 +81,27 @@
             </div>
         </div>
 
-        @if(!request()->has('referral-code'))
-            @if (getSuperAdminSettingValue('show_referral_code'))
-                <div class="q-input-group">
-                    <label for="referral_code">{{ __('messages.user.referral_code') }}:</label>
-                    <input name="referral_code" type="text" id="referral_code"
-                           placeholder="{{ __('messages.user.referral_code') }}"
-                           value="{{ old('referral_code') }}">
-                </div>
+        <div class="q-form-row">
+            @if(!request()->has('referral-code'))
+                @if (getSuperAdminSettingValue('show_referral_code'))
+                    <div class="q-input-group q-form-col">
+                        <label for="referral_code">{{ __('messages.user.referral_code') }}:</label>
+                        <input name="referral_code" type="text" id="referral_code"
+                               placeholder="{{ __('messages.user.referral_code') }}"
+                               value="{{ old('referral_code') }}">
+                    </div>
+                @endif
             @endif
-        @endif
-
-        <div class="q-input-group">
-            <label class="q-checkbox">
-                <input type="checkbox" name="term_policy_check" id="privacyPolicyCheckbox">
-                <span class="q-checkbox-box"></span>
-                @lang('messages.by_signing_up_you_agree_to_our')
-                <a href="{{ route('terms.conditions') }}" target="_blank" class="q-link">{!! __('messages.vcard.term_condition') !!}</a>
-                &
-                <a href="{{ route('privacy.policy') }}" target="_blank" class="q-link">{{ __('messages.vcard.privacy_policy') }}</a>
-            </label>
+            <div class="q-input-group q-form-col">
+                <label class="q-checkbox">
+                    <input type="checkbox" name="term_policy_check" id="privacyPolicyCheckbox">
+                    <span class="q-checkbox-box"></span>
+                    @lang('messages.by_signing_up_you_agree_to_our')
+                    <a href="{{ route('terms.conditions') }}" target="_blank" class="q-link">{!! __('messages.vcard.term_condition') !!}</a>
+                    &
+                    <a href="{{ route('privacy.policy') }}" target="_blank" class="q-link">{{ __('messages.vcard.privacy_policy') }}</a>
+                </label>
+            </div>
         </div>
 
         @if (getSuperAdminSettingValue('captcha_enable'))

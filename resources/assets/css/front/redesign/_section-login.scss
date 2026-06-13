@@ -50,7 +50,7 @@ html, body {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 440px;
+  max-width: 640px;
 }
 
 /* ── Floating Cards ── */
@@ -427,8 +427,54 @@ html, body {
    ═══════════════════════════════════════════════ */
 
 .q-register-card {
-  max-height: 90vh;
-  overflow-y: auto;
+  max-width: 600px;
+  padding: 32px;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(139, 92, 246, 0.06);
+}
+
+.q-register-card .q-input-group {
+  margin-bottom: 12px;
+}
+
+.q-register-card .q-login-title {
+  margin-bottom: 2px;
+  font-size: 1.35rem;
+}
+
+.q-register-card .q-login-sub {
+  margin-bottom: 20px;
+  font-size: 0.8125rem;
+}
+
+.q-register-card .q-flash-wrap {
+  margin-bottom: 12px;
+}
+
+.q-register-card .q-register-section {
+  margin-top: 12px;
+  padding: 12px;
+}
+
+.q-register-card .q-copyright {
+  margin-top: 14px;
+}
+
+.q-register-card .q-form-row {
+  gap: 12px;
+}
+
+.q-register-card .q-form-col {
+  min-width: 160px;
+}
+
+.q-register-card .q-checkbox {
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  gap: 6px;
 }
 
 .q-form-row {

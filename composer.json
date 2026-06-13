@@ -1,7 +1,7 @@
 {
-    "name": "qrenda/qrenda",
+    "name": "laravel/laravel",
     "type": "project",
-    "description": "Qrenda - Digital Business Card SaaS",
+    "description": "The Laravel Framework.",
     "keywords": [
         "framework",
         "laravel"

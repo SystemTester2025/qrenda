@@ -234,6 +234,7 @@ mix.js(
         "resources/assets/js/custom/phone-number-country-code.js",
         "public/assets/js/custom/phone-number-country-code.js"
     )
+    .js("resources/assets/js/front/redesign-auth.js", "public/assets/js/front/redesign-auth.js")
     .version();
 
 mix.babel(
