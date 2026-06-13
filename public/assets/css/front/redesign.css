@@ -373,27 +373,6 @@ body .container {
   }
 }
 
-/* ── Glow Effect on buttons ── */
-.q-btn-glow {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s;
-  pointer-events: none;
-  opacity: 0;
-  top: 50%;
-  left: 50%;
-}
-
-.q-btn-nav-primary:hover .q-btn-glow,
-.q-btn-primary:hover .q-btn-glow {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-}
-
 /* ── Hamburger ── */
 .q-hamburger {
   display: flex;
@@ -871,49 +850,43 @@ body.q-menu-open {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 32px;
-  background: linear-gradient(90deg, #401785, #a259ff, #401785);
-  background-size: 200% 100%;
+  padding: 16px 28px;
   color: white;
   border: none;
-  border-radius: var(--q-radius-pill);
+  border-radius: 6px;
   font-family: var(--q-font-body);
-  font-size: 0.9375rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   line-height: 1.4;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.q-btn-primary>span:not(.q-btn-glow),
+.q-btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #401785, #a259ff, #401785);
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease;
+}
+
+.q-btn-primary:hover::before {
+  background-position: 100% 0;
+}
+
+.q-btn-primary>span,
 .q-btn-primary>svg {
   position: relative;
   z-index: 1;
 }
 
 .q-btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(139, 92, 246, 0.45);
   color: white;
-  background-position: 100% 0;
-}
-
-.q-btn-primary-glow {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  background-size: 200% 100%;
-  animation: qBtnShimmer 3s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
-}
-
-@keyframes qBtnShimmer {
-  0%, 100% { background-position: 200% 0; }
-  50% { background-position: -200% 0; }
 }
 
 .q-hero-note {
@@ -1481,22 +1454,24 @@ body.q-menu-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 32px;
-  background: transparent;
-  color: var(--q-text);
-  border: 1px solid var(--q-border);
-  border-radius: var(--q-radius-pill);
-  font-family: var(--q-font);
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  font-family: var(--q-font-body);
   font-size: 0.9375rem;
-  font-weight: 600;
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.2s;
   text-decoration: none;
 }
 
 .q-btn-outline:hover {
-  border-color: var(--q-text-dim);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* ── Staggered pricing entrance ── */

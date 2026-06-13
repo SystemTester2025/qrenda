@@ -37,16 +37,16 @@
         <p class="q-hero-sub q-hero-enter">Everything you need to share your identity, in one link.</p>
         <div class="q-hero-cta q-hero-enter">
             <a class="q-btn-primary" href="{{ route('register') }}" data-turbo="false">
-                <span class="q-btn-primary-glow" aria-hidden="true"></span>
                 <span>{{ __('auth.get_started') }}</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.3335 8H12.6668M12.6668 8L8.00016 3.33334M12.6668 8L8.00016 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </a>
+            <span class="q-hero-note">Replies in 24 hours. No obligation.</span>
         </div>
         <div class="q-alias q-hero-enter">
             <input id="search-alias-input" type="text" placeholder="{{ __('messages.vcard.search_vcard_alias') }}" required>
-            <button id="search-alias-btn" type="submit" class="q-btn-primary" style="padding:12px 24px;flex-shrink:0;font-size:0.875rem">{{ __('messages.vcard.available') }}</button>
+            <button id="search-alias-btn" type="submit" class="q-btn-outline">{{ __('messages.vcard.available') }}</button>
         </div>
         <div id="search-alias-error" class="d-none" style="color:#ef4444;font-size:0.875rem;margin-top:8px">{{ __('messages.vcard.already_alias_url') }}</div>
         <div id="search-alias-success" class="d-none" style="color:#22c55e;font-size:0.875rem;margin-top:8px">{{ __('messages.vcard.url_alias_available') }}</div>
@@ -334,7 +334,6 @@
         <p class="q-hero-sub q-reveal" style="margin:0 auto 40px;max-width:480px">Don't let limited resources hold you back. Level up your digital presence with a professional business card.</p>
         <div class="q-hero-cta q-reveal">
             <a class="q-btn-primary" href="{{ route('register') }}" data-turbo="false">
-                <span class="q-btn-primary-glow" aria-hidden="true"></span>
                 <span>{{ __('auth.get_started') }}</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.3335 8H12.6668M12.6668 8L8.00016 3.33334M12.6668 8L8.00016 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
