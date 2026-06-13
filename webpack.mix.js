@@ -1,5 +1,11 @@
 const mix = require("laravel-mix");
 
+mix.webpackConfig({
+    stats: {
+        preset: "errors-only",
+    },
+});
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

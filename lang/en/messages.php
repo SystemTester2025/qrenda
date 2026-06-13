@@ -155,7 +155,7 @@ return [
     'subscribed_user' => 'Subscribed User Plans',
     'edit_subscription' => 'Edit Subscription Plan',
     'translation_manager' => 'Translation Manager',
-    'create_your_business_digital_card_with_lots_of_information' => 'Create your business digital card with lots of information',
+    'create_your_business_digital_card_with_lots_of_information' => 'One tap. Your business',
     'subscribe' => 'Subscribe',
     'made_by_url' => 'Made By URL',
     'services' => 'Services',

@@ -7,7 +7,7 @@
             <a href="{{ asset('') }}" class="q-logo-link" aria-label="{{ getAppName() }} — Go to homepage">
                 <img src="{{ getLogoUrl() }}" alt="{{ getAppName() }}" class="q-logo-img">
             </a>
-            <span class="q-header-tagline">{{ $setting['sub_text'] ?? 'Your digital identity, simplified.' }}</span>
+            <span class="q-header-tagline">{{ $setting['sub_text'] ?? 'One tap. Your business' }}</span>
         </div>
 
         {{-- Desktop Nav --}}

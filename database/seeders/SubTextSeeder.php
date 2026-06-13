@@ -14,7 +14,7 @@ class SubTextSeeder extends Seeder
     {
         $subtextExist = Setting::where('key', 'sub_text')->exists();
         if (! $subtextExist) {
-            Setting::create(['key' => 'sub_text', 'value' => 'Create your business digital card with lots of information.']);
+            Setting::create(['key' => 'sub_text', 'value' => 'One tap. Your business']);
         }
     }
 }
