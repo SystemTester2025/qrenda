@@ -19,9 +19,51 @@
 <body>
     <div class="q-login-wrap">
         <canvas id="login-canvas"></canvas>
-        <div class="q-login-form-side">
-            @include('flash::message')
-            @yield('content')
+        <div class="q-login-left">
+            <div class="q-floating-cards">
+                <div class="q-floating-card" data-index="0">
+                    <div class="q-floating-card-icon">
+                        <i class="bi bi-credit-card-2-front"></i>
+                    </div>
+                    <div class="q-floating-card-text">
+                        <h3>Digital Business Cards</h3>
+                        <p>Create beautiful, interactive digital business cards loaded with your contact info, social links, portfolio, and services. Share your entire professional identity with a single link — no app required.</p>
+                    </div>
+                </div>
+                <div class="q-floating-card" data-index="1">
+                    <div class="q-floating-card-icon">
+                        <i class="bi bi-qr-code"></i>
+                    </div>
+                    <div class="q-floating-card-text">
+                        <h3>Smart QR Codes</h3>
+                        <p>Every vCard comes with a fully customizable QR code that lets anyone save your contact details with a quick scan. Point, scan, connect — it's that simple and seamless.</p>
+                    </div>
+                </div>
+                <div class="q-floating-card" data-index="2">
+                    <div class="q-floating-card-icon">
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                    <div class="q-floating-card-text">
+                        <h3>WhatsApp Store</h3>
+                        <p>Turn your phone number into a full-fledged storefront. List products, receive orders, and manage sales — all directly through WhatsApp, right from your vCard dashboard.</p>
+                    </div>
+                </div>
+                <div class="q-floating-card" data-index="3">
+                    <div class="q-floating-card-icon">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div class="q-floating-card-text">
+                        <h3>NFC Business Cards</h3>
+                        <p>Bridge the physical and digital world with programmable NFC cards. A single tap opens your vCard instantly, making every handoff seamless, memorable, and endlessly updatable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="q-login-right">
+            <div class="q-login-form-side">
+                @include('flash::message')
+                @yield('content')
+            </div>
         </div>
     </div>
 
@@ -43,6 +85,24 @@
     <script src="{{ mix('assets/js/intl-tel-input/build/intlTelInput.js') }}"></script>
 
     <script>
+    (function() {
+        /* ── Floating Cards Carousel ── */
+        const cards = document.querySelectorAll('.q-floating-card');
+        if (cards.length) {
+            let current = 0;
+            const show = (idx) => {
+                cards.forEach((c, i) => {
+                    c.classList.toggle('visible', i === idx);
+                });
+            };
+            show(0);
+            setInterval(() => {
+                current = (current + 1) % cards.length;
+                show(current);
+            }, 5000);
+        }
+    })();
+
     (function() {
         const canvas = document.getElementById('login-canvas');
         if (!canvas) return;
@@ -114,9 +174,9 @@
             const ch = h;
             ctx.clearRect(0, 0, cw, ch);
 
-            const cx = cw / 2;
+            const cx = cw * 0.18;
             const cy = ch / 2;
-            const maxR = Math.min(cw, ch) * 0.62;
+            const maxR = Math.min(cw, ch) * 0.60;
 
             angle += 0.008;
 
@@ -143,8 +203,10 @@
         }
 
         function resize() {
-            w = window.innerWidth;
-            h = window.innerHeight;
+            const wrap = document.querySelector('.q-login-wrap');
+            const rect = wrap.getBoundingClientRect();
+            w = rect.width;
+            h = rect.height;
             dpr = Math.min(window.devicePixelRatio || 1, 2);
             canvas.width = w * dpr;
             canvas.height = h * dpr;
