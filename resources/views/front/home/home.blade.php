@@ -43,7 +43,6 @@
                     <path d="M3.3335 8H12.6668M12.6668 8L8.00016 3.33334M12.6668 8L8.00016 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </a>
-            <span class="q-hero-note">Replies in 24 hours. No obligation.</span>
         </div>
         <div class="q-alias q-hero-enter">
             <input id="search-alias-input" type="text" placeholder="{{ __('messages.vcard.search_vcard_alias') }}" required>
@@ -342,7 +341,6 @@
                     <path d="M3.3335 8H12.6668M12.6668 8L8.00016 3.33334M12.6668 8L8.00016 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </a>
-            <span class="q-hero-note">Replies in 24 hours. No obligation.</span>
         </div>
     </div>
 </section>
@@ -417,7 +415,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
             ctx.save();
             ctx.globalAlpha = layer.opacity;
+
             ctx.translate(cx + Math.cos(currentRot * 0.006 * (4 - i)) * 3 * (4 - i), cy + Math.sin(currentRot * 0.006 * (4 - i)) * 3 * (4 - i));
+
+            // Remove middle — circle + horizontal band combined
+            ctx.beginPath();
+            ctx.rect(-w, -h, w * 3, h * 3);
+            ctx.arc(0, 0, maxR * 0.2, 0, Math.PI * 2);
+            ctx.rect(0 - maxR * 0.5, 0 - maxR * 0.25, maxR * 1.0, maxR * 0.5);
+            ctx.clip("evenodd");
+
             ctx.rotate(currentRot * 0.003 * (4 - i) - 0.2 + (4 - i) * 0.06);
             ctx.scale(layer.scale * scale, layer.scale * scale);
             ctx.translate(-mWidth / 2, -mHeight / 2);
