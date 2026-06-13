@@ -18,6 +18,7 @@
 - Root frontend build is Laravel Mix (`webpack.mix.js`), not Vite; edit `resources/assets/**`, then run `npm run dev` or `npm run production`.
 - Mix writes compiled assets to `public/assets/**` and versioned bundles; don't hand-edit generated public assets for source changes.
 - `Modules/Test` has its own Vite build (`Modules/Test/package.json`, `Modules/Test/vite.config.js`) outputting `public/build-test`; root npm scripts do not build it.
+- Node.js v17+ requires `$env:NODE_OPTIONS="--openssl-legacy-provider"` before `npx mix` (OpenSSL v3 incompatibility with file-loader). Run as: `$env:NODE_OPTIONS="--openssl-legacy-provider"; npx mix --production`.
 
 ## Routes and boundaries
 - Main web routes are in `routes/web.php`; API routes are in `routes/api.php` with controllers under `app/Http/Controllers/API/**`.

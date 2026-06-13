@@ -1,0 +1,107 @@
+/* ── Contact ── */
+.q-contact {
+  padding: 100px 24px;
+  background: var(--q-bg-surface);
+}
+
+.q-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 48px;
+}
+
+.q-contact-info {
+  display: grid;
+  gap: 24px;
+}
+
+.q-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-sm);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.q-contact-item:hover {
+  border-color: rgba(139, 92, 246, 0.25);
+  background: var(--q-bg-card-hover);
+  transform: translateX(4px);
+}
+
+.q-contact-item i {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--q-radius-sm);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  color: var(--q-primary);
+  flex-shrink: 0;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.q-contact-item:hover i {
+  background: rgba(139, 92, 246, 0.18);
+  transform: scale(1.05);
+}
+
+.q-contact-item a,
+.q-contact-item span {
+  font-size: 0.9375rem;
+  color: var(--q-text-dim);
+  transition: color 0.2s;
+}
+
+.q-contact-item:hover a,
+.q-contact-item:hover span {
+  color: var(--q-text);
+}
+
+.q-contact-form {
+  display: grid;
+  gap: 16px;
+}
+
+.q-contact-form .q-btn-primary {
+  justify-self: start;
+  min-width: 180px;
+}
+
+.q-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--q-font-body);
+  font-size: 0.9375rem;
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-sm);
+  background: var(--q-bg-card);
+  color: var(--q-text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.q-input:focus {
+  border-color: var(--q-primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.q-input::placeholder {
+  color: var(--q-text-muted);
+}
+
+textarea.q-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+@media (max-width: 768px) {
+  .q-contact-grid { grid-template-columns: 1fr; }
+}

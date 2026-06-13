@@ -1,0 +1,69 @@
+/* ── Primary CTA Button ── */
+.q-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 28px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--q-font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1.4;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.q-btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #401785, #a259ff, #401785);
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease;
+}
+
+.q-btn-primary:hover::before {
+  background-position: 100% 0;
+}
+
+.q-btn-primary > span,
+.q-btn-primary > svg {
+  position: relative;
+  z-index: 1;
+}
+
+.q-btn-primary:hover {
+  color: white;
+}
+
+/* ── Outline Button ── */
+.q-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  font-family: var(--q-font-body);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.q-btn-outline:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.95);
+}

@@ -1,0 +1,119 @@
+/* ── Services / Features ── */
+.q-services {
+  padding: 100px 24px;
+  background: var(--q-bg);
+}
+
+.q-section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--q-primary);
+  margin-bottom: 16px;
+}
+
+.q-section-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 48px;
+  color: var(--q-text);
+  max-width: 600px;
+}
+
+.q-section-title.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.q-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.q-service-card {
+  padding: 32px;
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.q-service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--q-primary), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.q-service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.q-service-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  background: var(--q-bg-card-hover);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.12);
+}
+
+.q-service-card:hover::before,
+.q-service-card:hover::after {
+  opacity: 1;
+}
+
+.q-service-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--q-radius-sm);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  margin-bottom: 20px;
+  color: var(--q-primary);
+  transition: all 0.3s;
+}
+
+.q-service-card:hover .q-service-icon {
+  background: rgba(139, 92, 246, 0.15);
+  transform: scale(1.05);
+}
+
+.q-service-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--q-text);
+  position: relative;
+  z-index: 1;
+}
+
+.q-service-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--q-text-dim);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}

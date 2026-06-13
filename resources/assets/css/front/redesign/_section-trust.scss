@@ -1,0 +1,59 @@
+/* ── Trust / Stats ── */
+.q-trust {
+  padding: 80px 24px;
+  background: var(--q-bg-surface);
+  border-top: 1px solid var(--q-border-subtle);
+  border-bottom: 1px solid var(--q-border-subtle);
+  text-align: center;
+}
+
+.q-trust-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  color: var(--q-text);
+  margin: 0 0 48px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.q-trust-stats {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.q-trust-stat-item {
+  padding: 32px 40px;
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius);
+  text-align: center;
+  min-width: 160px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.q-trust-stat-item:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(139, 92, 246, 0.1);
+}
+
+.q-stat-num {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--q-text);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: linear-gradient(135deg, #ffffff, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.q-stat-label {
+  font-size: 0.8125rem;
+  color: var(--q-text-muted);
+  margin-top: 8px;
+}

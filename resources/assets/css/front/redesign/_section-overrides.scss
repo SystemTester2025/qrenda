@@ -1,0 +1,183 @@
+/* ═══════════════════════════════════════════════
+   Homepage-only overrides (scoped under .q-homepage)
+   ═══════════════════════════════════════════════ */
+.q-homepage .bg-light,
+.q-homepage .features-section.bg-light,
+.q-homepage .contact-section.bg-light,
+.q-homepage .about-section {
+  background-color: var(--q-bg) !important;
+  background-image: none !important;
+}
+
+.q-homepage .hero-section {
+  background: var(--q-bg) !important;
+  background-image: none !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.q-homepage .hero-section .bg-img {
+  display: none !important;
+}
+
+.q-homepage .bg-darkblue,
+.q-homepage .testimonial-section {
+  background: var(--q-bg-surface) !important;
+}
+
+.q-homepage .text-dark {
+  color: var(--q-text) !important;
+}
+
+.q-homepage .text-success {
+  color: var(--q-primary) !important;
+}
+
+.q-homepage .navbar-brand .navbar-logo {
+  filter: brightness(0) invert(1);
+}
+
+/* ── Container ── */
+.hero-section .container,
+.features-section .container,
+.about-section .container,
+.pricing-plan-section .container,
+.testimonial-section .container,
+.contact-section .container,
+.subscribe-section .container,
+.footer .container,
+body .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Override original subscribe/footer for dark theme (homepage only) ── */
+.q-homepage .subscribe-section,
+.q-homepage .subscribe-section-rtl {
+  background: var(--q-bg-surface) !important;
+  color: var(--q-text) !important;
+}
+
+.q-homepage .subscribe-section h2,
+.q-homepage .subscribe-section-rtl h2 {
+  color: var(--q-text) !important;
+}
+
+.q-homepage .subscribe-section p,
+.q-homepage .subscribe-section-rtl p {
+  color: var(--q-text-dim) !important;
+}
+
+.q-homepage .subscribe-section .form-control,
+.q-homepage .subscribe-section-rtl .form-control {
+  background: var(--q-bg-card) !important;
+  border-color: var(--q-border) !important;
+  color: var(--q-text) !important;
+}
+
+.q-homepage .subscribe-section .btn-pink,
+.q-homepage .subscribe-section-rtl .btn-pink {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+  border-radius: var(--q-radius-pill) !important;
+}
+
+.q-homepage footer {
+  background: var(--q-bg) !important;
+  color: var(--q-text-dim) !important;
+}
+
+.q-homepage footer .text-gray-300,
+.q-homepage footer .text-secondary {
+  color: var(--q-text-muted) !important;
+}
+
+.q-homepage footer .link-info {
+  color: var(--q-text-dim) !important;
+}
+
+.q-homepage footer .link-info:hover {
+  color: var(--q-text) !important;
+}
+
+.q-homepage footer .text-blue {
+  color: var(--q-text) !important;
+}
+
+/* ── Subscribe section dark theme ── */
+.q-homepage .subscribe-section .subscribe-inputgrp,
+.q-homepage .subscribe-section-rtl .subscribe-inputgrp {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.q-homepage .subscribe-section .btn-pink,
+.q-homepage .subscribe-section-rtl .btn-pink {
+  border-radius: 0 var(--q-radius-sm) var(--q-radius-sm) 0 !important;
+  padding: 10px 24px !important;
+  color: white !important;
+}
+
+.q-homepage .subscribe-section .subscribe-btn,
+.q-homepage .subscribe-section-rtl .subscribe-btn {
+  position: absolute;
+  right: 4px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Social links dark theme ── */
+.q-homepage .main-social-links a {
+  background: var(--q-bg-card) !important;
+  border: 1px solid var(--q-border) !important;
+  box-shadow: none !important;
+}
+
+.q-homepage .main-social-links a:hover {
+  background: var(--q-primary) !important;
+  border-color: var(--q-primary) !important;
+  color: white !important;
+}
+
+.q-homepage .main-social-links a.globe {
+  color: var(--q-text-dim) !important;
+}
+.q-homepage .main-social-links a.twitter {
+  color: var(--q-text-dim) !important;
+}
+.q-homepage .main-social-links a.facebook {
+  color: var(--q-text-dim) !important;
+}
+.q-homepage .main-social-links a.instagram {
+  color: var(--q-text-dim) !important;
+}
+.q-homepage .main-social-links a.youtube {
+  color: var(--q-text-dim) !important;
+}
+.q-homepage .main-social-links a.linkedin {
+  color: var(--q-text-dim) !important;
+}
+.q-homepage .main-social-links a.whatsapp {
+  color: var(--q-text-dim) !important;
+}
+.q-homepage .main-social-links a.pinterest {
+  color: var(--q-text-dim) !important;
+}
+.q-homepage .main-social-links a.tiktok {
+  color: var(--q-text-dim) !important;
+}
+
+.q-homepage .main-social-links a:hover svg .icon {
+  fill: white !important;
+}
+
+/* ── Footer dark theme ── */
+.q-homepage footer.bg-light {
+  background: var(--q-bg) !important;
+}
+
+.q-homepage footer .slash {
+  color: var(--q-text-muted) !important;
+}

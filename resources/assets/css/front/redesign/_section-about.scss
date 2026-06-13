@@ -1,0 +1,127 @@
+/* ── About / Interface — Bento Grid ── */
+.q-about {
+  padding: 100px 24px;
+  background: var(--q-bg);
+}
+
+.q-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.q-bento-card {
+  position: relative;
+  border-radius: var(--q-radius);
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+.q-bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 64px rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* Bento card sizes */
+.q-bento-1 { grid-column: span 7; min-height: 380px; }
+.q-bento-2 { grid-column: span 5; min-height: 380px; }
+.q-bento-3 { grid-column: span 5; min-height: 320px; }
+.q-bento-4 { grid-column: span 7; min-height: 320px; }
+.q-bento-5 { grid-column: span 12; min-height: 360px; }
+.q-bento-6 { grid-column: span 12; min-height: 360px; }
+
+/* Dark gradient overlay */
+.q-bento-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--q-bg) 0%, rgba(10, 10, 10, 0.6) 40%, rgba(10, 10, 10, 0.1) 100%);
+  transition: background 0.4s;
+  z-index: 1;
+}
+
+.q-bento-card:hover .q-bento-overlay {
+  background: linear-gradient(to top, var(--q-bg) 0%, rgba(139, 92, 246, 0.1) 40%, rgba(10, 10, 10, 0.1) 100%);
+}
+
+/* Subtle inner border glow on hover */
+.q-bento-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--q-radius);
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), transparent 50%) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.q-bento-card:hover::after {
+  opacity: 1;
+}
+
+.q-bento-content {
+  position: relative;
+  z-index: 3;
+  padding: 32px;
+}
+
+.q-bento-num {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--q-primary);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+
+.q-bento-content h3 {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: var(--q-text);
+  letter-spacing: -0.01em;
+}
+
+.q-bento-content p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--q-text-dim);
+  margin: 0;
+  max-width: 480px;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .q-bento-card { min-height: 280px; }
+  .q-bento-1, .q-bento-2,
+  .q-bento-3, .q-bento-4 { grid-column: span 6; min-height: 280px; }
+  .q-bento-5, .q-bento-6 { grid-column: span 12; min-height: 300px; }
+}
+
+@media (max-width: 640px) {
+  .q-bento-grid { gap: 12px; }
+  .q-bento-1, .q-bento-2, .q-bento-3, .q-bento-4,
+  .q-bento-5, .q-bento-6 { grid-column: span 12; min-height: 240px; }
+  .q-bento-content { padding: 24px; }
+  .q-bento-content p { font-size: 0.8125rem; }
+}

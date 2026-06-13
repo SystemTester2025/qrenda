@@ -1,0 +1,51 @@
+/* ── RTL ── */
+[dir=rtl] .q-footer a,
+[dir=rtl] .q-contact-item a {
+  text-align: right;
+}
+
+[dir=rtl] .q-contact-item:hover {
+  transform: translateX(-4px);
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .q-reveal { opacity: 1; transform: none; transition: none; }
+  .q-hero-enter { animation: none; opacity: 1; }
+  .q-nav { transition: none; }
+  .q-logos-track { animation: none; }
+  .q-hero::before { animation: none; }
+
+  .q-pricing-grid .q-price-card,
+  .q-services-grid .q-service-card,
+  .q-testimonials-grid .q-testimonial-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .q-service-card,
+  .q-price-card,
+  .q-testimonial-card,
+  .q-contact-item,
+  .q-trust-stat-item,
+  .q-bento-card,
+  .q-btn-primary,
+  .q-service-icon,
+  .q-contact-item i,
+  .q-testimonial-author img {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .q-services,
+  .q-trust,
+  .q-about,
+  .q-pricing,
+  .q-testimonials,
+  .q-contact,
+  .q-bottom-cta { padding: 64px 16px; }
+}

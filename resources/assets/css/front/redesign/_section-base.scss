@@ -1,0 +1,46 @@
+/* Google Fonts Sora + Poppins loaded via <link> in app.blade.php head */
+
+/* ═══════════════════════════════════════════════
+   Qrenda Homepage Redesign — Salo.uk Inspired
+   Dark, minimal, centered hero, purple CTA
+   ═══════════════════════════════════════════════ */
+/* ── CSS Variables ── */
+:root {
+  --q-bg: #0a0a0a;
+  --q-bg-card: #141414;
+  --q-bg-card-hover: #1a1a1a;
+  --q-bg-surface: #111111;
+  --q-primary: #8b5cf6;
+  --q-primary-hover: #7c3aed;
+  --q-text: #ffffff;
+  --q-text-dim: #a1a1aa;
+  --q-text-muted: #71717a;
+  --q-border: #27272a;
+  --q-border-subtle: #1e1e1e;
+  --q-success: #22c55e;
+  --q-radius: 12px;
+  --q-radius-sm: 8px;
+  --q-radius-pill: 9999px;
+  --q-font-display: "Sora", system-ui, -apple-system, sans-serif;
+  --q-font-body: "Poppins", system-ui, -apple-system, sans-serif;
+}
+
+/* ── Base ── */
+/* ── Body scoped to homepage only ── */
+.q-homepage {
+  font-family: var(--q-font-body);
+  color: var(--q-text);
+  background: var(--q-bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.q-homepage h1,
+.q-homepage h2,
+.q-homepage h3,
+.q-homepage h4,
+.q-homepage h5,
+.q-homepage h6,
+.q-homepage .navbar-brand {
+  font-family: var(--q-font-display);
+}
