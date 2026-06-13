@@ -107,33 +107,22 @@ body .container {
 
 /* ── Header ── */
 .q-header {
-  position: fixed;
+  position: absolute;
+  inset-inline: 0;
   top: 0;
-  left: 0;
-  width: 100%;
   z-index: 1000;
   background: transparent;
-  transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   border-bottom: 1px solid transparent;
-}
-
-.q-header.scrolled {
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom-color: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
 }
 
 .q-header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  max-width: 1200px;
+  gap: 32px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 24px;
-  height: 72px;
+  padding: 28px 40px;
 }
 
 /* ── Logo / Brand ── */
@@ -164,8 +153,8 @@ body .container {
 
 .q-header-tagline {
   font-family: var(--q-font-body);
-  font-size: 0.8rem;
-  color: var(--q-text-muted);
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.6);
   letter-spacing: 0.01em;
   white-space: nowrap;
   display: none;
@@ -193,7 +182,7 @@ body .container {
 .q-nav-list {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 32px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -201,27 +190,26 @@ body .container {
 
 .q-nav-link {
   display: inline-block;
-  padding: 8px 14px;
+  padding: 8px 0;
   font-family: var(--q-font-body);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--q-text-dim);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  border-radius: var(--q-radius-sm);
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease;
   letter-spacing: 0.01em;
+  position: relative;
 }
 
 .q-nav-link:hover {
-  color: var(--q-text);
-  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* ── Header Actions ── */
 .q-header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
@@ -234,22 +222,20 @@ body .container {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 12px;
+  padding: 8px 10px;
   font-family: var(--q-font-body);
   font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--q-text-dim);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
   background: transparent;
-  border: 1px solid transparent;
-  border-radius: var(--q-radius-sm);
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  transition: color 0.2s;
 }
 
 .q-lang-btn:hover {
-  color: var(--q-text);
-  border-color: var(--q-border);
-  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .q-lang-chevron {
@@ -316,24 +302,25 @@ body .container {
 .q-btn-nav-secondary {
   display: none;
   align-items: center;
-  padding: 9px 18px;
+  gap: 8px;
+  padding: 10px 20px;
   font-family: var(--q-font-body);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--q-text-dim);
-  background: transparent;
-  border: 1px solid var(--q-border);
-  border-radius: var(--q-radius-pill);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
   text-decoration: none;
   cursor: pointer;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .q-btn-nav-secondary:hover {
-  color: var(--q-text);
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.04);
 }
 
 @media (min-width: 768px) {
@@ -346,28 +333,37 @@ body .container {
 .q-btn-nav-primary {
   display: none;
   align-items: center;
-  gap: 6px;
-  padding: 9px 20px;
+  gap: 8px;
+  padding: 10px 20px;
   font-family: var(--q-font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.9375rem;
+  font-weight: 500;
   color: white;
-  background: linear-gradient(90deg, #401785, #a259ff, #401785);
-  background-size: 200% 100%;
   border: none;
-  border-radius: var(--q-radius-pill);
+  border-radius: 6px;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
   white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.q-btn-nav-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #401785, #a259ff, #401785);
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease;
+}
+
+.q-btn-nav-primary:hover::before {
+  background-position: 100% 0;
 }
 
 .q-btn-nav-primary:hover {
-  background-position: 100% 0;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
   color: white;
 }
 
@@ -405,25 +401,25 @@ body .container {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background: transparent;
-  border: 1px solid var(--q-border);
-  border-radius: var(--q-radius-sm);
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
   padding: 0;
-  transition: border-color 0.2s;
+  transition: background 0.2s;
 }
 
 .q-hamburger:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .q-hamburger-bar {
   display: block;
   width: 18px;
   height: 1.5px;
-  background: var(--q-text);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 1px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   transform-origin: center;

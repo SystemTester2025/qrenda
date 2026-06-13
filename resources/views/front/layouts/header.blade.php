@@ -13,7 +13,6 @@
         {{-- Desktop Nav --}}
         <nav class="q-nav" aria-label="Main navigation">
             <ul class="q-nav-list" role="list">
-                <li><a class="q-nav-link" href="{{ asset('') }}#frontHomeTab">{{ __('auth.home') }}</a></li>
                 <li><a class="q-nav-link" href="{{ asset('') }}#frontAboutTabUsTab">{{ __('auth.about') }}</a></li>
                 @if ($faqs !== null)
                 <li><a class="q-nav-link" href="{{ route('fornt-faq') }}">{{ __('messages.faqs.faqs') }}</a></li>
@@ -68,25 +67,23 @@
             @if (empty(getLogInUser()))
                 <a class="q-btn-nav-secondary" href="{{ route('login') }}" data-turbo="false">
                     {{ __('auth.sign_in') }}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
                 <a class="q-btn-nav-primary" href="{{ route('register') }}" data-turbo="false" id="header-cta-btn">
-                    <span class="q-btn-glow" aria-hidden="true"></span>
                     <span>{{ __('auth.get_started') }}</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
             @else
                 @if (getLogInUser()->hasrole('admin') || getLogInUser()->hasrole('user'))
                     <a class="q-btn-nav-primary" href="{{ route('admin.dashboard') }}" data-turbo="false" id="header-cta-btn">
-                        <span class="q-btn-glow" aria-hidden="true"></span>
                         <span>{{ __('messages.dashboard') }}</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 @endif
                 @if (getLogInUser()->hasrole('super_admin'))
                     <a class="q-btn-nav-primary" href="{{ route('sadmin.dashboard') }}" data-turbo="false" id="header-cta-btn">
-                        <span class="q-btn-glow" aria-hidden="true"></span>
                         <span>{{ __('messages.dashboard') }}</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 @endif
             @endif
@@ -114,7 +111,6 @@
         <nav class="q-mobile-nav" aria-label="Mobile navigation">
             <p class="q-mobile-nav-label">Navigation</p>
             <ul class="q-mobile-nav-list" role="list">
-                <li><a class="q-mobile-nav-link" href="{{ asset('') }}#frontHomeTab">{{ __('auth.home') }}</a></li>
                 <li><a class="q-mobile-nav-link" href="{{ asset('') }}#frontAboutTabUsTab">{{ __('auth.about') }}</a></li>
                 @if ($faqs !== null)
                 <li><a class="q-mobile-nav-link" href="{{ route('fornt-faq') }}">{{ __('messages.faqs.faqs') }}</a></li>

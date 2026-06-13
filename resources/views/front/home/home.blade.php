@@ -54,7 +54,6 @@
 
     {{-- Salo.uk-style marquee at bottom of hero --}}
     <div class="q-hero-bottom">
-        <p class="q-hero-partners-label">Trusted by forward-thinking businesses</p>
         <div class="q-marquee" aria-hidden="true">
             <div class="q-marquee-track">
                 {{-- First set --}}
@@ -482,17 +481,7 @@ document.addEventListener("DOMContentLoaded", function () {
     animateCursor("#cursor-carl", { x: [-140, 120], y: [-100, 85] });
     animateCursor("#cursor-sophie", { x: [-110, 150], y: [-85, 115] });
 
-    // ── 5. Header Scroll scrolled Class Toggler ──
-    const header = document.querySelector(".header");
-    if (header) {
-        const toggleScrolled = () => {
-            header.classList.toggle("scrolled", window.scrollY > 60);
-        };
-        toggleScrolled();
-        window.addEventListener("scroll", toggleScrolled, { passive: true });
-    }
-
-    // ── 6. Interactive Hover Button Glow ──
+    // ── 5. Interactive Hover Button Glow ──
     document.querySelectorAll(".btn-white, .q-btn-primary").forEach(button => {
         const glow = document.createElement("span");
         glow.className = "btn-bg";
