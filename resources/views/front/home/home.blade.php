@@ -37,7 +37,7 @@
         <p class="q-hero-sub q-hero-enter">{{ $setting['sub_text'] ?? 'Create your digital business card and share it with the world.' }}</p>
         <div class="q-hero-cta q-hero-enter">
             <a class="q-btn-primary" href="{{ route('register') }}" data-turbo="false">
-                <span class="q-btn-glow" aria-hidden="true"></span>
+                <span class="q-btn-primary-glow" aria-hidden="true"></span>
                 <span>{{ __('auth.get_started') }}</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.3335 8H12.6668M12.6668 8L8.00016 3.33334M12.6668 8L8.00016 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -336,6 +336,7 @@
         <p class="q-hero-sub q-reveal" style="margin:0 auto 40px;max-width:480px">Don't let limited resources hold you back. Level up your digital presence with a professional business card.</p>
         <div class="q-hero-cta q-reveal">
             <a class="q-btn-primary" href="{{ route('register') }}" data-turbo="false">
+                <span class="q-btn-primary-glow" aria-hidden="true"></span>
                 <span>{{ __('auth.get_started') }}</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.3335 8H12.6668M12.6668 8L8.00016 3.33334M12.6668 8L8.00016 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -346,9 +347,8 @@
     </div>
 </section>
 
-{{-- GSAP & ScrollTrigger CDN dependencies --}}
+{{-- GSAP CDN --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -358,128 +358,100 @@ document.addEventListener("DOMContentLoaded", function () {
         { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, ease: "power3.out", stagger: 0.15, delay: 0.2 }
     );
 
-    // ── 2. Canvas Pseudo-3D Outline Animation ──
+    // ── 2. Canvas — Geometric Mark (5 Layers, Mouse Rotation) ──
     const canvas = document.getElementById("hero-canvas");
     if (!canvas) return;
     const ctx = canvas.getContext("2d", { alpha: true, desynchronized: true });
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    // SVG path string representing Salo-inspired double loop geometric mark
     const pathData = "M108.965 17.6077C195.9 -23.0772 299.303 14.4975 339.931 101.558C380.419 188.316 343.285 291.435 256.993 332.413L249.775 316.941L249.351 316.033L248.445 316.458C161.509 357.143 58.1065 319.568 17.478 232.507C-23.0092 145.749 14.1253 42.6205 100.417 1.64188L107.635 17.1243L108.058 18.0315L108.965 17.6077ZM130.992 64.805C79.1277 89.08 56.7283 150.857 80.9683 202.802C105.068 254.434 166.181 276.905 217.865 253.313L225.088 268.788L225.511 269.696L226.418 269.271C278.283 244.995 300.681 183.219 276.442 131.274C252.342 79.6413 191.228 57.169 139.544 80.762L132.322 65.2874L131.898 64.3802L130.992 64.805Z";
     const path = new Path2D(pathData);
-    
-    // Canvas dimensions and layers config
     const mWidth = 358;
     const mHeight = 334;
-    const baseLayers = [
-        { scale: 1, rotate: 0, opacity: 0.6 },
-        { scale: 1.05, rotate: 3, opacity: 0.25 },
-        { scale: 1.10, rotate: 6, opacity: 0.15 },
-        { scale: 1.15, rotate: 9, opacity: 0.08 }
+
+    // 4 layers — tighter equal distance
+    const layers = [
+        { scale: 1.15, opacity: 0.15, color: "rgba(167, 139, 250, 0.5)" },
+        { scale: 1.10, opacity: 0.25, color: "rgba(139, 92, 246, 0.45)" },
+        { scale: 1.05, opacity: 0.45, color: "rgba(255, 255, 255, 0.65)" },
+        { scale: 1,    opacity: 0.75, color: "rgba(255, 255, 255, 0.95)" },
     ];
-    let layers = baseLayers.map(l => ({ ...l }));
+
+    let targetRot = 0;
+    let currentRot = 0;
 
     function getScale() {
         const w = window.innerWidth;
         const h = window.innerHeight;
-        return (w <= 1023 ? w * 0.9 : Math.min(h * 0.7, w * 0.7)) / Math.max(mWidth, mHeight);
+        return (w <= 1023 ? w * 0.95 : Math.min(h * 0.8, w * 0.8)) / Math.max(mWidth, mHeight);
     }
 
-    function draw() {
+    function drawPath() {
         const w = canvas.width / dpr;
         const h = canvas.height / dpr;
         ctx.clearRect(0, 0, w, h);
-        
-        ctx.save();
-        ctx.translate(w / 2, h / 2);
-        
+
+        const cx = w / 2;
+        const cy = h / 2;
+        const maxR = Math.min(w, h) * 0.62;
         const scale = getScale();
-        
-        // Draw layers from back (outermost) to front
+
+        let diff = targetRot - currentRot;
+        diff = Math.atan2(Math.sin(diff), Math.cos(diff));
+        currentRot += diff * 0.08;
+
+        // Purple ambient glow
+        const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR * 1.1);
+        glow.addColorStop(0, "rgba(124, 58, 237, 0.10)");
+        glow.addColorStop(0.6, "rgba(124, 58, 237, 0.03)");
+        glow.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(cx, cy, maxR * 1.1, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Draw layers back to front
         for (let i = layers.length - 1; i >= 0; i--) {
             const layer = layers[i];
             if (layer.opacity < 0.001) continue;
-            
+
             ctx.save();
             ctx.globalAlpha = layer.opacity;
-            ctx.rotate(layer.rotate * Math.PI / 180);
+            ctx.translate(cx + Math.cos(currentRot * 0.008 * (i - 2)) * 4 * (i - 2), cy + Math.sin(currentRot * 0.008 * (i - 2)) * 4 * (i - 2));
+            ctx.rotate(currentRot * 0.004 * (i - 2));
             ctx.scale(layer.scale * scale, layer.scale * scale);
             ctx.translate(-mWidth / 2, -mHeight / 2);
-            
-            // Premium white-to-violet transition colors
-            if (i === 0) {
-                ctx.strokeStyle = "rgba(255, 255, 255, 0.85)";
-            } else if (i === 1) {
-                ctx.strokeStyle = "rgba(167, 139, 250, 0.5)";
-            } else {
-                ctx.strokeStyle = "rgba(139, 92, 246, 0.3)";
-            }
-            
-            ctx.lineWidth = 1.2 / (layer.scale * scale);
+
+            ctx.strokeStyle = layer.color;
+            ctx.lineWidth = 1.4 / (layer.scale * scale);
             ctx.stroke(path);
             ctx.restore();
         }
-        ctx.restore();
+
+        animFrame = requestAnimationFrame(drawPath);
     }
 
-    function resize() {
+    function resizeCanvas() {
         canvas.width = canvas.clientWidth * dpr;
         canvas.height = canvas.clientHeight * dpr;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        draw();
     }
 
-    window.addEventListener("resize", resize);
-    resize();
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    let animFrame = requestAnimationFrame(drawPath);
 
-    // ── 3. Interactive Mouse Gyroscopic Movement ──
-    let hoverTween = null;
+    // ── 3. Mouse-driven rotation ──
     const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    
     if (isDesktop) {
         window.addEventListener("mousemove", function (e) {
-            const normX = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
-            
-            if (hoverTween) hoverTween.kill();
-            hoverTween = gsap.to(layers, {
-                rotate: (index) => baseLayers[index].rotate + normX * 15,
-                stagger: {
-                    each: 0.02,
-                    from: "start"
-                },
-                duration: 0.5,
-                ease: "power1.out",
-                onUpdate: draw
-            });
+            const cx = window.innerWidth / 2;
+            const cy = window.innerHeight / 2;
+            targetRot = Math.atan2(e.clientY - cy, e.clientX - cx);
         });
     }
 
-    // ── 4. Scroll Trigger Depth Scaling & Fading ──
-    gsap.registerPlugin(ScrollTrigger);
-    
-    ScrollTrigger.create({
-        trigger: ".q-hero",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-        onUpdate: function (self) {
-            const progress = self.progress;
-            layers.forEach((layer, index) => {
-                const base = baseLayers[index];
-                
-                // Scale outer layers down to 0.1, core layer down to 0.35
-                const targetScale = index === 0 ? 0.35 : 0.1;
-                layer.scale = base.scale - progress * (base.scale - targetScale);
-                
-                // Fade outer layers, dim core layer
-                const targetOpacity = index === 0 ? 0.15 : 0.0;
-                layer.opacity = base.opacity - progress * (base.opacity - targetOpacity);
-            });
-            draw();
-        }
-    });
-
-    // ── 5. Drifting Ambient Cursors ──
+    // ── 4. Drifting Ambient Cursors ──
     function animateCursor(selector, bounds) {
         const el = document.querySelector(selector);
         if (!el) return;
@@ -503,7 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
     animateCursor("#cursor-carl", { x: [-140, 120], y: [-100, 85] });
     animateCursor("#cursor-sophie", { x: [-110, 150], y: [-85, 115] });
 
-    // ── 6. Header Scroll scrolled Class Toggler ──
+    // ── 5. Header Scroll scrolled Class Toggler ──
     const header = document.querySelector(".header");
     if (header) {
         const toggleScrolled = () => {
@@ -513,7 +485,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("scroll", toggleScrolled, { passive: true });
     }
 
-    // ── 7. Interactive Hover Button Glow ──
+    // ── 6. Interactive Hover Button Glow ──
     document.querySelectorAll(".btn-white, .q-btn-primary").forEach(button => {
         const glow = document.createElement("span");
         glow.className = "btn-bg";

@@ -60,6 +60,10 @@ Thumbs.db
 .opencode/
 .playwright-mcp/
 
+# Local salo-uk header package
+/salo-uk-header/
+/salo-uk-header.zip
+
 # Web build outputs
 
 /public/build

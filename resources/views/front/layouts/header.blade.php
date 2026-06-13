@@ -64,7 +64,7 @@
                 </ul>
             </div>
 
-            {{-- Auth CTA (secondary) --}}
+            {{-- Auth CTA — Salo.uk style --}}
             @if (empty(getLogInUser()))
                 <a class="q-btn-nav-secondary" href="{{ route('login') }}" data-turbo="false">
                     {{ __('auth.sign_in') }}

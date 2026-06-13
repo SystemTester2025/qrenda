@@ -1,5 +1,5 @@
-@import url(https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap);
 @charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap);
 
 /* ═══════════════════════════════════════════════
    Qrenda Homepage Redesign — Salo.uk Inspired
@@ -352,7 +352,8 @@ body .container {
   font-size: 0.875rem;
   font-weight: 600;
   color: white;
-  background: var(--q-primary);
+  background: linear-gradient(90deg, #401785, #a259ff, #401785);
+  background-size: 200% 100%;
   border: none;
   border-radius: var(--q-radius-pill);
   text-decoration: none;
@@ -364,7 +365,7 @@ body .container {
 }
 
 .q-btn-nav-primary:hover {
-  background: var(--q-primary-hover);
+  background-position: 100% 0;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
   color: white;
@@ -661,40 +662,41 @@ body.q-menu-open {
 .q-hero-content {
   position: relative;
   z-index: 1;
-  max-width: 720px;
+  max-width: 800px;
   padding: 0 24px;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 80px;
+  padding-bottom: 100px;
 }
 
 .q-hero-name {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--q-text-dim);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   letter-spacing: 0.02em;
 }
 
 .q-hero h1 {
-  font-size: clamp(2.5rem, 5.5vw, 4rem);
-  font-weight: 700;
-  line-height: 1.1;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.15;
   letter-spacing: -0.03em;
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   color: var(--q-text);
   text-wrap: balance;
+  max-width: 720px;
 }
 
 .q-hero-sub {
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
   color: var(--q-text-dim);
-  line-height: 1.6;
-  margin: 0 0 40px;
-  max-width: 520px;
+  line-height: 1.5;
+  margin: 0 0 28px;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -824,6 +826,10 @@ body.q-menu-open {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
 }
 
 #hero-canvas {
@@ -832,90 +838,59 @@ body.q-menu-open {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.6;
+  display: block;
 }
 
 /* ── Floating Ambient Cursors — Salo.uk style ── */
 .HomeHero__ambientCursor {
   position: absolute;
-  z-index: 2;
+  z-index: 10;
   pointer-events: none;
-  animation-fill-mode: both;
+  will-change: transform;
 }
 
 .HomeHero__ambientCursor--topLeft {
-  top: 22%;
-  left: 8%;
+  top: 25%;
+  left: 15%;
 }
 
 .HomeHero__ambientCursor--bottomRight {
-  bottom: 20%;
-  right: 8%;
+  bottom: 25%;
+  right: 15%;
 }
 
 .Cursor {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 12px 6px 8px;
-  background: rgba(20, 20, 20, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 9999px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04);
-  white-space: nowrap;
+  gap: 6px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 .Cursor svg {
-  flex-shrink: 0;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
 .Cursor__name {
-  font-family: var(--q-font-body);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--q-text);
-  letter-spacing: 0.01em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  background: var(--cursor-color, #7c3aed);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
 }
 
 /* ── Hero Enter Animations ── */
 .q-hero-enter {
   opacity: 0;
-  transform: translateY(24px);
-  animation: qHeroEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.q-hero-enter:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.q-hero-enter:nth-child(2) {
-  animation-delay: 0.25s;
-}
-
-.q-hero-enter:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-.q-hero-enter:nth-child(4) {
-  animation-delay: 0.55s;
-}
-
-.q-hero-enter:nth-child(5) {
-  animation-delay: 0.7s;
-}
-
-.q-hero-enter:nth-child(6) {
-  animation-delay: 0.85s;
-}
-
-@keyframes qHeroEnter {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  transform: translateY(30px);
+  filter: blur(12px);
+  will-change: transform, opacity, filter;
 }
 
 /* ── Primary CTA Button ── */
@@ -925,7 +900,8 @@ body.q-menu-open {
   justify-content: center;
   gap: 8px;
   padding: 14px 32px;
-  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  background: linear-gradient(90deg, #401785, #a259ff, #401785);
+  background-size: 200% 100%;
   color: white;
   border: none;
   border-radius: var(--q-radius-pill);
@@ -950,10 +926,26 @@ body.q-menu-open {
   transform: translateY(-3px);
   box-shadow: 0 12px 40px rgba(139, 92, 246, 0.45);
   color: white;
+  background-position: 100% 0;
+}
+
+.q-btn-primary-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: qBtnShimmer 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes qBtnShimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
 }
 
 .q-hero-note {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: var(--q-text-muted);
 }
 
@@ -2266,80 +2258,3 @@ textarea.q-input {
   }
 }
 
-/* ── Salo-inspired Interactive Canvas & Cursors ── */
-.q-hero {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.q-hero-canvas-wrapper {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  opacity: 0.85;
-}
-
-#hero-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.HomeHero__ambientCursor {
-  position: absolute;
-  pointer-events: none;
-  z-index: 10;
-  will-change: transform;
-}
-
-.HomeHero__ambientCursor--topLeft {
-  top: 25%;
-  left: 15%;
-}
-
-.HomeHero__ambientCursor--bottomRight {
-  bottom: 25%;
-  right: 15%;
-}
-
-.Cursor {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  pointer-events: none;
-}
-
-.Cursor svg {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
-}
-
-.Cursor__name {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 9999px;
-  background: var(--cursor-color, #7c3aed);
-  color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  white-space: nowrap;
-}
-
-/* Text reveals will-change styling */
-.q-hero-enter {
-  opacity: 0;
-  filter: blur(12px);
-  transform: translateY(30px);
-  will-change: transform, opacity, filter;
-}
