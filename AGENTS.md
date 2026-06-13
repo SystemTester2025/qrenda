@@ -15,10 +15,11 @@
 - PHPUnit sets `APP_ENV=testing`, array cache/session/mail, sync queue; sqlite is commented out, so tests use the configured DB unless overridden.
 
 ## Assets
-- Root frontend build is Laravel Mix (`webpack.mix.js`), not Vite; edit `resources/assets/**`, then run `npm run dev` or `npm run production`.
+- **NEVER run `npx mix`, `npm run dev`, or `npm run production`.** The user handles builds manually. Only edit source files under `resources/assets/`; the build output in `public/assets/` is generated externally.
+- Root frontend build is Laravel Mix (`webpack.mix.js`), not Vite; edit `resources/assets/**`.
 - Mix writes compiled assets to `public/assets/**` and versioned bundles; don't hand-edit generated public assets for source changes.
 - `Modules/Test` has its own Vite build (`Modules/Test/package.json`, `Modules/Test/vite.config.js`) outputting `public/build-test`; root npm scripts do not build it.
-- Node.js v17+ requires `$env:NODE_OPTIONS="--openssl-legacy-provider"` before `npx mix` (OpenSSL v3 incompatibility with file-loader). Run as: `$env:NODE_OPTIONS="--openssl-legacy-provider"; npx mix --production`.
+- Node.js v17+ requires `$env:NODE_OPTIONS="--openssl-legacy-provider"` before `npx mix` (OpenSSL v3 incompatibility with file-loader). Only relevant if the user asks you about it.
 
 ## Routes and boundaries
 - Main web routes are in `routes/web.php`; API routes are in `routes/api.php` with controllers under `app/Http/Controllers/API/**`.

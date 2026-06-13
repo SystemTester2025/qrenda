@@ -1,0 +1,395 @@
+/* ═══════════════════════════════════════════════
+   Login Page — dark theme matching homepage redesign
+   ═══════════════════════════════════════════════ */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0a0a0a;
+}
+
+.q-login-wrap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+#login-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.q-login-form-side {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.q-login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px;
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius);
+  font-family: var(--q-font-body);
+}
+
+.q-login-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.q-login-logo img {
+  max-height: 64px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.q-login-title {
+  font-family: var(--q-font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 8px;
+  color: var(--q-text);
+}
+
+.q-login-sub {
+  text-align: center;
+  color: var(--q-text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 32px;
+}
+
+.q-input-group {
+  margin-bottom: 20px;
+}
+
+.q-input-group label {
+  display: block;
+  font-size: var(--q-font-size-xs);
+  font-weight: 500;
+  color: var(--q-text-dim);
+  margin-bottom: 6px;
+}
+
+.q-input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: var(--q-font-body);
+  font-size: var(--q-font-size-base);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-sm);
+  background: var(--q-bg-surface);
+  color: var(--q-text);
+  outline: none;
+  transition: border-color var(--q-transition-fast), box-shadow var(--q-transition-fast);
+}
+
+.q-input-group input:focus {
+  border-color: var(--q-primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.q-input-group input::placeholder {
+  color: #52525b;
+}
+
+.q-password-wrap {
+  position: relative;
+}
+
+.q-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: var(--q-text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color var(--q-transition-fast), background var(--q-transition-fast);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.q-password-toggle:hover {
+  color: var(--q-primary);
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.q-row-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.q-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  font-size: var(--q-font-size-xs);
+  color: var(--q-text-dim);
+}
+
+.q-checkbox input {
+  display: none;
+}
+
+.q-checkbox-box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #3f3f46;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--q-transition-fast);
+  flex-shrink: 0;
+}
+
+.q-checkbox input:checked + .q-checkbox-box {
+  background: var(--q-primary);
+  border-color: var(--q-primary);
+}
+
+.q-checkbox input:checked + .q-checkbox-box::after {
+  content: '\2713';
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.q-forgot-link {
+  font-size: var(--q-font-size-xs);
+  color: var(--q-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--q-transition-fast);
+}
+
+.q-forgot-link:hover {
+  color: var(--q-primary-hover);
+}
+
+.q-btn-login {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  color: white;
+  background: transparent;
+  border: 1px solid rgba(162, 89, 255, 0.35);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.25);
+  border-radius: var(--q-radius-sm);
+  font-family: var(--q-font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--q-transition-base);
+}
+
+.q-btn-login::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #401785, #a259ff, #401785);
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease;
+}
+
+.q-btn-login:hover::before {
+  background-position: 100% 0;
+}
+
+.q-btn-login:hover {
+  color: white;
+  transform: translateY(-2px);
+  border-color: rgba(162, 89, 255, 0.6);
+  box-shadow: 0 6px 24px rgba(139, 92, 246, 0.4);
+}
+
+.q-divider {
+  position: relative;
+  text-align: center;
+  margin: 24px 0;
+}
+
+.q-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--q-border);
+}
+
+.q-divider span {
+  position: relative;
+  background: var(--q-bg-card);
+  padding: 0 16px;
+  color: var(--q-text-muted);
+  font-size: var(--q-font-size-xs);
+}
+
+.q-social-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--q-bg-surface);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-sm);
+  color: var(--q-text-dim);
+  text-decoration: none;
+  font-size: var(--q-font-size-xs);
+  font-weight: 500;
+  transition: all var(--q-transition-fast);
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.q-social-btn:last-child {
+  margin-bottom: 0;
+}
+
+.q-social-btn:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  background: var(--q-bg-card-hover);
+  color: var(--q-text);
+  transform: translateY(-1px);
+}
+
+.q-social-btn .bi-facebook {
+  color: #1877f2;
+  font-size: 18px;
+}
+
+.q-register-section {
+  text-align: center;
+  padding: 16px;
+  background: rgba(139, 92, 246, 0.04);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-radius: var(--q-radius-sm);
+  margin-top: var(--q-space-4);
+}
+
+.q-register-section span {
+  font-size: 0.875rem;
+  color: var(--q-text-dim);
+}
+
+.q-register-link {
+  color: var(--q-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: color var(--q-transition-fast);
+}
+
+.q-register-link:hover {
+  color: var(--q-primary-hover);
+}
+
+.q-copyright {
+  text-align: center;
+  margin-top: var(--q-space-6);
+  font-size: var(--q-font-size-xs);
+  color: #52525b;
+}
+
+.q-copyright a {
+  color: var(--q-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.q-copyright a:hover {
+  color: var(--q-primary-hover);
+}
+
+/* ═══════════════════════════════════════════════
+   Register page
+   ═══════════════════════════════════════════════ */
+
+.q-register-card {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.q-form-row {
+  display: flex;
+  gap: var(--q-space-4);
+  flex-wrap: wrap;
+}
+
+.q-form-col {
+  flex: 1;
+  min-width: 140px;
+}
+
+.q-msg-error {
+  font-size: 0.75rem;
+  color: var(--q-error);
+}
+
+.q-msg-success {
+  font-size: 0.75rem;
+  color: var(--q-success);
+}
+
+.q-link {
+  color: var(--q-primary);
+  text-decoration: none;
+}
+
+.q-link:hover {
+  color: var(--q-primary-hover);
+}
+
+.q-flash-wrap {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 992px) {
+  .q-login-form-side {
+    padding: 24px 16px;
+  }
+  .q-login-card {
+    padding: 28px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .q-login-card { animation: none; }
+  #login-canvas { animation: none; }
+}
