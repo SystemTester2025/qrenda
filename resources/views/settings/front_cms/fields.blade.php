@@ -12,7 +12,7 @@
                 <div class="image-picker">
                     <div class="image previewImage"
                          style="background-image: url('{{ !empty($setting['home_page_banner']) ? $setting['home_page_banner'] :
-                            asset('assets/images/infyom-logo.png') }}')">
+                            asset('assets/images/logo.png') }}')">
                     </div>
                          <span class="picker-edit rounded-circle text-gray-500 fs-small" data-bs-toggle="tooltip"
                                data-placement="top" data-bs-original-title="{{__('messages.tooltip.change_banner_image')}}">

@@ -14,7 +14,7 @@ class HomePageSeeder extends Seeder
     {
         $homePageBanner = ('/front/images/home.png');
 
-        Setting::create(['key' => 'home_page_title', 'value' => 'InfyVCards-SaaS']);
+        Setting::create(['key' => 'home_page_title', 'value' => 'Qrenda']);
         Setting::create(['key' => 'home_page_banner', 'value' => $homePageBanner]);
     }
 }

@@ -1,455 +1,533 @@
 @extends('front.layouts.app')
-@section('title')
-    {{ getAppName() }}
-@endsection
+@section('title'){{ getAppName() }}@endsection
+@section('body-class')class="q-homepage"@endsection
 @section('content')
-    <section class="hero-section" id="frontHomeTab" @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
-        <div class="container"> @include('flash::message') </div>
-        <div class="bg-img"></div>
-        <div class="container">
-            <div class="row align-items-center ">
-                <div class="col-lg-6">
-                    <div class="hero-content ">
-                        <h1 class="text-dark mb-1">{{ $setting['home_page_title'] }}</h1>
-                        <p class="text-black fs-20 fw-6 mb-lg-5 mb-4">
-                            {{ $setting['sub_text'] ?? '' }}
-                        </p>
-                        <a class="btn btn-orange " href="{{ route('register') }}" data-turbo="false">
-                            {{ __('auth.get_started') }}
-                        </a>
 
+{{-- ═══ Hero — Salo.uk Inspired ═══ --}}
+<section class="q-hero" id="frontHomeTab" @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
+    {{-- Salo-inspired background canvas --}}
+    <div class="q-hero-canvas-wrapper">
+        <canvas id="hero-canvas"></canvas>
+    </div>
+
+    {{-- Floating Ambient Cursors --}}
+    <div class="HomeHero__ambientCursor HomeHero__ambientCursor--topLeft" id="cursor-carl" aria-hidden="true">
+        <div class="Cursor" style="--cursor-color: #3b82f6;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.43938 2.43938C3.85531 2.02345 4.47597 1.88901 5.02673 2.09555L16.0267 6.22055C16.6416 6.45111 17.035 7.05477 16.9976 7.71034C16.9603 8.36592 16.5009 8.921 15.8638 9.08026L11.237 10.237L10.0803 14.8638C9.921 15.5009 9.36592 15.9603 8.71034 15.9976C8.05477 16.035 7.45111 15.6416 7.22055 15.0267L3.09555 4.02673C2.88901 3.47597 3.02345 2.85531 3.43938 2.43938Z" fill="white"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67558 3.03185C4.49199 2.963 4.2851 3.00782 4.14646 3.14646C4.00782 3.2851 3.963 3.49199 4.03185 3.67558L8.15685 14.6756C8.2337 14.8805 8.43492 15.0117 8.65345 14.9992C8.87197 14.9868 9.057 14.8336 9.11009 14.6213L10.4123 9.41232L15.6213 8.11009C15.8336 8.057 15.9868 7.87197 15.9992 7.65345C16.0117 7.43492 15.8805 7.2337 15.6756 7.15685L4.67558 3.03185Z" fill="#3b82f6"></path>
+            </svg>
+            <span class="Cursor__name">Carl</span>
+        </div>
+    </div>
+    <div class="HomeHero__ambientCursor HomeHero__ambientCursor--bottomRight" id="cursor-sophie" aria-hidden="true">
+        <div class="Cursor" style="--cursor-color: #ec4899;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.43938 2.43938C3.85531 2.02345 4.47597 1.88901 5.02673 2.09555L16.0267 6.22055C16.6416 6.45111 17.035 7.05477 16.9976 7.71034C16.9603 8.36592 16.5009 8.921 15.8638 9.08026L11.237 10.237L10.0803 14.8638C9.921 15.5009 9.36592 15.9603 8.71034 15.9976C8.05477 16.035 7.45111 15.6416 7.22055 15.0267L3.09555 4.02673C2.88901 3.47597 3.02345 2.85531 3.43938 2.43938Z" fill="white"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67558 3.03185C4.49199 2.963 4.2851 3.00782 4.14646 3.14646C4.00782 3.2851 3.963 3.49199 4.03185 3.67558L8.15685 14.6756C8.2337 14.8805 8.43492 15.0117 8.65345 14.9992C8.87197 14.9868 9.057 14.8336 9.11009 14.6213L10.4123 9.41232L15.6213 8.11009C15.8336 8.057 15.9868 7.87197 15.9992 7.65345C16.0117 7.43492 15.8805 7.2337 15.6756 7.15685L4.67558 3.03185Z" fill="#ec4899"></path>
+            </svg>
+            <span class="Cursor__name">Sophie</span>
+        </div>
+    </div>
+
+    {{-- Central Content --}}
+    <div class="q-hero-content">
+        <p class="q-hero-name q-hero-enter">{{ getAppName() }}</p>
+        <h1 class="q-hero-enter">{{ $setting['home_page_title'] }}</h1>
+        <p class="q-hero-sub q-hero-enter">{{ $setting['sub_text'] ?? 'Create your digital business card and share it with the world.' }}</p>
+        <div class="q-hero-cta q-hero-enter">
+            <a class="q-btn-primary" href="{{ route('register') }}" data-turbo="false">
+                <span class="q-btn-glow" aria-hidden="true"></span>
+                <span>{{ __('auth.get_started') }}</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.3335 8H12.6668M12.6668 8L8.00016 3.33334M12.6668 8L8.00016 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <span class="q-hero-note">Replies in 24 hours. No obligation.</span>
+        </div>
+        <div class="q-alias q-hero-enter">
+            <input id="search-alias-input" type="text" placeholder="{{ __('messages.vcard.search_vcard_alias') }}" required>
+            <button id="search-alias-btn" type="submit" class="q-btn-primary" style="padding:12px 24px;flex-shrink:0;font-size:0.875rem">{{ __('messages.vcard.available') }}</button>
+        </div>
+        <div id="search-alias-error" class="d-none" style="color:#ef4444;font-size:0.875rem;margin-top:8px">{{ __('messages.vcard.already_alias_url') }}</div>
+        <div id="search-alias-success" class="d-none" style="color:#22c55e;font-size:0.875rem;margin-top:8px">{{ __('messages.vcard.url_alias_available') }}</div>
+    </div>
+
+    {{-- Salo.uk-style marquee at bottom of hero --}}
+    <div class="q-hero-bottom">
+        <p class="q-hero-partners-label">Trusted by forward-thinking businesses</p>
+        <div class="q-marquee" aria-hidden="true">
+            <div class="q-marquee-track">
+                {{-- First set --}}
+                @for ($i = 1; $i <= 6; $i++)
+                    <div class="q-marquee-item">
+                        <img src="{{ asset('assets/img/new_front/logos/logo-' . $i . '.svg') }}" alt="Client logo" loading="lazy" onerror="this.parentElement.style.display='none'">
                     </div>
-                </div>
-                <div class="col-lg-6 text-center mt-5 mt-lg-0">
-                    <img src=" {{ isset($setting['home_page_banner']) ? $setting['home_page_banner'] : asset('assets/img/new_front/hero-img.png') }}"
-                        alt="vCard" class="img-fluid" loading="lazy"/>
-                </div>
+                @endfor
+                {{-- Duplicate for seamless loop --}}
+                @for ($i = 1; $i <= 6; $i++)
+                    <div class="q-marquee-item">
+                        <img src="{{ asset('assets/img/new_front/logos/logo-' . $i . '.svg') }}" alt="Client logo" loading="lazy" onerror="this.parentElement.style.display='none'">
+                    </div>
+                @endfor
             </div>
         </div>
-    </section>
-    <!-- end hero section -->
+    </div>
+</section>
 
-    <!-- start features section -->
-    <section class="features-section bg-light pb-60 pt-80" id="frontFeaturesTab"
-        @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
-        <div class="container">
-            <h2 class="text-dark text-center mb-60">
-                {{ __('messages.plan.features') }}
-            </h2>
-            <div class="row">
-                @foreach ($features as $feature)
-                    <div class="col-md-6 mb-40">
-                        <div class="feature-card card h-100 flex-row me-md-2">
-                            <div class="feature-icon d-flex justify-content-center align-items-center me-lg-3">
-                                <!-- <i class="fa-solid fa-share-nodes fs-1 text-white"></i> -->
-                                <img src="{{ $feature->profile_image }}" alt=""
-                                    class="feature-image feature-image-card image-object-fit-cover" loading="lazy">
+@include('flash::message')
 
-                                {{--                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 44" fill="none"> --}}
-                                {{--                                <path d="M13.4288 25.3893L12.6251 24.9254L11.9484 25.5605C10.7946 26.6435 9.28166 27.2457 7.71153 27.2506C6.61985 27.2526 5.54575 26.9676 4.59459 26.4229C3.64319 25.878 2.84694 25.0916 2.28525 24.1397C1.72352 23.1876 1.4161 22.1034 1.39415 20.9935C1.37219 19.8836 1.63649 18.7877 2.16024 17.8135C2.68395 16.8395 3.44865 16.0213 4.37796 15.4384L3.71371 14.3795L4.37796 15.4384C5.30718 14.8555 6.36948 14.5274 7.46055 14.4854C8.55161 14.4433 9.63531 14.6887 10.6054 15.1981C11.5755 15.7076 12.3993 16.4642 12.9948 17.3947L13.6383 18.4004L14.6725 17.8036L26.9461 10.7206L27.7734 10.2431L27.5301 9.31943C27.3972 8.81523 27.3264 8.29272 27.3186 7.7667C27.3157 6.30608 27.8094 4.89025 28.7149 3.75596C29.6215 2.62021 30.8851 1.83631 32.2924 1.53263C33.6995 1.22898 35.1675 1.4232 36.4509 2.08384C37.7346 2.74462 38.757 3.83279 39.344 5.16837C39.931 6.50417 40.0457 8.00421 39.6681 9.41601C39.2906 10.8277 38.4447 12.0625 37.2754 12.9151C36.1064 13.7675 34.6846 14.1867 33.2484 14.1047C31.8121 14.0226 30.4455 13.444 29.3784 12.4631L28.7025 11.8419L27.9074 12.3009L14.6275 19.9686L14.019 20.3199L14.0029 21.0224C13.9921 21.4927 13.9274 21.9611 13.81 22.4104L13.569 23.3325L14.3944 23.809L27.9119 31.6119L28.7118 32.0737L29.3881 31.4447C30.5117 30.3996 31.9682 29.8002 33.4902 29.753C35.0123 29.7057 36.502 30.2137 37.6866 31.1867C38.8714 32.1599 39.6721 33.5339 39.9386 35.0587C40.2051 36.5835 39.9188 38.1536 39.1337 39.4809C38.3488 40.8079 37.1189 41.8019 35.6718 42.2844C34.2249 42.7668 32.6547 42.7068 31.2477 42.1149C29.8403 41.5229 28.688 40.4372 28.0045 39.0534C27.3208 37.6693 27.1531 36.0816 27.533 34.5818L27.7653 33.6651L26.9462 33.1923L13.4288 25.3893Z" stroke="white" stroke-width="2.5" /> --}}
-                                {{--                            </svg> --}}
-                            </div>
-                            <div class="card-body p-0 ps-4 @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') me-4 @endif">
-                                <h3 class="text-dark fs-20 fw-6">{{ $feature->name }}</h3>
-                                <p class="text-gray-300 fs-18 mb-0">
-                                    {!! $feature->description !!}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
 
-            </div>
+
+{{-- ═══ Trust Bar ═══ --}}
+<section class="q-trust">
+    <p class="q-trust-title q-reveal">Trusted by professionals worldwide</p>        <div class="q-trust-stats">
+        <div class="q-trust-stat-item q-reveal q-reveal-d1">
+            <div class="q-stat-num">{{ number_format($totalUser) }}+</div>
+            <div class="q-stat-label">{{ __('messages.users') ?? 'Users' }}</div>
         </div>
-    </section>
-    <!-- end features section -->
-
-    <!-- start about section -->
-    <section class="about-section overflow-hidden padding-t-100px py-5" id="frontAboutTabUsTab">
-        <div class="container" @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
-            <h2 class="heading text-success text-center margin-b-100px pb-5">
-                {{ __('auth.modern_&_powerful_interface') }}
-            </h2>
-            <div class="row pt-3 pt-lg-0">
-                <div class="col-12 margin-b-80px">
-                    <div class="row align-items-center">
-                        <div class="col-xl-6 col-lg-5 position-relative">
-                            <img src="{{ isset($aboutUS[0]['about_url']) ? $aboutUS[0]['about_url'] : asset('front/images/about-1.png') }}"
-                                alt="About" class="img-fluid d-block  image-object-fit-cover" loading="lazy"/>
-                        </div>
-                        <div class="col-xl-6 col-lg-7">
-                            <div class="@if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') about-section__about-left-content @else about-section__about-right-content @endif  about-content mt-4 mt-lg-0">
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <div>
-                                        <h3 class="w-100 mb-3"> {{ $aboutUS[0]['title'] }}</h3>
-                                        <p class="text-gray-100 fs-18 mb-0"> {!! nl2br(e($aboutUS[0]['description'])) !!}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 margin-b-80px">
-                    <div class="row align-items-center flex-column-reverse flex-lg-row">
-                        <div class="col-xl-6 col-lg-7">
-                            <div class="@if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') about-section__about-right-content @else about-section__about-left-content @endif about-content mt-4 mt-lg-0">
-                                <div class="d-flex align-items-center justify-content-lg-end flex-wrap">
-                                    <div>
-                                        <h3 class="w-100 mb-3">{{ $aboutUS[1]['title'] }}</h3>
-                                        <p class="text-gray-100 fs-18 mb-0">{!! nl2br(e($aboutUS[1]['description'])) !!}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-5 position-relative">
-                            <img src="{{ isset($aboutUS[1]['about_url']) ? $aboutUS[1]['about_url'] : asset('front/images/about-2.png') }}"
-                                alt="About" class="img-fluid d-block  image-object-fit-cover" loading="lazy"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 margin-b-80px">
-                    <div class="row align-items-center">
-                        <div class="col-xl-6 col-lg-5 position-relative">
-                            <img src="{{ isset($aboutUS[2]['about_url']) ? $aboutUS[2]['about_url'] : asset('front/images/about-3.png') }}"
-                                alt="About" class="img-fluid d-block  image-object-fit-cover" loading="lazy"/>
-                        </div>
-                        <div class="col-xl-6 col-lg-7">
-                            <div class="@if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') about-section__about-left-content @else about-section__about-right-content @endif about-content mt-4 mt-lg-0">
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <div>
-                                        <h3 class="w-100 mb-3">{{ $aboutUS[2]['title'] }}</h3>
-                                        <p class="text-gray-100 fs-18 mb-0">{!! nl2br(e($aboutUS[2]['description'])) !!}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="q-trust-stat-item q-reveal q-reveal-d2">
+            <div class="q-stat-num">{{ number_format($toalVcards) }}+</div>
+            <div class="q-stat-label">{{ __('messages.vcards') ?? 'VCards' }}</div>
         </div>
-    </section>
-    <!-- end about section -->
+        <div class="q-trust-stat-item q-reveal q-reveal-d3">
+            <div class="q-stat-num">{{ number_format($totalCountries) }}+</div>
+            <div class="q-stat-label">{{ __('messages.country.countries') }}</div>
+        </div>
+    </div>
+</section>
 
-    <!-- start pricing section -->
-    <section class="pricing-plan-section pb-100" id="frontPricingTab">
-        <div class="container">
-            <h2 class="text-dark text-center mb-60">
-                {{ __("auth.choose_a_plan_that's_right_for_you") }}
-            </h2>
-            <div class="pricing-carousel">
-                @foreach ($plans as $plan)
-                    <div class="pricing-plan-card card">
-                        @if ($plan->trial_days > 0)
-                            <div class="trial-plan-lable">
-                                <span class="px-4 py-1">{{ __('messages.subscription.trial_plan') }}</span>
+{{-- ═══ Services / Features ═══ --}}
+<section class="q-services" id="frontFeaturesTab" @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
+    <div class="container">
+        <p class="q-section-label q-reveal">Our Services</p>
+        <h2 class="q-section-title q-reveal">{{ __('messages.plan.features') }}</h2>
+        <div class="q-services-grid">
+            @foreach ($features as $feature)
+                <div class="q-service-card">
+                    <div class="q-service-icon">
+                        @if ($feature->profile_image)
+                            <img src="{{ $feature->profile_image }}" alt="" style="width:24px;height:24px;object-fit:cover;border-radius:4px">
+                        @else
+                            <i class="fas fa-bolt"></i>
+                        @endif
+                    </div>
+                    <h3>{{ $feature->name }}</h3>
+                    <p>{!! $feature->description !!}</p>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- ═══ About / Interface — Bento Grid ═══ --}}
+<section class="q-about" id="frontAboutTabUsTab" @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
+    <div class="container">
+        <p class="q-section-label q-reveal" style="text-align:center">What we do</p>
+        <h2 class="q-section-title center q-reveal">{{ __('auth.modern_&_powerful_interface') }}</h2>
+        <div class="q-bento-grid">
+            @foreach ($aboutUS as $i => $about)
+                <div class="q-bento-card q-bento-{{ ($i % 4) + 1 }} q-reveal" style="background-image:url('{{ isset($about['about_url']) ? $about['about_url'] : asset('front/images/about-' . ($i + 1) . '.png') }}')">
+                    <div class="q-bento-overlay"></div>
+                    <div class="q-bento-content">
+                        <span class="q-bento-num">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                        <h3>{{ $about['title'] }}</h3>
+                        <p>{!! nl2br(e($about['description'])) !!}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- ═══ Pricing ═══ --}}
+<section class="q-pricing" id="frontPricingTab" @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
+    <div class="container">
+        <p class="q-section-label q-reveal" style="text-align:center">Pricing</p>
+        <h2 class="q-section-title center q-reveal">{{ __("auth.choose_a_plan_that's_right_for_you") }}</h2>
+        <div class="q-pricing-grid">
+            @foreach ($plans as $plan)
+                @php $isFeatured = $loop->middle; @endphp
+                <div class="q-price-card {{ $isFeatured ? 'featured' : '' }}">
+                    @if ($isFeatured)
+                        <div class="q-price-badge">{{ __('messages.plan.most_popular') }}</div>
+                    @endif
+                    <div class="q-price-name">{!! $plan->name !!}</div>
+
+                    @if ($plan->trial_days > 0)
+                        <div style="font-size:0.8125rem;color:var(--q-text-muted);margin-bottom:8px">
+                            {{ __('messages.subscription.trial_plan') . ' (' . $plan->trial_days . ' ' . __('messages.plan.days') . ')' }}
+                        </div>
+                    @endif
+
+                    @if ($plan->custom_select == 1 && $plan->planCustomFields->isNotEmpty())
+                        @php $formattedPrice = str_replace('.00', '', currencyFormat($plan->planCustomFields[0]->custom_vcard_price, 2, $plan->currency->currency_code)); @endphp
+                        <div class="q-price-amount">
+                            @if(getSuperAdminSettingValue('currency_after_amount') == 0)
+                                {{ $plan->currency->currency_icon }}<span class="custom-price-{{ $plan->id }}">{{ $formattedPrice }}</span>
+                            @else
+                                <span class="custom-price-{{ $plan->id }}">{{ $formattedPrice }}</span>{{ $plan->currency->currency_icon }}
+                            @endif
+                        </div>
+                        <div class="q-price-period">
+                            @if ($plan->frequency == 1)/ {{ __('messages.plan.monthly') }} @else/ {{ __('messages.plan.yearly') }} @endif
+                        </div>
+                        <select id="vcardNumber-{{ $plan->id }}" class="q-input customSelect" data-plan-id="{{ $plan->id }}" style="margin-bottom:16px;padding:10px 12px;font-size:0.875rem">
+                            @foreach ($plan->planCustomFields as $customField)
+                                <option value="{{ $customField->id }}" data-price="{{ $customField->custom_vcard_price }}" data-currency="{{ $plan->currency->currency_code }}">
+                                    {{ $customField->custom_vcard_number }}
+                                </option>
+                            @endforeach
+                        </select>
+                    @else
+                        <div class="q-price-amount">
+                            @if ($plan->custom_select == 0)
+                                {{ str_replace('.00', '', currencyFormat($plan->price, 2, $plan->currency->currency_code)) }}
+                            @endif
+                        </div>
+                        <div class="q-price-period">
+                            @if ($plan->frequency == 1)/ {{ __('messages.plan.monthly') }} @else/ {{ __('messages.plan.yearly') }} @endif
+                        </div>
+                        @if ($plan->custom_select == 0 && $plan->planCustomFields->isEmpty())
+                            <div style="font-size:0.875rem;color:var(--q-text-muted);margin-bottom:16px">
+                                {{ __('messages.plan.no_of_vcards') }}: {{ $plan->no_of_vcards }}
                             </div>
                         @endif
-                        <div class="card-body text-center pricing-plan-card-body">
-                            <h3 class="mb-1 mt-3 fw-6">{!! $plan->name !!}</h3>
+                    @endif
 
-                            @if ($plan['trial_days'] > 0)
-                                <label class="fs-18 mb-3 mt-2">
-                                    {{ __('messages.subscription.trial_plan') . ' (' . $plan->trial_days . ' ' . __('messages.plan.days') . ')' }}</label>
-                                <br>
-                            @endif
+                    <ul class="q-price-features">
+                        <li><span class="check">✓</span> {{ __('messages.plan.storage_limit') }}: {{ $plan->storage_limit }}</li>
+                        @foreach (getPlanFeature($plan) as $feature => $value)
+                            <li class="{{ $value == 1 ? '' : 'muted' }}">
+                                <span class="check">{{ $value == 1 ? '✓' : '—' }}</span>
+                                {{ __('messages.feature.' . $feature) }}
+                            </li>
+                        @endforeach
+                    </ul>
 
-                            @if ($plan->custom_select == 1 && $plan->planCustomFields->isNotEmpty())
-                                <label class="fs-18 mt-2 mb-3">{{ __('messages.plan.custom_no_of_vcards') }}</label>
-                                <select id="vcardNumber-{{ $plan->id }}" class="form-select customSelect"
-                                    data-plan-id="{{ $plan->id }}">
-                                    @foreach ($plan->planCustomFields as $customField)
-                                        @php
-                                            $formattedPrice = $customField->custom_vcard_price;
-                                        @endphp
-                                        <option value="{{ $customField->id }}" data-price="{{ $formattedPrice }}"
-                                            data-currency="{{ $plan->currency->currency_code }}">
-                                            {{ $customField->custom_vcard_number }} </option>
-                                    @endforeach
-                                </select>
+                    @if (getLoggedInUserRoleId() != getSuperAdminRoleId())
+                        @if (getLogInUser() && getLoggedInUserRoleId() != getSuperAdminRoleId())
+                            @if (!empty(getCurrentSubscription()) && $plan->id == getCurrentSubscription()->plan_id && !getCurrentSubscription()->isExpired())
+                                @if ($plan->price != 0)
+                                    <button type="button" class="q-btn-outline" data-id="{{ $plan->id }}" data-turbo="false" style="width:100%;pointer-events:none;opacity:0.6">
+                                        {{ __('messages.subscription.currently_active') }}
+                                    </button>
+                                @else
+                                    <button type="button" class="q-btn-outline" data-turbo="false" style="width:100%">
+                                        {{ __('messages.subscription.renew_free_plan') }}
+                                    </button>
+                                @endif
                             @else
-                                <label class="fs-18 mt-2 mb-4">{{ __('messages.plan.no_of_vcards') }}
-                                    : {{ $plan->no_of_vcards }}
-                                </label>
-                            @endif
-                            <br>
-                            <label class="fs-18">{{ __('messages.plan.storage_limit') }}
-                                : {{ $plan->storage_limit }}</label>
-                            <div class="d-flex justify-content-center my-3 mb-5" @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
-                                @if ($plan->custom_select == 1 && $plan->planCustomFields->isNotEmpty())
-                                    <h4 class="text-center mb-6 mt-2 pricing">
-                                        @php
-                                            $formattedPrice = str_replace('.00', '', currencyFormat($plan->planCustomFields[0]->custom_vcard_price, 2, $plan->currency->currency_code));
-                                        @endphp
-                                        @if(getSuperAdminSettingValue('currency_after_amount') == 0)
-                                            <span class="fs-1 fw-6">{{ $plan->currency->currency_icon }}</span>
-                                            <span class="fs-1 fw-6 custom-price-{{ $plan->id }}">
-                                                {{ $formattedPrice }}
-                                            </span>
-                                        @else
-                                            <span class="fs-1 fw-6 custom-price-{{ $plan->id }}">
-                                                {{ $formattedPrice }}
-                                            </span>
-                                            <span class="fs-1 fw-6">{{ $plan->currency->currency_icon }}</span>
-                                        @endif
-                                        @if ($plan->frequency == 1)
-                                            <span class="fs-18">/ {{ __('messages.plan.monthly') }}</span>
-                                        @elseif($plan->frequency == 2)
-                                            <span class="fs-18">/ {{ __('messages.plan.yearly') }}</span>
-                                        @endif
-                                    </h4>
+                                @if (!empty(getCurrentSubscription()) && !getCurrentSubscription()->isExpired() && ($plan->price == 0 || $plan->price != 0))
+                                    @if ($plan->hasZeroPlan->count() == 0)
+                                        <a href="{{ $plan->price != 0 ? route('choose.payment.type', $plan->id) : 'javascript:void(0)' }}" class="q-btn-primary {{ $plan->price == 0 ? 'freePayment' : '' }}" data-id="{{ $plan->id }}" data-plan-price="{{ $plan->price }}" id="planId{{ $plan->id }}" data-turbo="false" style="width:100%">
+                                            {{ __('messages.subscription.switch_plan') }}
+                                        </a>
+                                    @else
+                                        <button type="button" class="q-btn-outline" data-turbo="false" style="width:100%">
+                                            {{ __('messages.subscription.renew_free_plan') }}
+                                        </button>
+                                    @endif
                                 @else
-                                    <h4 class="text-center mb-6 mt-2 pricing mt-5 id="price_{{ $plan->id }}"">
-                                        <span class="fs-1 fw-6">
-                                            @if ($plan->custom_select == 0)
-                                                    {{ str_replace('.00', '', currencyFormat($plan->price, 2, $plan->currency->currency_code)) }}
-                                            @endif
-                                        </span>
-                                        @if ($plan->frequency == 1)
-                                            <span class="fs-5 ml-2">/ {{ __('messages.plan.monthly') }}</span>
-                                        @elseif($plan->frequency == 2)
-                                            <span class="fs-5 ml-2">/ {{ __('messages.plan.yearly') }}</span>
-                                        @endif
-                                    </h4>
+                                    @if ($plan->hasZeroPlan->count() == 0)
+                                        <a href="{{ $plan->price != 0 ? route('choose.payment.type', $plan->id) : 'javascript:void(0)' }}" class="q-btn-primary {{ $plan->price == 0 ? 'freePayment' : '' }}" data-id="{{ $plan->id }}" data-plan-price="{{ $plan->price }}" id="planId{{ $plan->id }}" data-turbo="false" style="width:100%">
+                                            {{ __('messages.subscription.choose_plan') }}
+                                        </a>
+                                    @else
+                                        <button type="button" class="q-btn-outline" data-turbo="false" style="width:100%">
+                                            {{ __('messages.subscription.renew_free_plan') }}
+                                        </button>
+                                    @endif
                                 @endif
-                            </div>
-                            <ul class="pricing-plan-features text-dark text-start mx-auto fs-6">
-                                @foreach (getPlanFeature($plan) as $feature => $value)
-                                    <li class="{{ $value == 1 ? 'active-check' : 'unactive-check' }}"
-                                        @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') style="text-align: right !important" @endif>
-                                        @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa')
-                                            {{ __('messages.feature.' . $feature) }}
-                                            <span class="check-box"><i class="fa-solid fa-check"></i></span>
-                                        @else
-                                            <span class="check-box"><i class="fa-solid fa-check"></i></span>
-                                            {{ __('messages.feature.' . $feature) }}
-                                        @endif
-                                    </li>
-                                @endforeach
-                            </ul>
-                            @if (getLoggedInUserRoleId() != getSuperAdminRoleId())
-                                @if (getLogInUser() && getLoggedInUserRoleId() != getSuperAdminRoleId())
-                                    <div class="mx-auto">
+                            @endif
+                        @else
+                            @if ($plan->hasZeroPlan->count() == 0)
+                                <a href="{{ $plan->price != 0 ? route('choose.payment.type', $plan->id) : 'javascript:void(0)' }}" class="q-btn-primary {{ $plan->price == 0 ? 'freePayment' : '' }}" data-id="{{ $plan->id }}" data-plan-price="{{ $plan->price }}" id="planId{{ $plan->id }}" data-turbo="false" style="width:100%">
+                                    {{ __('messages.subscription.choose_plan') }}
+                                </a>
+                            @else
+                                <button type="button" class="q-btn-outline" data-turbo="false" style="width:100%">
+                                    {{ __('messages.subscription.renew_free_plan') }}
+                                </button>
+                            @endif
+                        @endif
+                    @else
+                        @if ($plan->hasZeroPlan->count() == 0)
+                            <a href="{{ $plan->price != 0 ? route('choose.payment.type', $plan->id) : 'javascript:void(0)' }}" class="q-btn-primary {{ $plan->price == 0 ? 'freePayment' : '' }}" data-id="{{ $plan->id }}" data-plan-price="{{ $plan->price }}" id="planId{{ $plan->id }}" data-turbo="false" style="width:100%">
+                                {{ __('messages.subscription.choose_plan') }}
+                            </a>
+                        @else
+                            <button type="button" class="q-btn-outline" data-turbo="false" style="width:100%">
+                                {{ __('messages.subscription.renew_free_plan') }}
+                            </button>
+                        @endif
+                    @endif
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
 
-                                        @if (
-                                            !empty(getCurrentSubscription()) &&
-                                                $plan->id == getCurrentSubscription()->plan_id &&
-                                                !getCurrentSubscription()->isExpired())
-                                            @if ($plan->price != 0)
-                                                <button type="button"
-                                                    class="btn btn-success rounded-pill mx-auto d-block cursor-remove-plan pricing-plan-button-active"
-                                                    data-id="{{ $plan->id }}" data-turbo="false">
-                                                    {{ __('messages.subscription.currently_active') }}</button>
-                                            @else
-                                                <button type="button"
-                                                    class="btn btn-info rounded-pill mx-auto d-block cursor-remove-plan"
-                                                    data-turbo="false">
-                                                    {{ __('messages.subscription.renew_free_plan') }}
-                                                </button>
-                                            @endif
-                                        @else
-                                            @if (
-                                                !empty(getCurrentSubscription()) &&
-                                                    !getCurrentSubscription()->isExpired() &&
-                                                    ($plan->price == 0 || $plan->price != 0))
-                                                @if ($plan->hasZeroPlan->count() == 0)
-                                                    <a href="{{ $plan->price != 0 ? route('choose.payment.type', $plan->id) : 'javascript:void(0)' }}"
-                                                        class="btn btn-primary rounded-pill mx-auto {{ $plan->price == 0 ? 'freePayment' : '' }}"
-                                                        data-id="{{ $plan->id }}" id="planId{{ $plan->id }}"
-                                                        data-plan-price="{{ $plan->price }}" data-turbo="false">
-                                                        {{ __('messages.subscription.switch_plan') }}</a>
-                                                @else
-                                                    <button type="button"
-                                                        class="btn btn-info rounded-pill mx-auto d-block cursor-remove-plan"
-                                                        data-turbo="false">
-                                                        {{ __('messages.subscription.renew_free_plan') }}
-                                                    </button>
-                                                @endif
-                                            @else
-                                                @if ($plan->hasZeroPlan->count() == 0)
-                                                    <a href="{{ $plan->price != 0 ? route('choose.payment.type', $plan->id) : 'javascript:void(0)' }}"
-                                                        class="btn btn-primary rounded-pill mx-auto  {{ $plan->price == 0 ? 'freePayment' : '' }}"
-                                                        data-id="{{ $plan->id }}" id="planId{{ $plan->id }}"
-                                                        data-plan-price="{{ $plan->price }}" data-turbo="false">
-                                                        {{ __('messages.subscription.choose_plan') }}</a>
-                                                @else
-                                                    <button type="button"
-                                                        class="btn btn-info rounded-pill mx-auto d-block cursor-remove-plan"
-                                                        data-turbo="false">
-                                                        {{ __('messages.subscription.renew_free_plan') }}
-                                                    </button>
-                                                @endif
-                                            @endif
-                                        @endif
-                                    </div>
-                                @else
-                                    <div class="mx-auto">
-                                        @if ($plan->hasZeroPlan->count() == 0)
-                                            <a href="{{ $plan->price != 0 ? route('choose.payment.type', $plan->id) : 'javascript:void(0)' }}"
-                                                class="btn btn-primary rounded-pill mx-auto  {{ $plan->price == 0 ? 'freePayment' : '' }}"
-                                                data-id="{{ $plan->id }}" data-plan-price="{{ $plan->price }}"
-                                                id="planId{{ $plan->id }}" data-turbo="false">
-                                                {{ __('messages.subscription.choose_plan') }}</a>
-                                        @else
-                                            <button type="button"
-                                                class="btn btn-info rounded-pill mx-auto d-block cursor-remove-plan"
-                                                data-turbo="false">
-                                                {{ __('messages.subscription.renew_free_plan') }}
-                                            </button>
-                                        @endif
-                                    </div>
-                                @endif
-                            @endif
+{{-- ═══ Testimonials ═══ --}}
+@if (!$testimonials->isEmpty())
+    <section class="q-testimonials" @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
+        <div class="container">
+            <p class="q-section-label q-reveal" style="text-align:center">Testimonial</p>
+            <h2 class="q-section-title center q-reveal">{{ __('auth.stories_from_our_customers') }}</h2>
+            <div class="q-testimonials-grid">
+                @foreach ($testimonials as $testimonial)
+                    <div class="q-testimonial-card">
+                        <blockquote>{!! $testimonial->description !!}</blockquote>
+                        <div class="q-testimonial-author">
+                            <img src="{{ $testimonial->testimonial_url }}" alt="{{ $testimonial->name }}" loading="lazy">
+                            <div>
+                                <strong>{{ $testimonial->name }}</strong>
+                            </div>
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
     </section>
-    <!-- end pricing section -->
+@endif
 
-    <!-- start testimonial section -->
-    @if (checkFrontLanguageSession() != 'ar' && checkFrontLanguageSession() != 'fa')
-        @if (!$testimonials->isEmpty())
-            <section class="testimonial-section pt-80 pb-80 bg-darkblue">
-                <div class="container  col-lg-6">
-                    <h2 class="text-white text-center mb-60">
-                        {{ __('auth.stories_from_our_customers') }}
-                    </h2>
-                    <div class="testimonial-section__testimonial-block mx-auto">
-                        <div class="testimonial-carousel">
-                            @foreach ($testimonials as $testimonial)
-                                <div
-                                    class="testimonial-card testimonial-1 bg-white position-relative {{ $loop->iteration == 1 ? 'active' : '' }}">
-                                    <p class="text-gray-300 fs-18 mb-4 pb-2">
-                                        {!! $testimonial->description !!}
-                                    </p>
-                                    <div class="d-flex profile-box align-items-center">
-                                        <img src="{{ $testimonial->testimonial_url }}" alt="profile"
-                                            class="profile-img rounded-circle img-fluid" loading="lazy">
-                                        <span class="ms-3">
-                                            <h3 class="text-dark profile-name mb-md-2 mb-1 fs-20 fw-6">
-                                                {{ $testimonial->name }}</h3>
-                                        </span>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
+{{-- ═══ Contact ═══ --}}
+<section class="q-contact" id="frontContactUsTab" @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
+    <div class="container">
+        <p class="q-section-label q-reveal" style="text-align:center">Get in touch</p>
+        <h2 class="q-section-title center q-reveal">{{ __('messages.contact_us.contact') }}</h2>
+        <div class="q-contact-grid">
+            <div class="q-reveal">
+                <div class="q-contact-info">
+                    <div class="q-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:{{ $setting['email'] }}">{{ $setting['email'] }}</a>
                     </div>
-                </div>
-
-            </section>
-        @endif
-    @else
-        @if (!$testimonials->isEmpty())
-            <section class="testimonial-section pt-80 pb-80 bg-darkblue">
-                <div class="container  col-lg-6" dir="rtl">
-                    <h2 class="text-white text-center mb-60">
-                        {{ __('auth.stories_from_our_customers') }}
-                    </h2>
-                    <div class="testimonial-section__testimonial-block mx-auto">
-                        <div class="testimonial-carousel">
-                            @foreach ($testimonials as $testimonial)
-                                <div
-                                    class="testimonial-card testimonial-1 bg-white position-relative {{ $loop->iteration == 1 ? 'active' : '' }}">
-                                    <p class="text-gray-300 fs-18 mb-4 pb-2">
-                                        {!! $testimonial->description !!}
-                                    </p>
-                                    <div class="d-flex profile-box align-items-center gap-2">
-                                        <img src="{{ $testimonial->testimonial_url }}" alt="profile"
-                                            class="profile-img rounded-circle img-fluid" loading="lazy">
-                                        <span class="ms-3">
-                                            <h3 class="text-dark profile-name mb-md-2 mb-1 fs-20 fw-6">
-                                                {{ $testimonial->name }}</h3>
-                                        </span>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
+                    <div class="q-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:{{ $setting['prefix_code'] }}{{ $setting['phone'] }}" dir="ltr">{{ '+' . $setting['prefix_code'] . ' ' . $setting['phone'] }}</a>
                     </div>
-                </div>
-
-            </section>
-        @endif
-    @endif
-    <!-- end testimonial section -->
-
-    <!-- start contact section -->
-
-    <!-- start contact section -->
-    <section class="contact-section padding-t-100px padding-b-100px pb-80 pt-80 bg-light" id="frontContactUsTab"
-        @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
-        <h2 class="heading text-success text-center margin-b-80px mb-5">
-            {{ __('messages.contact_us.contact') }}
-        </h2>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="contact-info">
-                        <div class="d-flex align-items-center contact-info__block">
-                            <div
-                                class="contact-info__contact-icon text-white fs-2 d-flex align-items-center justify-content-center">
-                                <i class="fa-solid fa-envelope icon-purpul"></i>
-                            </div>
-                            <a href="mailto:{{ $setting['email'] }}"
-                                class="text-decoration-none text-secondary contact-info__contact-label">{{ $setting['email'] }}</a>
-                        </div>
-                        <div class="d-flex align-items-center contact-info__block">
-                            <div
-                                class="contact-info__contact-icon text-white fs-2 d-flex align-items-center justify-content-center">
-                                <i class="fa-solid fa-phone icon-purpul"></i>
-                            </div>
-                            <a href=" tel:{{ $setting['phone'] }}"
-                                class="text-decoration-none text-secondary contact-info__contact-label" dir="ltr">{{ '+' . $setting['prefix_code'] . ' ' . $setting['phone'] }}</a>
-                        </div>
-                        <div class="d-flex align-items-center contact-info__block">
-                            <div
-                                class="contact-info__contact-icon text-white fs-2 d-flex align-items-center justify-content-center">
-                                <i class="fa-solid fa-location-dot icon-purpul"></i>
-                            </div>
-                            <p class="text-secondary contact-info__contact-label mb-0">
-                                {{ $setting['address'] }}
-                            </p>
-                        </div>
+                    <div class="q-contact-item">
+                        <i class="fas fa-location-dot"></i>
+                        <span>{{ $setting['address'] }}</span>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <form class="contact-form" id="myForm">
-                        @csrf
-                        <div id="contactError" class="alert alert-danger d-none"></div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="contact-form__input-block">
-                                    <input name="name" id="name" type="text" class="form-control"
-                                        placeholder="{{ __('messages.front.enter_your_name') }}*" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="contact-form__input-block">
-                                    <input name="email" id="email" type="email" class="form-control"
-                                        placeholder="{{ __('messages.front.enter_your_email') }}*" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="contact-form__input-block">
-                                    <input name="subject" id="subject" type="text" class="form-control"
-                                        placeholder="{{ __('messages.common.subject') }}*" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="contact-form__input-block">
-                                    <textarea name="message" id="message" rows="4" class="form-control form-textarea"
-                                        placeholder="{{ __('messages.front.enter_your_message') }}*" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 text-end">
-                                <input type="submit" id="submit" name="send" class="btn btn-pink"
-                                    value="{{ __('messages.contact_us.send_message') }}">
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
+            <div class="q-reveal q-reveal-d1">
+                <form class="q-contact-form" id="myForm">
+                    @csrf
+                    <div id="contactError" class="alert alert-danger d-none"></div>
+                    <input name="name" id="name" type="text" class="q-input" placeholder="{{ __('messages.front.enter_your_name') }}*" required>
+                    <input name="email" id="email" type="email" class="q-input" placeholder="{{ __('messages.front.enter_your_email') }}*" required>
+                    <input name="subject" id="subject" type="text" class="q-input" placeholder="{{ __('messages.common.subject') }}*" required>
+                    <textarea name="message" id="message" rows="4" class="q-input" placeholder="{{ __('messages.front.enter_your_message') }}*" required></textarea>
+                    <button type="submit" id="submit" class="q-btn-primary" style="justify-self:start">{{ __('messages.contact_us.send_message') }}</button>
+                </form>
+            </div>
         </div>
-    </section>
-    <!-- end contact section -->
+    </div>
+</section>
+
+{{-- ═══ Bottom CTA — Salo.uk Style ═══ --}}
+<section class="q-bottom-cta" @if (checkFrontLanguageSession() == 'ar' || checkFrontLanguageSession() == 'fa') dir="rtl" @endif>
+    <div class="container" style="text-align:center">
+        <p class="q-section-label q-reveal">Ready to get started?</p>
+        <h2 class="q-section-title center q-reveal" style="max-width:500px;margin-bottom:24px">{{ $setting['home_page_title'] }}</h2>
+        <p class="q-hero-sub q-reveal" style="margin:0 auto 40px;max-width:480px">Don't let limited resources hold you back. Level up your digital presence with a professional business card.</p>
+        <div class="q-hero-cta q-reveal">
+            <a class="q-btn-primary" href="{{ route('register') }}" data-turbo="false">
+                <span>{{ __('auth.get_started') }}</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.3335 8H12.6668M12.6668 8L8.00016 3.33334M12.6668 8L8.00016 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <span class="q-hero-note">Replies in 24 hours. No obligation.</span>
+        </div>
+    </div>
+</section>
+
+{{-- GSAP & ScrollTrigger CDN dependencies --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // ── 1. Hero Text Reveal Animations ──
+    gsap.fromTo(".q-hero-enter", 
+        { opacity: 0, y: 30, filter: "blur(12px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, ease: "power3.out", stagger: 0.15, delay: 0.2 }
+    );
+
+    // ── 2. Canvas Pseudo-3D Outline Animation ──
+    const canvas = document.getElementById("hero-canvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d", { alpha: true, desynchronized: true });
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    // SVG path string representing Salo-inspired double loop geometric mark
+    const pathData = "M108.965 17.6077C195.9 -23.0772 299.303 14.4975 339.931 101.558C380.419 188.316 343.285 291.435 256.993 332.413L249.775 316.941L249.351 316.033L248.445 316.458C161.509 357.143 58.1065 319.568 17.478 232.507C-23.0092 145.749 14.1253 42.6205 100.417 1.64188L107.635 17.1243L108.058 18.0315L108.965 17.6077ZM130.992 64.805C79.1277 89.08 56.7283 150.857 80.9683 202.802C105.068 254.434 166.181 276.905 217.865 253.313L225.088 268.788L225.511 269.696L226.418 269.271C278.283 244.995 300.681 183.219 276.442 131.274C252.342 79.6413 191.228 57.169 139.544 80.762L132.322 65.2874L131.898 64.3802L130.992 64.805Z";
+    const path = new Path2D(pathData);
+    
+    // Canvas dimensions and layers config
+    const mWidth = 358;
+    const mHeight = 334;
+    const baseLayers = [
+        { scale: 1, rotate: 0, opacity: 0.6 },
+        { scale: 1.05, rotate: 3, opacity: 0.25 },
+        { scale: 1.10, rotate: 6, opacity: 0.15 },
+        { scale: 1.15, rotate: 9, opacity: 0.08 }
+    ];
+    let layers = baseLayers.map(l => ({ ...l }));
+
+    function getScale() {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        return (w <= 1023 ? w * 0.9 : Math.min(h * 0.7, w * 0.7)) / Math.max(mWidth, mHeight);
+    }
+
+    function draw() {
+        const w = canvas.width / dpr;
+        const h = canvas.height / dpr;
+        ctx.clearRect(0, 0, w, h);
+        
+        ctx.save();
+        ctx.translate(w / 2, h / 2);
+        
+        const scale = getScale();
+        
+        // Draw layers from back (outermost) to front
+        for (let i = layers.length - 1; i >= 0; i--) {
+            const layer = layers[i];
+            if (layer.opacity < 0.001) continue;
+            
+            ctx.save();
+            ctx.globalAlpha = layer.opacity;
+            ctx.rotate(layer.rotate * Math.PI / 180);
+            ctx.scale(layer.scale * scale, layer.scale * scale);
+            ctx.translate(-mWidth / 2, -mHeight / 2);
+            
+            // Premium white-to-violet transition colors
+            if (i === 0) {
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.85)";
+            } else if (i === 1) {
+                ctx.strokeStyle = "rgba(167, 139, 250, 0.5)";
+            } else {
+                ctx.strokeStyle = "rgba(139, 92, 246, 0.3)";
+            }
+            
+            ctx.lineWidth = 1.2 / (layer.scale * scale);
+            ctx.stroke(path);
+            ctx.restore();
+        }
+        ctx.restore();
+    }
+
+    function resize() {
+        canvas.width = canvas.clientWidth * dpr;
+        canvas.height = canvas.clientHeight * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        draw();
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+
+    // ── 3. Interactive Mouse Gyroscopic Movement ──
+    let hoverTween = null;
+    const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    
+    if (isDesktop) {
+        window.addEventListener("mousemove", function (e) {
+            const normX = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
+            
+            if (hoverTween) hoverTween.kill();
+            hoverTween = gsap.to(layers, {
+                rotate: (index) => baseLayers[index].rotate + normX * 15,
+                stagger: {
+                    each: 0.02,
+                    from: "start"
+                },
+                duration: 0.5,
+                ease: "power1.out",
+                onUpdate: draw
+            });
+        });
+    }
+
+    // ── 4. Scroll Trigger Depth Scaling & Fading ──
+    gsap.registerPlugin(ScrollTrigger);
+    
+    ScrollTrigger.create({
+        trigger: ".q-hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        onUpdate: function (self) {
+            const progress = self.progress;
+            layers.forEach((layer, index) => {
+                const base = baseLayers[index];
+                
+                // Scale outer layers down to 0.1, core layer down to 0.35
+                const targetScale = index === 0 ? 0.35 : 0.1;
+                layer.scale = base.scale - progress * (base.scale - targetScale);
+                
+                // Fade outer layers, dim core layer
+                const targetOpacity = index === 0 ? 0.15 : 0.0;
+                layer.opacity = base.opacity - progress * (base.opacity - targetOpacity);
+            });
+            draw();
+        }
+    });
+
+    // ── 5. Drifting Ambient Cursors ──
+    function animateCursor(selector, bounds) {
+        const el = document.querySelector(selector);
+        if (!el) return;
+        
+        function drift() {
+            const targetX = Math.random() * (bounds.x[1] - bounds.x[0]) + bounds.x[0];
+            const targetY = Math.random() * (bounds.y[1] - bounds.y[0]) + bounds.y[0];
+            const duration = Math.random() * 2.5 + 2.0;
+            
+            gsap.to(el, {
+                x: targetX,
+                y: targetY,
+                duration: duration,
+                ease: "sine.inOut",
+                onComplete: drift
+            });
+        }
+        drift();
+    }
+    
+    animateCursor("#cursor-carl", { x: [-140, 120], y: [-100, 85] });
+    animateCursor("#cursor-sophie", { x: [-110, 150], y: [-85, 115] });
+
+    // ── 6. Header Scroll scrolled Class Toggler ──
+    const header = document.querySelector(".header");
+    if (header) {
+        const toggleScrolled = () => {
+            header.classList.toggle("scrolled", window.scrollY > 60);
+        };
+        toggleScrolled();
+        window.addEventListener("scroll", toggleScrolled, { passive: true });
+    }
+
+    // ── 7. Interactive Hover Button Glow ──
+    document.querySelectorAll(".btn-white, .q-btn-primary").forEach(button => {
+        const glow = document.createElement("span");
+        glow.className = "btn-bg";
+        button.appendChild(glow);
+        
+        button.addEventListener("mousemove", e => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            glow.style.left = `${x}px`;
+            glow.style.top = `${y}px`;
+        });
+    });
+});
+</script>
 @endsection
+

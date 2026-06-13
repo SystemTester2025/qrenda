@@ -36,6 +36,10 @@ body {
     font-weight: 400;
 }
 
+// ═══ Scoped overrides for legacy pages only ═══
+// These styles should NOT apply on the redesigned homepage.
+// Use .legacy-front wrapper or specific page selectors instead.
+
 ul {
     list-style: none;
     padding-left: 0;
@@ -44,7 +48,7 @@ ul {
 .btn {
     padding: 10px 30px;
     border-radius: 10px;
-    box-shadow: none !important;
+    // box-shadow: none !important; — removed !important to allow redesign.css override
     @media (max-width: 1024px) {
         padding: 10px 20px;
     }
@@ -148,31 +152,8 @@ ul {
     object-fit: cover;
 }
 
-h1 {
-    font-weight: 800;
-    font-size: 50px;
-    line-height: 60px;
-
-    @media (max-width: 991px) {
-        font-size: 36px;
-        line-height: 40px;
-    }
-    @media (max-width: 575px) {
-        font-size: 32px;
-    }
-}
-
-h2 {
-    font-size: 34px;
-    font-weight: 600;
-
-    @media (max-width: 991px) {
-        font-size: 30px;
-    }
-    @media (max-width: 575px) {
-        font-size: 28px;
-    }
-}
+// Global h1/h2 styles removed to avoid conflicting with redesign.css
+// These are now handled per-page in specific templates.
 
 .fs-20 {
     font-size: 20px;

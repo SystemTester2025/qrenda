@@ -434,7 +434,7 @@ class Vcard extends Model implements HasMedia
             $setting = Setting::with('media')->where('key', 'favicon')->first();
             $defaultFaviconUrl = $setting && !empty($setting->favicon_url)
                 ? $setting->favicon_url
-                : asset('web/media/logos/favicon-infyom.png');
+                : asset('web/media/logos/favicon.png');
         }
 
         return $defaultFaviconUrl;

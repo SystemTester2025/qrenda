@@ -17,30 +17,30 @@
                 </button>
                 <div id="myDropdown" class="dropdown-content text-start">
                     <a href="javascript:void(0)" class="nav-link d-flex align-items-center ">
-                        <img class="me-2 country-flag" src="https://hms.infyom.com/assets/img/iraq.svg"> Arabic</a>
+                        <img class="me-2 country-flag" src="https://flagcdn.com/iq.svg"> Arabic</a>
                     <a href="javascript:void(0)" class="nav-link d-flex align-items-center">
-                        <img class="me-2 country-flag" src="https://hms.infyom.com/assets/img/china.svg">
+                        <img class="me-2 country-flag" src="https://flagcdn.com/cn.svg">
                         Chinese</a>
                     <a href="javascript:void(0)" class="nav-link d-flex align-items-center">
-                        <img class="me-2 country-flag" src="https://hms.infyom.com/assets/img/united-states.svg">
+                        <img class="me-2 country-flag" src="https://flagcdn.com/us.svg">
                         English</a>
                     <a href="javascript:void(0)" class="nav-link d-flex align-items-center">
-                        <img class="me-2 country-flag" src="https://hms.infyom.com/assets/img/france.svg">
+                        <img class="me-2 country-flag" src="https://flagcdn.com/fr.svg">
                         French</a>
                     <a href="javascript:void(0)" class="nav-link d-flex align-items-center">
-                        <img class="me-2 country-flag" src="https://hms.infyom.com/assets/img/germany.svg">
+                        <img class="me-2 country-flag" src="https://flagcdn.com/de.svg">
                         German</a>
                     <a href="javascript:void(0)" class="nav-link d-flex align-items-center">
-                        <img class="me-2 country-flag" src="https://hms.infyom.com/assets/img/portugal.svg">
+                        <img class="me-2 country-flag" src="https://flagcdn.com/pt.svg">
                         Portuguese</a>
                     <a href="javascript:void(0)" class="nav-link d-flex align-items-center">
-                        <img class="me-2 country-flag" src="https://hms.infyom.com/assets/img/russia.svg">
+                        <img class="me-2 country-flag" src="https://flagcdn.com/ru.svg">
                         Russian</a>
                     <a href="javascript:void(0)" class="nav-link d-flex align-items-center">
-                        <img class="me-2 country-flag" src="https://hms.infyom.com/assets/img/spain.svg">
+                        <img class="me-2 country-flag" src="https://flagcdn.com/es.svg">
                         Spanish</a>
                     <a href="javascript:void(0)" class="nav-link d-flex align-items-center">
-                        <img class="me-2 country-flag" src="https://hms.infyom.com/assets/img/turkey.svg">
+                        <img class="me-2 country-flag" src="https://flagcdn.com/tr.svg">
                         Turkish</a>
                 </div>
             </div>

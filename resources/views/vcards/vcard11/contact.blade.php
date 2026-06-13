@@ -145,7 +145,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-md-0 mb-4">
                         <div id="map" class="map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d59501.24210334308!2d72.84432463781383!3d21.238682688728503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x3be04f48b6c140a3%3A0x6aae5a9a1643f6f!2sInfyOm%20Technologies%2C%20C%2F303%2C%20Atlanta%20Shopping%20Mall%20Sudama%20Chowk%2C%20Mota%20Varachha%2C%20Surat%2C%20Gujarat!3m2!1d21.2386063!2d72.8793441!4m5!1s0x3be04f48b6c140a3%3A0x6aae5a9a1643f6f!2sinfyom%20technologies!3m2!1d21.2386063!2d72.8793441!5e0!3m2!1sen!2sin!4v1662023367097!5m2!1sen!2sin"
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.0!2d72.0!3d21.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDAwJzAwLjAiTiA3MsKwMDAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
                                     class="w-100 h-100 object-fit-cover rounded-10 border-0" allowfullscreen=""
                                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>

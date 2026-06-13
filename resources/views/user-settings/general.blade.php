@@ -132,7 +132,7 @@
                                         <div class="d-block">
                                             <div class="image-picker">
                                                 <div class="image previewImage" id="pwaPreview"
-                                                    style="background-image: url('{{ isset($setting['pwa_icon']) ? $setting['pwa_icon'] : asset('web/media/logo/favicon-infyom.png') }}');">
+                                                    style="background-image: url('{{ isset($setting['pwa_icon']) ? $setting['pwa_icon'] : asset('web/media/logo/favicon.png') }}');">
                                                 </div>
                                                 <span class="picker-edit rounded-circle text-gray-500 fs-small"
                                                     data-bs-toggle="tooltip" data-placement="top"

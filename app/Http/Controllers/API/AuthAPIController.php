@@ -98,7 +98,7 @@ class AuthAPIController extends AppBaseController
         }
 
         // $data['token'] = encrypt($data['user']->email.' '.$data['user']->id);
-        // $data['url'] = $request->url_domain.'//nfcdemo.com/createNewPassword?token='.$data['token'].'&email='.$request->email.'&apn=com.example.infyvcards_flutter';
+        // $data['url'] = $request->url_domain.'//nfcdemo.com/createNewPassword?token='.$data['token'].'&email='.$request->email.'&apn=com.qrenda.app';
         $user = User::where('email', $request->email)->first();
         $data['token'] = Password::getRepository()->create($user);
         $data['url'] = config('app.url') . '/reset-password/' . $data['token'] . '?email=' . $request->email;

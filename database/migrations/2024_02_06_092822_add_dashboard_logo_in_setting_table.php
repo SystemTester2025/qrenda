@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $appLogoUrl = ('assets/images/infyom-logo60x60.png');
+        $appLogoUrl = ('assets/images/logo60x60.png');
 
         Setting::create(['key' => 'dashboard_logo', 'value' => $appLogoUrl]);
     }

@@ -12,20 +12,20 @@ class SettingsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $appLogoUrl = ('/assets/images/infyom-logo.png');
-        $faviconUrl = ('/web/media/logos/favicon-infyom.png');
+        $appLogoUrl = ('/assets/images/logo.png');
+        $faviconUrl = ('/web/media/logos/favicon.png');
         $registerImage = ('assets/images/default-register.png');
 
-        Setting::create(['key' => 'app_name', 'value' => 'InfyVCards-SaaS']);
+        Setting::create(['key' => 'app_name', 'value' => 'Qrenda']);
         Setting::create(['key' => 'app_logo', 'value' => $appLogoUrl]);
         Setting::create(['key' => 'favicon', 'value' => $faviconUrl]);
         Setting::create(['key' => 'register_image', 'value' => $registerImage]);
-        Setting::create(['key' => 'email', 'value' => 'vcards@gmail.com']);
-        Setting::create(['key' => 'phone', 'value' => '9876543210']);
+        Setting::create(['key' => 'email', 'value' => 'support@qrenda.com']);
+        Setting::create(['key' => 'phone', 'value' => '501234567']);
         Setting::create(['key' => 'address',
-            'value' => 'C-303, Atlanta Shopping Mall, Nr. Sudama Chowk, Mota Varachha, Surat - 394101, Gujarat, India.',
+            'value' => 'King Fahd Road, Al Olaya District, Riyadh 12311, Kingdom of Saudi Arabia.',
         ]);
-        Setting::create(['key' => 'prefix_code', 'value' => '91']);
+        Setting::create(['key' => 'prefix_code', 'value' => '966']);
         Setting::create(['key' => 'plan_expire_notification', 'value' => '5']);
     }
 }

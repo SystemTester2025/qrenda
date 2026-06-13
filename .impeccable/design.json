@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-13T03:42:00Z",
+  "title": "Design System: Qrenda",
+  "extensions": {
+    "colorMeta": {
+      "signal-violet": { "role": "primary", "displayName": "Signal Violet", "canonical": "oklch(67% 0.22 290)", "tonalRamp": ["oklch(15% 0.02 290)", "oklch(26% 0.06 290)", "oklch(37% 0.10 290)", "oklch(48% 0.14 290)", "oklch(58% 0.18 290)", "oklch(67% 0.22 290)", "oklch(76% 0.18 290)", "oklch(85% 0.12 290)", "oklch(94% 0.06 290)"] },
+      "signal-violet-hover": { "role": "primary", "displayName": "Signal Violet Hover", "canonical": "oklch(60% 0.24 285)", "tonalRamp": [] },
+      "signal-violet-deep": { "role": "primary", "displayName": "Signal Violet Deep", "canonical": "oklch(55% 0.24 280)", "tonalRamp": [] },
+      "success-green": { "role": "accent", "displayName": "Success Green", "canonical": "oklch(72% 0.20 145)", "tonalRamp": [] },
+      "dark-bg": { "role": "neutral", "displayName": "Night", "canonical": "oklch(5% 0.005 280)", "tonalRamp": ["oklch(5% 0.005 280)", "oklch(16% 0.006 280)", "oklch(26% 0.007 280)", "oklch(36% 0.008 280)", "oklch(47% 0.009 280)", "oklch(58% 0.010 280)", "oklch(69% 0.010 280)", "oklch(80% 0.008 280)", "oklch(93% 0.004 280)"] },
+      "dark-surface": { "role": "neutral", "displayName": "Asphalt", "canonical": "oklch(12% 0.006 280)", "tonalRamp": [] },
+      "dark-card": { "role": "neutral", "displayName": "Concrete", "canonical": "oklch(15% 0.006 280)", "tonalRamp": [] },
+      "dark-card-hover": { "role": "neutral", "displayName": "Concrete Hover", "canonical": "oklch(19% 0.008 280)", "tonalRamp": [] },
+      "text-white": { "role": "neutral", "displayName": "White", "canonical": "oklch(100% 0 0)", "tonalRamp": [] },
+      "text-dim": { "role": "neutral", "displayName": "Gravel", "canonical": "oklch(72% 0.01 280)", "tonalRamp": [] },
+      "text-muted": { "role": "neutral", "displayName": "Muted Gravel", "canonical": "oklch(55% 0.01 280)", "tonalRamp": [] },
+      "border-default": { "role": "neutral", "displayName": "Border", "canonical": "oklch(24% 0.008 280)", "tonalRamp": [] },
+      "border-subtle": { "role": "neutral", "displayName": "Border Subtle", "canonical": "oklch(20% 0.006 280)", "tonalRamp": [] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines only. One per page." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Card and component headings." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs, card content, feature descriptions." },
+      "label": { "displayName": "Label", "purpose": "Section labels and button text. Uppercase." }
+    },
+    "shadows": [
+      { "name": "hover-low", "value": "0 12px 40px rgba(139, 92, 246, 0.45)", "purpose": "Primary button hover — Signal Violet glow." },
+      { "name": "hover-card", "value": "0 20px 60px rgba(139, 92, 246, 0.12)", "purpose": "Card hover — subtle purple-tinted lift." },
+      { "name": "hover-card-default", "value": "0 24px 64px rgba(0, 0, 0, 0.3)", "purpose": "Pricing card hover — deeper shadow for featured tier." },
+      { "name": "featured-glow", "value": "0 0 0 1px rgba(139, 92, 246, 0.1), 0 20px 60px rgba(139, 92, 246, 0.1)", "purpose": "Featured pricing card — rest state ring + glow." },
+      { "name": "dropdown", "value": "0 8px 32px rgba(0, 0, 0, 0.4)", "purpose": "Header dropdown menu." }
+    ],
+    "motion": [
+      { "name": "ease-spring", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Default easing for all state transitions and reveals." },
+      { "name": "duration-fast", "value": "200ms", "purpose": "Color, opacity, and simple state transitions." },
+      { "name": "duration-reveal", "value": "600ms", "purpose": "Scroll reveal entrance." },
+      { "name": "duration-hero", "value": "800ms", "purpose": "Hero element entrance animation." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "480px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "960px" },
+      { "name": "xl", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Signal Violet gradient pill — primary CTA on hero, pricing, and bottom CTA sections.",
+      "html": "<button class=\"ds-btn-primary\"><span>Get Started</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M3.3335 8H12.6668M12.6668 8L8.00016 3.33334M12.6668 8L8.00016 12.6667\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: #fff; border: none; border-radius: 9999px; font-family: Inter, system-ui, -apple-system, sans-serif; font-size: 0.9375rem; font-weight: 600; cursor: pointer; text-decoration: none; line-height: 1.4; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(139, 92, 246, 0.45); } .ds-btn-primary:focus-visible { outline: 2px solid #8b5cf6; outline-offset: 2px; } .ds-btn-primary span, .ds-btn-primary svg { position: relative; z-index: 1; } .ds-btn-primary svg { width: 16px; height: 16px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Ghost outline — secondary CTA, disabled/current plan state.",
+      "html": "<button class=\"ds-btn-outline\">Current Plan</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; background: transparent; color: #fff; border: 1px solid #27272a; border-radius: 9999px; font-family: Inter, system-ui, -apple-system, sans-serif; font-size: 0.9375rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; } .ds-btn-outline:hover { border-color: #a1a1aa; background: rgba(255,255,255,0.04); } .ds-btn-outline:focus-visible { outline: 2px solid #8b5cf6; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-default",
+      "description": "Dark card background with subtle border; purple glow on focus.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Your email address\">",
+      "css": ".ds-input { width: 100%; padding: 14px 16px; font-family: Inter, system-ui, -apple-system, sans-serif; font-size: 0.9375rem; border: 1px solid #27272a; border-radius: 8px; background: #141414; color: #fff; outline: none; transition: border-color 0.2s; box-sizing: border-box; } .ds-input:focus { border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15); } .ds-input::placeholder { color: #71717a; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "Feature/service card with Signal Violet top-border glow on hover.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M13 2L3 14h9l-1 8 10-12h-9l1-8z\"/></svg></div><h3 class=\"ds-card-title\">Feature Name</h3><p class=\"ds-card-desc\">Short description of what this feature does and why it matters.</p></div>",
+      "css": ".ds-card { padding: 32px; background: #141414; border: 1px solid #27272a; border-radius: 12px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; } .ds-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #8b5cf6, transparent); opacity: 0; transition: opacity 0.4s; } .ds-card:hover { border-color: rgba(139, 92, 246, 0.4); background: #1a1a1a; transform: translateY(-6px); box-shadow: 0 20px 60px rgba(139, 92, 246, 0.12); } .ds-card:hover::before { opacity: 1; } .ds-card-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.15); margin-bottom: 20px; color: #8b5cf6; transition: all 0.3s; } .ds-card:hover .ds-card-icon { background: rgba(139, 92, 246, 0.15); transform: scale(1.05); } .ds-card-title { font-size: 1.125rem; font-weight: 600; margin: 0 0 8px; color: #fff; position: relative; z-index: 1; } .ds-card-desc { font-size: 0.9rem; line-height: 1.6; color: #a1a1aa; margin: 0; position: relative; z-index: 1; }"
+    },
+    {
+      "name": "Pricing Card (Featured)",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "Featured pricing card with Signal Violet border, scale, and badge.",
+      "html": "<div class=\"ds-price-card featured\"><div class=\"ds-price-badge\">Most Popular</div><div class=\"ds-price-name\">Business Plan</div><div class=\"ds-price-amount\">$29</div><div class=\"ds-price-period\">/ month</div><ul class=\"ds-price-features\"><li><span class=\"check\">✓</span> Up to 10 vCards</li><li><span class=\"check\">✓</span> Custom domains</li><li><span class=\"check\">✓</span> Analytics</li><li class=\"muted\"><span>—</span> Priority support</li></ul><button class=\"ds-btn-primary\" style=\"width:100%\">Choose Plan</button></div>",
+      "css": ".ds-price-card.featured { padding: 32px; background: #141414; border: 1px solid #8b5cf6; border-radius: 12px; position: relative; transform: scale(1.02); z-index: 1; box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.1), 0 20px 60px rgba(139, 92, 246, 0.1); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); } .ds-price-card.featured:hover { transform: scale(1.02) translateY(-8px); box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.2), 0 24px 64px rgba(139, 92, 246, 0.15); } .ds-price-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; font-size: 0.75rem; font-weight: 600; padding: 5px 18px; border-radius: 9999px; box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4); white-space: nowrap; } .ds-price-name { font-size: 1.25rem; font-weight: 700; margin-bottom: 16px; color: #fff; } .ds-price-amount { font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 4px; color: #fff; } .ds-price-period { font-size: 0.875rem; color: #71717a; margin-bottom: 24px; } .ds-price-features { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 10px; } .ds-price-features li { font-size: 0.9rem; display: flex; align-items: center; gap: 8px; color: #a1a1aa; } .ds-price-features .check { color: #22c55e; } .ds-price-features .muted { color: #71717a; } .ds-price-card.featured .ds-btn-primary { width: 100%; }"
+    },
+    {
+      "name": "Testimonial Card",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "Testimonial with floating quote mark and author avatar.",
+      "html": "<div class=\"ds-testimonial\"><blockquote>This platform completely changed how I share my professional identity. Simple, fast, and stunning.</blockquote><div class=\"ds-testimonial-author\"><img src=\"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&crop=face\" alt=\"Sarah Chen\"><div><strong>Sarah Chen</strong></div></div></div>",
+      "css": ".ds-testimonial { padding: 32px; background: #141414; border: 1px solid #27272a; border-radius: 12px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; } .ds-testimonial:hover { border-color: rgba(139, 92, 246, 0.3); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2); } .ds-testimonial::before { content: '\\201C'; position: absolute; top: 20px; right: 24px; font-size: 3rem; font-family: Georgia, serif; color: rgba(139, 92, 246, 0.12); line-height: 1; pointer-events: none; } .ds-testimonial blockquote { margin: 0 0 24px; font-size: 0.9375rem; line-height: 1.7; color: #a1a1aa; font-style: italic; position: relative; z-index: 1; } .ds-testimonial-author { display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; } .ds-testimonial-author img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid #27272a; transition: border-color 0.3s; } .ds-testimonial:hover .ds-testimonial-author img { border-color: #8b5cf6; } .ds-testimonial-author strong { font-size: 0.9rem; font-weight: 600; color: #fff; }"
+    },
+    {
+      "name": "Navigation Link (Dark Header)",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Transparent header nav link — dim at rest, white on hover.",
+      "html": "<nav style=\"background:#0a0a0a;padding:10px 24px;border-radius:12px;display:flex;gap:24px;align-items:center;box-shadow:0 2px 6px rgba(139,92,246,0.15);\"><a class=\"ds-nav-link\" href=\"#\">Home</a><a class=\"ds-nav-link\" href=\"#\">About</a><a class=\"ds-nav-link\" href=\"#\">Pricing</a><a class=\"ds-nav-link active\" href=\"#\">Contact</a><a class=\"ds-nav-cta\" href=\"#\">Sign In</a></nav>",
+      "css": ".ds-nav-link { font-family: Inter, system-ui, -apple-system, sans-serif; font-size: 0.9rem; font-weight: 500; color: #a1a1aa; text-decoration: none; transition: color 0.2s; } .ds-nav-link:hover { color: #ffffff; } .ds-nav-link.active { color: #ffffff; } .ds-nav-cta { background: #ffffff; color: #0a0a0a; border-radius: 9999px; font-weight: 600; padding: 10px 24px; font-family: Inter, system-ui, -apple-system, sans-serif; font-size: 0.9rem; text-decoration: none; transition: opacity 0.2s; } .ds-nav-cta:hover { opacity: 0.9; }"
+    },
+    {
+      "name": "Contact Info Item",
+      "kind": "custom",
+      "refersTo": "card-default",
+      "description": "Contact detail row with icon — slides right on hover.",
+      "html": "<div class=\"ds-contact-item\"><div class=\"ds-contact-icon\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"/><polyline points=\"22,6 12,13 2,6\"/></svg></div><span>hello@qrenda.com</span></div>",
+      "css": ".ds-contact-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: #141414; border: 1px solid #27272a; border-radius: 8px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-contact-item:hover { border-color: rgba(139, 92, 246, 0.25); background: #1a1a1a; transform: translateX(4px); } .ds-contact-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.15); color: #8b5cf6; flex-shrink: 0; font-size: 1rem; transition: all 0.3s; } .ds-contact-item:hover .ds-contact-icon { background: rgba(139, 92, 246, 0.18); transform: scale(1.05); } .ds-contact-item span { font-size: 0.9375rem; color: #a1a1aa; transition: color 0.2s; } .ds-contact-item:hover span { color: #fff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Signal Tower",
+    "overview": "Dark as a night sky. Signal Violet as a beacon. Everything is built around that one strong signal — precise, warm, unmistakable. The interface doesn't shout; it glows.\n\nCrisp and human — a dark interface that doesn't feel cold. The purple accent brings warmth; typography brings clarity. Professional without being sterile. Every element earns its place; the purple accent is rare and therefore powerful. Typography carries the hierarchy, not decoration.\n\nThis system explicitly rejects: SaaS cliché templates (identical card grids, gradient text, hero-metric numbers, beige/sand/warm-neutral body backgrounds), editorial-magazine aesthetics, glassmorphism, side-stripe borders, and the tiny-uppercase-tracked-eyebrow pattern repeated above every section.",
+    "keyCharacteristics": [
+      "Dark tonal surface hierarchy (bg → surface → card → card-hover) as the sole depth mechanism at rest",
+      "A single luminous purple accent (Signal Violet) used on ≤15% of any screen",
+      "Generous, fluid typography with Inter as the sole family",
+      "Tactile, weighted interactions — buttons lift, cards float, inputs glow on focus",
+      "Reduced motion respected; motion is choreographed for the hero load then scroll-reveals that feel earned"
+    ],
+    "rules": [
+      { "name": "The Signal Rule", "body": "Signal Violet occupies ≤15% of any viewport. Its rarity is the source of its power. If a section needs more color, it's a sign the composition isn't carrying its weight.", "section": "colors" },
+      { "name": "The Dark Concrete Rule", "body": "All neutrals lean cool and matte. No warm undertones, no glossy surfaces. The dark is a material, not an absence.", "section": "colors" },
+      { "name": "The One Step Rule", "body": "Never use more than two steps from the hierarchy on any single card or section. If Display is present, nothing else above it competes.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. Shadows appear only as a response to state (hover, focus, active). The tonal hierarchy does the layering work.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use Signal Violet sparingly. If a section has more than one colored element (not counting default borders), it's too much.",
+      "Do use the pill shape for all buttons. It's the system's most recognizable silhouette.",
+      "Do rely on the tonal hierarchy (bg → surface → card → card-hover) for depth. Shadows are for interaction states only.",
+      "Do keep body text at #a1a1aa (--q-text-dim) or brighter. Muted text (#71717a) is for placeholders, footnotes, and secondary metadata only.",
+      "Do cap hero heading size at clamp(2.5rem, 5.5vw, 4rem). Above that, the page is shouting.",
+      "Do use text-wrap: balance on display and headline text. Wrap is a feature, not a bug.",
+      "Do use the q-reveal scroll animation system for section entrances, with the q-reveal-visible class toggled by intersection observer. Include a 0.5s CSS fallback for renderers that can't run JS.",
+      "Do test heading copy at every breakpoint. If it overflows on tablet or mobile, reduce the clamp max.",
+      "Do respect prefers-reduced-motion: transform all reveals, hovers, and entrances to instant transitions."
+    ],
+    "donts": [
+      "Don't use gradient text (background-clip: text with a gradient). Use solid white or Signal Violet.",
+      "Don't add side-stripe borders (border-left or border-right > 1px as a colored accent). Use full borders, background tints, or nothing.",
+      "Don't use glassmorphism or decorative backdrop-filter blurs.",
+      "Don't repeat tiny uppercase tracked labels above every section. One strong kicker per page is voice; more than one is AI scaffolding.",
+      "Don't use numbered section markers (01, 02, 03) as decorative scaffolding.",
+      "Don't use beige, sand, cream, or warm-neutral body backgrounds. This system's surface IS the dark concrete.",
+      "Don't use hero-metric templates (big number, small label, supporting stats, gradient accent).",
+      "Don't use identical card grids with icon + heading + text repeated endlessly. Vary the grid shape.",
+      "Don't use monospace fonts as shorthand for 'technical.' This brand isn't technical; mono reads as costume.",
+      "Don't render dropdown navigation inside an overflow: hidden container. Use the native popover API, position: fixed, or a portal.",
+      "Don't gate content visibility behind a class-triggered transition. Scroll reveals must enhance an already-visible default."
+    ]
+  }
+}

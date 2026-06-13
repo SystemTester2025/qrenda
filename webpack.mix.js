@@ -122,7 +122,9 @@ mix.sass('resources/assets/scss/vcard1.scss', 'public/assets/css/vcard1.css').
     sass('resources/assets/scss/vcard12.scss', 'public/assets/css/vcard12.css').
     sass('resources/assets/scss/theme.scss', 'public/assets/css/theme.css').
     sass('resources/assets/scss/front/main.scss',
-        'public/assets/css/front/front-custom.css').version()
+        'public/assets/css/front/front-custom.css')
+    .sass('resources/assets/css/front/redesign.scss',
+        'public/assets/css/front/redesign.css').version()
 
 mix.sass(
     "resources/assets/scss/new_home/index.scss",

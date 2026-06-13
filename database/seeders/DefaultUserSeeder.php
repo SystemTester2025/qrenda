@@ -22,7 +22,7 @@ class DefaultUserSeeder extends Seeder
         User::create([
             'first_name' => 'Mr.',
             'last_name' => 'Admin',
-            'email' => 'admin@vcard.com',
+            'email' => 'admin@admin.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('123456'),
             'tenant_id' => $tenant->id,
@@ -47,7 +47,7 @@ class DefaultUserSeeder extends Seeder
         User::create([
             'first_name' => 'Super',
             'last_name' => 'Admin',
-            'email' => 'sadmin@vcard.com',
+            'email' => 'sadmin@admin.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('123456'),
             'tenant_id' => $tenant->id,

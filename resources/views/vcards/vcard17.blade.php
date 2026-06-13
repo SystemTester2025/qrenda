@@ -789,8 +789,8 @@
                     <div class="px-30 pt-30 pb-30 bg-primary-light">
                         <div class="vcard-link-card card">
                             <div class="d-flex align-items-center justify-content-center">
-                                <a href="https://vcards.infyom.com/marlonbrasil"
-                                    class="text-primary link-text fw-5">https://vcards.infyom.com/marlonbrasil</a>
+                                <a href="#"
+                                    class="text-primary link-text fw-5">your-vcard-link.com</a>
                                 <i class="icon fa-solid fa-arrow-up-right-from-square ms-3"></i>
                             </div>
                         </div>

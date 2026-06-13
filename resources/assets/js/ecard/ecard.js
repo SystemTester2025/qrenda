@@ -209,7 +209,7 @@ $(document).ready(function () {
                         $("#custom-e-card-logo").val("");
                         $("#exampleInputImage").css(
                             "background-image",
-                            'url("/web/media/logos/infyom.png")'
+                            'url("/web/media/logos/logo.png")'
                         );
 
                         return false;
@@ -671,7 +671,7 @@ $(document).ready(function () {
                 $("#custom-e-card-form")[0].reset();
                 $("#custom-e-card-logo", "#e-card-front-image", "#e-card-back-image").val("");
                 $("#custom-e-vcard-id").val("").trigger("change");
-                $("#exampleInputImage, #forntImage, #backInputImage").css("background-image", 'url("/web/media/logos/infyom.png")');
+                $("#exampleInputImage, #forntImage, #backInputImage").css("background-image", 'url("/web/media/logos/logo.png")');
                 frontcanvas.clear();
                 backcanvas.clear();
 

@@ -891,9 +891,9 @@
             <div class="vcard-link-card card">
               <div class="d-flex align-items-center justify-content-center">
                 <a
-                  href="https://vcards.infyom.com/marlonbrasil"
+                  href="#"
                   class="text-white link-text fw-5"
-                  >https://vcards.infyom.com/marlonbrasil</a
+                  >your-vcard-link.com</a
                 >
                 <i
                   class="icon fa-solid fa-arrow-up-right-from-square ms-3 text-primary"

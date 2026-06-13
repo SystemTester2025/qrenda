@@ -48,6 +48,24 @@ auth.json
 .DS_Store
 Thumbs.db
 
+# Laravel environment overrides
+.env.local
+.env.development.local
+.env.test.local
+
+# Optional: add if you generate these
+/public/mix-manifest.json
+
+# Local tooling / generated folders
+.opencode/
+.playwright-mcp/
+
 # Web build outputs
+
 /public/build
 /public/hot
+
+# Windows reserved names
+nul
+.kilo/
+

@@ -132,7 +132,7 @@
                                             <div class="d-block">
                                                 <div class="image-picker">
                                                     <div class="image previewImage" id="appLogoPreview"
-                                                        style="background-image: url('{{ isset($setting['app_logo']) ? $setting['app_logo'] : asset('assets/images/infyom-logo.png') }}')">
+                                                        style="background-image: url('{{ isset($setting['app_logo']) ? $setting['app_logo'] : asset('assets/images/logo.png') }}')">
                                                     </div>
                                                     <span class="picker-edit rounded-circle text-gray-500 fs-small"
                                                         data-bs-toggle="tooltip" data-placement="top"
@@ -158,7 +158,7 @@
                                             <div class="d-block">
                                                 <div class="image-picker">
                                                     <div class="image previewImage" id="faviconPreview"
-                                                        style="background-image: url('{{ isset($setting['favicon']) ? $setting['favicon'] : asset('web/media/logos/favicon-infyom.png') }}');">
+                                                        style="background-image: url('{{ isset($setting['favicon']) ? $setting['favicon'] : asset('web/media/logos/favicon.png') }}');">
                                                     </div>
                                                     <span class="picker-edit rounded-circle text-gray-500 fs-small"
                                                         data-bs-toggle="tooltip" data-placement="top"
@@ -184,7 +184,7 @@
                                             <div class="d-block">
                                                 <div class="image-picker">
                                                     <div class="image previewImage" id="faviconPreview"
-                                                        style="background-image: url('{{ isset($setting['register_image']) ? $setting['register_image'] : asset('web/media/logos/favicon-infyom.png') }}');">
+                                                        style="background-image: url('{{ isset($setting['register_image']) ? $setting['register_image'] : asset('web/media/logos/favicon.png') }}');">
                                                     </div>
                                                     <span class="picker-edit rounded-circle text-gray-500 fs-small"
                                                         data-bs-toggle="tooltip" data-placement="top"
@@ -211,7 +211,7 @@
                                             <div class="d-block">
                                                 <div class="image-picker">
                                                     <div class="image previewImage" id="appLogoPreview"
-                                                        style="background-image: url('{{ isset($setting['dashboard_logo']) ? $setting['dashboard_logo'] : asset('assets/images/infyom-logo.png') }}')">
+                                                        style="background-image: url('{{ isset($setting['dashboard_logo']) ? $setting['dashboard_logo'] : asset('assets/images/logo.png') }}')">
                                                     </div>
                                                     <span class="picker-edit rounded-circle text-gray-500 fs-small"
                                                         data-bs-toggle="tooltip" data-placement="top"

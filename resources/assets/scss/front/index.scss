@@ -1,13 +1,7 @@
 @import "../front/variables.scss";
 
-.hero-section {
-    background-image: url(../../../../public/assets/img/new_front/hero-bg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding-top: 120px;
-    padding-bottom: 120px;
-}
+// .hero-section styles removed — redesign.css handles the homepage hero
+// with concentric SVG rings and dark background (Salo.uk inspired).
 
 .features-section {
     .feature-card {
