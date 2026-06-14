@@ -50,7 +50,7 @@ html, body {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 640px;
+  max-width: 800px;
 }
 
 /* ── Floating Cards ── */
@@ -426,23 +426,99 @@ html, body {
    Register page
    ═══════════════════════════════════════════════ */
 
+.q-register-card,
+.q-register-card * {
+  box-sizing: border-box;
+}
+
 .q-register-card {
-  max-width: 600px;
-  padding: 32px;
-  background: rgba(18, 18, 18, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(139, 92, 246, 0.12);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(139, 92, 246, 0.06);
+  max-width: 760px;
+  padding: 30px;
+  background: var(--q-bg-card);
+  border: 1px solid rgba(139, 92, 246, 0.16);
+  border-radius: 20px;
+  position: relative;
+}
+
+.q-register-card form {
+  display: grid;
+  gap: 12px;
 }
 
 .q-register-card .q-input-group {
-  margin-bottom: 12px;
+  margin-bottom: 0;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.q-register-card .q-input-group label {
+  display: block;
+  margin: 0 0 7px;
+  color: var(--q-text-dim);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.q-register-card .q-input-group input,
+.q-register-card .q-input-group .form-control {
+  width: 100%;
+  max-width: 100%;
+  height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--q-border);
+  border-radius: 10px;
+  background: #101010;
+  color: var(--q-text);
+  font-size: var(--q-font-size-base);
+  outline: none;
+  transition: border-color var(--q-transition-fast), box-shadow var(--q-transition-fast), background var(--q-transition-fast);
+}
+
+.q-register-card .q-input-group input::placeholder,
+.q-register-card .q-input-group .form-control::placeholder {
+  color: #52525b;
+}
+
+.q-register-card .q-input-group input:focus,
+.q-register-card .q-input-group .form-control:focus {
+  border-color: var(--q-primary);
+  background: #111111;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+}
+
+.q-register-card .q-input-group .iti {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+
+.q-register-card .iti,
+.q-register-card .iti * {
+  color: var(--q-text) !important;
+}
+
+.q-register-card .iti__tel-input,
+.q-register-card .iti input[type="tel"],
+.q-register-card .q-input-group .form-control {
+  background: #101010 !important;
+  color: var(--q-text) !important;
+  border-color: var(--q-border) !important;
+}
+
+.q-register-card .iti__flag-container {
+  background: #101010 !important;
+  border-color: var(--q-border) !important;
+}
+
+.q-register-card .iti__country-list {
+  z-index: 1000;
 }
 
 .q-register-card .q-login-title {
-  margin-bottom: 2px;
-  font-size: 1.35rem;
+  margin-bottom: 4px;
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
 }
 
 .q-register-card .q-login-sub {
@@ -456,25 +532,63 @@ html, body {
 
 .q-register-card .q-register-section {
   margin-top: 12px;
-  padding: 12px;
+  padding: 12px 14px;
+  border: 1px solid #1e1e1e;
+  border-radius: 12px;
+  background: #101010;
 }
 
 .q-register-card .q-copyright {
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .q-register-card .q-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  margin-bottom: 0;
 }
 
 .q-register-card .q-form-col {
-  min-width: 160px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .q-register-card .q-checkbox {
-  flex-wrap: wrap;
-  font-size: 0.75rem;
-  gap: 6px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 7px;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid #1e1e1e;
+  border-radius: 10px;
+  background: #101010;
+  color: var(--q-text-dim);
+  font-size: 0.68rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.q-register-card .q-checkbox-box {
+  flex-shrink: 0;
+}
+
+.q-register-card .q-msg-error,
+.q-register-card .q-msg-success {
+  display: block;
+  margin-top: 5px;
+}
+
+.q-register-card .q-password-wrap input {
+  padding-right: 42px;
+}
+
+.q-register-card .q-password-toggle {
+  right: 6px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
 }
 
 .q-form-row {
@@ -524,6 +638,18 @@ html, body {
   }
   .q-login-card {
     padding: 28px 20px;
+  }
+  .q-register-card {
+    padding: 24px 18px;
+  }
+  .q-register-card .q-form-row {
+    grid-template-columns: 1fr;
+  }
+  .q-register-card .q-checkbox {
+    white-space: normal;
+  }
+  .q-register-card .q-checkbox a {
+    white-space: normal;
   }
 }
 

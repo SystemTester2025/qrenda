@@ -60,6 +60,10 @@ $(document).ready(function () {
         utilsScript: utilsScript,
     });
 
+    // hide validation messages on init
+    validMsg.classList.add("d-none");
+    errorMsg.classList.add("d-none");
+
     let reset = function () {
         input.classList.remove("error");
         errorMsg.innerHTML = "";
@@ -119,7 +123,6 @@ $(document).ready(function () {
     $("#phoneNumber").val(removeSpacePhoneNumber);
 
     $("#phoneNumber").focus();
-    $("#phoneNumber").trigger("blur");
 });
 
 listenSubmit("#UserRegisterForm", function () {

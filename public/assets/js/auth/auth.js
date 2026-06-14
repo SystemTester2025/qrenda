@@ -43,6 +43,10 @@ $(document).ready(function () {
     },
     utilsScript: utilsScript
   });
+
+  // hide validation messages on init
+  validMsg.classList.add("d-none");
+  errorMsg.classList.add("d-none");
   var reset = function reset() {
     input.classList.remove("error");
     errorMsg.innerHTML = "";
@@ -94,7 +98,6 @@ $(document).ready(function () {
   var removeSpacePhoneNumber = getPhoneNumber.replace(/\s/g, "");
   $("#phoneNumber").val(removeSpacePhoneNumber);
   $("#phoneNumber").focus();
-  $("#phoneNumber").trigger("blur");
 });
 listenSubmit("#UserRegisterForm", function () {
   if (phoneNumberRequired == 1) {
