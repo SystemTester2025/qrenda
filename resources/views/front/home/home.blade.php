@@ -145,7 +145,7 @@
         <h2 class="q-section-title center q-reveal">{{ __("auth.choose_a_plan_that's_right_for_you") }}</h2>
         <div class="q-pricing-grid">
             @foreach ($plans as $plan)
-                @php $isFeatured = $loop->middle; @endphp
+                @php $isFeatured = $loop->index == intdiv($loop->count, 2); @endphp
                 <div class="q-price-card {{ $isFeatured ? 'featured' : '' }}">
                     @if ($isFeatured)
                         <div class="q-price-badge">{{ __('messages.plan.most_popular') }}</div>
