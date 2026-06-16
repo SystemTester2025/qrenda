@@ -33,8 +33,11 @@ class DefaultRoleSeeder extends Seeder
             ],
         ];
 
-        foreach ($roles as $role) {
-            $role = Role::create($role);
+        foreach ($roles as $roleData) {
+            Role::firstOrCreate(
+                ['name' => $roleData['name'], 'guard_name' => 'web'],
+                $roleData
+            );
         }
 
         /** @var Role $superAdminRole */
@@ -43,8 +46,8 @@ class DefaultRoleSeeder extends Seeder
         $adminRole = Role::whereName(CustomRole::ROLE_ADMIN)->first();
 
         /** @var User $user */
-        $superAdminUser = User::whereEmail('sadmin@vcard.com')->first();
-        $adminUser = User::whereEmail('admin@vcard.com')->first();
+        $superAdminUser = User::whereEmail('sadmin@admin.com')->first();
+        $adminUser = User::whereEmail('admin@admin.com')->first();
 
         $superAdminPermission = Permission::pluck('name', 'id');
         $adminPermission = Permission::whereIn('name',
@@ -53,11 +56,18 @@ class DefaultRoleSeeder extends Seeder
         $superAdminRole->givePermissionTo($superAdminPermission);
         $adminRole->givePermissionTo($adminPermission);
 
-        if ($superAdminUser) {
-            $superAdminUser->assignRole($superAdminRole);
+        if (! $superAdminUser) {
+            throw new \RuntimeException(
+                'Default super admin (sadmin@admin.com) not found. Did DefaultUserSeeder run before DefaultRoleSeeder?'
+            );
         }
-        if ($adminUser) {
-            $adminUser->assignRole($adminRole);
+        if (! $adminUser) {
+            throw new \RuntimeException(
+                'Default admin (admin@admin.com) not found. Did DefaultUserSeeder run before DefaultRoleSeeder?'
+            );
         }
+
+        $superAdminUser->syncRoles([$superAdminRole]);
+        $adminUser->syncRoles([$adminRole]);
     }
 }

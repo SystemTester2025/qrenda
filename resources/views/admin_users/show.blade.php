@@ -7,7 +7,7 @@
         <div class="d-md-flex align-items-center justify-content-between mb-5">
             <h1 class="mb-0">@yield('title')</h1>
             <div class="text-end mt-4 mt-md-0  @if(getLogInUser()->language == 'ar' || getLogInUser()->language == 'fa') justify-content-start gap-2 @endif">
-                @if($user->email != 'sadmin@vcard.com')
+                @if(! in_array($user->email, ['sadmin@admin.com', 'admin@admin.com'], true))
                     <a href="{{ route('admins.edit', $user->id) }}">
                         <button type="button" class="btn btn-primary  @if(getLogInUser()->language == 'ar' || getLogInUser()->language == 'fa') ms-4 @else me-4 @endif">{{__('messages.common.edit')}}</button>
                     </a>

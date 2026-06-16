@@ -86,12 +86,12 @@ Route::post('/revenuecat/webhook', [RevenueCatController::class, 'handle']);
 Route::post(
     '/forgot-password',
     [AuthAPIController::class, 'sendPasswordResetLinkEmail']
-)->middleware('throttle:5,1')->name('password.email');
+)->middleware('throttle:5,1')->name('api.password.email');
 Route::post(
     '/password',
     [AuthAPIController::class, 'resetPassword']
 )->middleware('throttle:5,1')->name('set.password');
-Route::post('/reset-password', [AuthAPIController::class, 'changePassword'])->name('password.reset');
+Route::post('/reset-password', [AuthAPIController::class, 'changePassword'])->name('api.password.reset');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [AuthAPIController::class, 'logout']);
@@ -283,7 +283,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('nfc-vcard', [NfcOrdersAPIController::class, 'getVcardData']);
 
         Route::match(['GET', 'POST'], 'stripe-nfc-payment-success', [StripeAPIController::class, 'nfcPaymentSuccess'])->name('nfc.stripe.success');
-        Route::get('stripe-nfc-payment-cancel', [StripeAPIController::class, 'paymentCancel'])->name('nfc.stripe.failed');
+        Route::get('stripe-nfc-payment-cancel', [StripeAPIController::class, 'paymentCancel'])->name('api.nfc.stripe.failed');
 
         Route::post('razorpay-nfc-payment-success', [RazorpayAPIController::class, 'nfcPaymentSuccess']);
 
@@ -356,11 +356,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
         //Mercado Pago
         Route::get('mercadopago-onboard', [MercadoPagoAPIController::class, 'onBoard'])->name('mercadopago.onboard');
-        Route::post('mercadopago-subscription-success', [MercadoPagoAPIController::class, 'paymentSuccess'])->name('mercadopago.success');
+        Route::post('mercadopago-subscription-success', [MercadoPagoAPIController::class, 'paymentSuccess'])->name('api.mercadopago.success');
 
         //Iyzico
         Route::get('iyzico-onboard', [IyzicoAPIController::class, 'iyzicoOnBoard'])->name('iyzico.subscription.onboard');
-        Route::post('iyzico-subscription-success', [IyzicoAPIController::class, 'iyzicoPaymentSuccess'])->name('iyzico.subscription.success');
+        Route::post('iyzico-subscription-success', [IyzicoAPIController::class, 'iyzicoPaymentSuccess'])->name('api.iyzico.subscription.success');
 
         //PhonePe
         Route::get('phonepe-subscription-onboard', [PhonepeAPIController::class, 'onBoard'])->name('phonepe.subscription.onboard');
@@ -441,9 +441,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //Add Ons
     Route::get('add-ons', [AddOnAPIController::class, 'addOnsData']);
-    Route::post('add-on/{id}/update', [AddOnAPIController::class, 'update'])->name('addon.update');
-    Route::post('/addon-extract-zip', [AddOnAPIController::class, 'extractZip'])->name('addOn.extractZip');
-    Route::delete('/add-on-delete/{id}', [AddOnAPIController::class, 'destroy'])->name('addOn.delete');
+    Route::post('add-on/{id}/update', [AddOnAPIController::class, 'update'])->name('api.addon.update');
+    Route::post('/addon-extract-zip', [AddOnAPIController::class, 'extractZip'])->name('api.addOn.extractZip');
+    Route::delete('/add-on-delete/{id}', [AddOnAPIController::class, 'destroy'])->name('api.addOn.delete');
 
     //Slack Integration AddOns
     if (moduleExists('SlackIntegration'))
