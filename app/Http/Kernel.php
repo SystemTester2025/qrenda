@@ -28,6 +28,9 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \Spatie\CookieConsent\CookieConsentMiddleware::class,
+        // Defense-in-depth response headers (CSP, HSTS, Permissions-Policy,
+        // Referrer-Policy, X-Frame-Options, X-Content-Type-Options).
+        \App\Http\Middleware\SecurityHeaders::class,
     ];
 
     /**

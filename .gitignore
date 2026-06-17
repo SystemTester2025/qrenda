@@ -6,7 +6,11 @@ __v0_jsx-dev-runtime.ts
 .v0-trash/
 .vercel/
 
+# viho-laravel-10 (old starter kit)
+viho-laravel-10/
+
 # Environment variables
+.env
 .env*.local
 
 # opencode
@@ -43,8 +47,26 @@ postcss.config.mjs
 storage/app/
 storage/framework/
 storage/logs/
+/storage/*.key
+/public/storage
+/public/hot
+
+# Qrenda compiled assets (restore from backup)
+public/assets/qrenda/
+public/assets/qrenda-css/
+
+# IDE
+/.idea/
+/.vscode/
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# Backup folders
+public_before/
+resources_before/
 
 # Other
 .DS_Store
 salo-uk-header/
-nul

@@ -430,6 +430,9 @@ return [
         'contact' => 'Contact No',
         'plans_by_users' => 'Plans by Users',
         'income' => 'Income',
+        'sales_overview' => 'Platform Overview',
+        'total_tenants' => 'Total subscribed tenants',
+        'latest_activity' => 'Latest Activity',
     ],
     'languages' => [
         'languages' => 'Languages',
@@ -453,6 +456,13 @@ return [
         'attachment' => 'Attachment',
     ],
     'common' => [
+        'total_active_users' => 'Total Active Users',
+        'total_active_vcards' => 'Total Active vCards',
+        'active_organization' => 'Active Organization',
+        'active_organization_user' => 'Active Organization User',
+        'deactive_organization' => 'Deactive Organization',
+        'deactive_organization_user' => 'Deactive Organization User',
+        'total_organizations' => 'Organizations',
         'whatsapp_store' => 'WhatsApp Store',
         'whatsapp_store_order' => 'WhatsApp Store Order',
         'whatsapp_store_pending_order' => 'WhatsApp Store Pending Order',

@@ -1,245 +1,340 @@
-    {{-- Card --}}
-    {{-- <div class="col-12 mb-4">
-        <div class="row">
-            <div class="col-xxl-3 col-xl-4 col-sm-6 widget">
-                <div class="creat-vcard-card-bg shadow-md rounded-10 p-xxl-5 px-4 py-5 my-3 d-flex flex-column">
-                    <div class="text-center text-white mb-1">
-                        <h5 class="mb-2 fw-bold fs-14">{{ __('messages.hey') }} {{ Auth::user()->full_name }},</h5>
-                        <p class="mb-3 opacity-90 card-detail">{{ __('messages.vcard_creat_card_detail') }}</</p>
-                    </div>
-                    <div class="text-center add-card">
-                        <a href="{{ route('vcards.create') }}" class="btn btn-light fw-bold rounded-pill px-3 py-1 bg-white">+
-                            {{ __('messages.add_new_card') }}</a>
-                    </div>
-                </div>
-            </div>
-             <div class="col-xxl-3 col-xl-4 col-sm-6 widget">
-                 <div class="bg-primary shadow-md rounded-10 p-xxl-10 px-7 py-10 d-flex align-items-center
-                     justify-content-between my-3 gap-3">
-                     <div class="bg-cyan-300 widget-icon rounded-10 d-flex align-items-center justify-content-center">
-                         <i class="fa-solid fa-id-card-clip fs-1-xl text-white"></i>
-                     </div>
-                     <div class="text-end text-white">
-                         <h2 class="fs-1-xxl fw-bolder text-white">{{ $activeVcard }}</h2>
-                         <h3 class="mb-0 fs-4 fw-light">{{ __('messages.common.total__active_vcards') }}</h3>
-                     </div>
-                 </div>
-             </div>
-             <div class="col-xxl-3 col-xl-4 col-sm-6 widget">
-                 <div class="bg-success shadow-md rounded-10 p-xxl-10 px-7 py-10 d-flex align-items-center justify-content-between my-3 gap-3">
-                     <div class="bg-green-300 widget-icon rounded-10 d-flex align-items-center justify-content-center">
-                         <i class="fa-solid fa-user-large-slash fs-1-xl text-white"></i>
-                         <img src="{{ asset('assets/img/dashboard/deactive-vcard.svg') }}" alt="" class="w-50 h-50">
-                     </div>
-                     <div class="text-end text-white">
-                         <h2 class="fs-1-xxl fw-bolder text-white">{{ $deActiveVcard }}</h2>
-                         <h3 class="mb-0 fs-4 fw-light">{{ __('messages.common.total__deactive_vcards') }}</h3>
-                     </div>
-                 </div>
-             </div>
-             <div class="col-xxl-3 col-xl-4 col-sm-6 widget">
-                 <div class="bg-info shadow-md rounded-10 p-xxl-10 px-7 py-10 d-flex align-items-center justify-content-between my-3 gap-3">
-                     <div class="bg-blue-300 widget-icon rounded-10 d-flex align-items-center justify-content-center">
-                         <i class="fa-solid fa-question fs-1-xl text-white"></i>
-                     </div>
-                     <div class="text-end text-white">
-                         <h2 class="fs-1-xxl fw-bolder text-white">{{ $enquiry }}</h2>
-                         <h3 class="mb-0 fs-4 fw-light">{{ __('messages.common.today_enquiry') }}</h3>
-                     </div>
-                 </div>
-             </div>
-             <div class="col-xxl-3 col-xl-4 col-sm-6 widget">
-                 <div class="bg-warning shadow-md rounded-10 p-xxl-10 px-7 py-10 d-flex align-items-center justify-content-between my-3 gap-3">
-                     <div class="bg-yellow-300 widget-icon rounded-10 d-flex align-items-center justify-content-center">
-                         <i class="fa-solid fa-calendar-check fs-1-xl text-white"></i>
-                     </div>
-                     <div class="text-end text-white">
-                         <h2 class="fs-1-xxl fw-bolder text-white">{{ $appointment }}</h2>
-                         <h3 class="mb-0 fs-4 fw-light">{{ __('messages.common.today_appointments') }}</h3>
-                     </div>
-                 </div>
-             </div>
-             <div class="col-xxl-3 col-xl-4 col-sm-6 widget">
-                 <div class="bg-danger shadow-md rounded-10 p-xxl-10 px-7 py-10 d-flex align-items-center justify-content-between my-3 gap-3">
-                     <div class="bg-red-300  widget-icon rounded-10 d-flex align-items-center justify-content-center">
-                         <i class="fa-solid fa-file-alt fs-1-xl text-white"></i>
-                     </div>
-                     <div class="text-end text-white">
-                         <h2 class="fs-1-xxl fw-bolder text-white">{{ $totalWpTemplate }}</h2>
-                         <h3 class="mb-0 fs-4 fw-light">{{ __('messages.common.whatsapp_store') }}</h3>
-                     </div>
-                 </div>
-             </div>
-             <div class="col-xxl-3 col-xl-4 col-sm-6 widget">
-                 <div class="card-bg-purple shadow-md rounded-10 p-xxl-10 px-7 py-10 d-flex align-items-center justify-content-between my-3 gap-3">
-                     <div class="card-bg-purple-300  widget-icon rounded-10 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-cart-shopping fs-1-xl text-primary"></i>
-                     </div>
-                     <div class="text-end text-white">
-                         <h2 class="fs-1-xxl fw-bolder text-white">{{ $totalOrder }}</h2>
-                         <h3 class="mb-0 fs-4 fw-light">{{ __('messages.common.whatsapp_store_order') }}</h3>
-                     </div>
-                 </div>
-             </div>
-             <div class="col-xxl-3 col-xl-4 col-sm-6 widget">
-                 <div class="card-bg-blue shadow-md rounded-10 p-xxl-10 px-7 py-10 d-flex align-items-center justify-content-between my-3 gap-3">
-                     <div class="card-bg-blue-300  widget-icon rounded-10 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-clock fs-1-xl text-white"></i>
-                     </div>
-                     <div class="text-end text-white">
-                         <h2 class="fs-1-xxl fw-bolder text-white">{{ $totalPendingOrder }}</h2>
-                         <h3 class="mb-0 fs-4 fw-light">{{ __('messages.common.whatsapp_store_pending_order') }}</h3>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div> --}}
+<style>
+    /* Qrenda visual signatures — defined inline so this view paints without a webpack rebuild. */
+    .qrenda-dashboard { color: #1f2937; }
+    .qrenda-dashboard .row + .row { margin-top: 1rem; }
+    .qrenda-dashboard .card { border: none; border-radius: 12px; background: #fff; box-shadow: 0 1px 4px rgba(15, 23, 42, .04); margin-bottom: 1.25rem; }
+    .qrenda-dashboard .card-header { padding: 1rem 1.25rem; background: transparent; border-bottom: 1px solid rgba(15, 23, 42, .05); }
+    .qrenda-dashboard .card-body { padding: 1.25rem; }
 
-    <div class="col-12 mb-4">
-        <div class="row dashboard-card-row d-flex align-items-stretch">
-            <div class="col-12 col-sm-12 col-md-6 dashboard-card d-flex
-                {{ getPlanFeature(getCurrentSubscription()->plan)['whatsapp_store']
-                    ? 'col-xl-6 col-xxl-3'
-                    : 'five-col-xl' }}">
-                <div class="dashboard-card-bg my-3 d-flex flex-column align-items-center w-100">
-                    <div class="dashboard-card-content">
-                        <h5 class="mb-2 fw-bold fs-14">{{ __('messages.hey') }} {{ Auth::user()->full_name }}</h5>
-                        <p class="mb-2 fw-medium card-detail">{{ __('messages.vcard_creat_card_detail') }}</p>
-                        <div class="add-card text-center">
-                            <a href="{{ route('vcards.create') }}"
-                                class="btn btn-light fw-bold rounded-pill px-3 py-1 bg-white">+
-                                {{ __('messages.add_new_card') }}</a>
+    /* Greeting hero with confetti decoration */
+    .qrenda-dashboard .profile-greeting { background: linear-gradient(135deg, #ec4899 0%, #9d174d 100%); color: #fff; border-radius: 12px; position: relative; overflow: hidden; height: 100%; height: -webkit-fill-available; }
+    .qrenda-dashboard .profile-greeting .card-header { background: rgba(255, 255, 255, .08); border: none; }
+    .qrenda-dashboard .profile-greeting .setting-white { background: rgba(255, 255, 255, .2); color: #fff; }
+    .qrenda-dashboard .profile-greeting .font-light { font-weight: 300; }
+    .qrenda-dashboard .profile-greeting .confetti { position: absolute; inset: 0; pointer-events: none; }
+    .qrenda-dashboard .profile-greeting .confetti-piece { position: absolute; width: 8px; height: 14px; border-radius: 2px; opacity: .55; }
+    .qrenda-dashboard .profile-greeting .btn-light { background: #fff; color: #9d174d; border: none; }
+
+    /* Qrenda card-primary/card-secondary pattern */
+    .qrenda-dashboard .income-card { border-radius: 12px; color: #fff; padding: 1.5rem 1rem; text-align: center; position: relative; overflow: hidden; min-height: 150px; border: none; height: 100%; height: -webkit-fill-available; }
+    .qrenda-dashboard .income-card.card-primary { background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%); }
+    .qrenda-dashboard .income-card.card-secondary { background: linear-gradient(135deg, #10b981 0%, #047857 100%); }
+    .qrenda-dashboard .income-card .round-box { width: 56px; height: 56px; border-radius: 50%; background: rgba(255, 255, 255, .15); display: inline-flex; align-items: center; justify-content: center; margin: 0 auto .75rem; }
+    .qrenda-dashboard .income-card .round-box svg { fill: #fff; width: 24px; height: 24px; }
+    .qrenda-dashboard .income-card h5 { color: #fff; font-size: 1.5rem; font-weight: 700; margin: .25rem 0; }
+    .qrenda-dashboard .income-card p { color: rgba(255, 255, 255, .85); font-size: .82rem; margin: 0 0 .75rem; }
+    .qrenda-dashboard .income-card .parrten { position: absolute; right: -25px; bottom: -25px; opacity: .35; }
+    .qrenda-dashboard .income-card .parrten svg { fill: rgba(255, 255, 255, .4); width: 110px; height: 110px; }
+
+    /* Setting-list action icons in card headers (qrenda pattern) */
+    .qrenda-dashboard .header-top { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; margin-bottom: .5rem; }
+    .qrenda-dashboard .header-top h5 { margin: 0; font-weight: 600; }
+    .qrenda-dashboard .header-top .center-content { flex: 1; color: #6b7280; font-size: .82rem; }
+    .qrenda-dashboard .header-top .center-content .font-primary { color: #4338ca; font-weight: 600; margin-right: .5rem; }
+    .qrenda-dashboard .header-top .center-content .font-secondary { color: #047857; font-weight: 600; margin-right: .5rem; }
+    .qrenda-dashboard .setting-list ul.setting-option { list-style: none; padding: 0; margin: 0; display: flex; gap: .25rem; }
+    .qrenda-dashboard .setting-list .setting-primary, .qrenda-dashboard .setting-list .setting-secondary { width: 28px; height: 28px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: .8rem; }
+    .qrenda-dashboard .setting-list .setting-primary { background: rgba(99, 102, 241, .12); color: #4338ca; }
+    .qrenda-dashboard .setting-list .setting-secondary { background: rgba(16, 185, 129, .15); color: #047857; }
+    .qrenda-dashboard .setting-list .font-primary { color: #4338ca; }
+    .qrenda-dashboard .setting-list .font-secondary { color: #047857; }
+    .qrenda-dashboard .setting-list .font-white { color: #fff; }
+
+    /* Qrenda's btn-arrow percentage badge */
+    .qrenda-dashboard .btn-arrow { display: inline-flex; align-items: center; gap: .35rem; padding: .3rem .65rem; border-radius: 999px; font-size: .75rem; font-weight: 600; text-decoration: none; }
+    .qrenda-dashboard .btn-arrow.arrow-primary { background: rgba(99, 102, 241, .15); color: #4338ca; }
+    .qrenda-dashboard .btn-arrow.arrow-secondary { background: rgba(16, 185, 129, .15); color: #047857; }
+    .qrenda-dashboard .toprightarrow-primary, .qrenda-dashboard .toprightarrow-secondary { font-size: .65rem; }
+
+    /* Latest update table */
+    .qrenda-dashboard .latest-update-sec .media { display: flex; gap: .75rem; align-items: center; }
+    .qrenda-dashboard .latest-update-sec .media svg { width: 30px; height: 30px; fill: #4338ca; flex-shrink: 0; }
+    .qrenda-dashboard .latest-update-sec .media .media-body span { display: block; font-weight: 600; color: #1f2937; font-size: .85rem; }
+    .qrenda-dashboard .latest-update-sec .media .media-body p { margin: 0; color: #6b7280; font-size: .75rem; }
+    .qrenda-dashboard .table-bordernone { width: 100%; border-collapse: collapse; }
+    .qrenda-dashboard .table-bordernone td { padding: .65rem .5rem; border: none; vertical-align: middle; }
+    .qrenda-dashboard .latest-update-sec td a { color: #4338ca; text-decoration: none; font-size: .82rem; }
+    .qrenda-dashboard .week-date { list-style: none; padding: 0; margin: 0; display: flex; gap: .75rem; }
+    .qrenda-dashboard .week-date li { color: #6b7280; font-size: .82rem; }
+    .qrenda-dashboard .week-date .font-primary { color: #4338ca; font-weight: 600; }
+
+    /* Transaction card (qrenda total-balance split layout) */
+    .qrenda-dashboard .trasaction-sec .transaction-totalbal { padding: .5rem 0; }
+    .qrenda-dashboard .trasaction-sec .transaction-totalbal h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: .25rem; }
+    .qrenda-dashboard .trasaction-sec .transaction-totalbal p { color: #6b7280; font-size: .82rem; margin: 0; }
+
+    .qrenda-dashboard .des-xl-50 { flex: 0 0 50%; max-width: 50%; }
+    .qrenda-dashboard .des-xl-100 { flex: 0 0 100%; max-width: 100%; }
+    @media (max-width: 1199.98px) {
+        .qrenda-dashboard .des-xl-50, .qrenda-dashboard .des-xl-100 { flex: 0 0 100%; max-width: 100%; }
+    }
+    @media (max-width: 575.98px) {
+        .qrenda-dashboard .income-card { min-height: 130px; padding: 1rem .75rem; }
+        .qrenda-dashboard .income-card h5 { font-size: 1.25rem; }
+    }
+</style>
+
+@php
+    $useWideGrid = ! getPlanFeature(getCurrentSubscription()->plan)['whatsapp_store'];
+    $confettiColors = ['#10b981', '#6366f1', '#ec4899', '#f59e0b', '#3b82f6', '#8b5cf6', '#06b6d4'];
+@endphp
+
+<div class="container-fluid dashboard-default-sec qrenda-dashboard">
+    <div class="row">
+
+        {{-- LEFT COLUMN: greeting hero with confetti (qrenda pattern, with create-card CTA) --}}
+        <div class="col-xl-5 des-xl-100">
+            <div class="row">
+                <div class="col-xl-12 {{ $useWideGrid ? 'col-md-12' : 'col-md-6' }} des-xl-50">
+                    <div class="card profile-greeting">
+                        <div class="card-header pb-0">
+                            <div class="setting-list">
+                                <ul class="setting-option">
+                                    <li><div class="setting-white"><i class="fa fa-cog"></i></div></li>
+                                    <li><i class="fa fa-code font-white"></i></li>
+                                    <li><i class="fa fa-expand font-white"></i></li>
+                                    <li><i class="fa fa-refresh font-white"></i></li>
+                                    <li><i class="fa fa-times font-white"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-t-0 position-relative">
+                            <h3 class="font-light">Hey, {{ Auth::user()->full_name ?: (Auth::user()->name ?: Auth::user()->email) }}!</h3>
+                            <p>{{ __('messages.vcard_creat_card_detail') }}</p>
+                            <a class="btn btn-light" href="{{ route('vcards.create') }}"><i class="fa fa-plus me-1"></i>{{ __('messages.add_new_card') }}</a>
+                            <div class="confetti">
+                                @for($i = 0; $i < 13; $i++)
+                                    <div class="confetti-piece" style="left: {{ 4 + ($i * 7.3) }}%; top: {{ 65 + (($i % 4) * 8) }}%; background: {{ $confettiColors[$i % count($confettiColors)] }}; transform: rotate({{ $i * 23 }}deg);"></div>
+                                @endfor
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-12 col-sm-12 col-md-6 dashboard-card d-flex
-                {{ getPlanFeature(getCurrentSubscription()->plan)['whatsapp_store']
-                    ? 'col-xl-6 col-xxl-3'
-                    : 'five-col-xl' }}">
-                <a href="{{ route('vcards.index') }}"
-                    class="dashboard-card-bg my-3 d-flex flex-row justify-content-between gap-3 align-items-center w-100 text-decoration-none">
-                    <div class="dashboard-card-content d-flex flex-column justify-content-center">
-                        <p class="fs-14 fw-medium">{{ __('messages.common.total__active_vcards') }}</p>
-                        <h5 class="fw-bold fs-30 mb-0">{{ $activeVcard }}</h5>
-                    </div>
-                    <!-- <div class="text-center">
-                    <div class="card-icon d-flex justify-content-center align-items-center">
-                        <i class="fa-solid fa-id-card-clip fs-1-xl text-white"></i>
-                    </div>
-                </div> -->
-                </a>
-            </div>
-
-            <div class="col-12 col-sm-12 col-md-6 dashboard-card d-flex
-                {{ getPlanFeature(getCurrentSubscription()->plan)['whatsapp_store']
-                    ? 'col-xl-6 col-xxl-3'
-                    : 'five-col-xl' }}">
-                <a href="{{ route('vcards.index') }}"
-                    class="dashboard-card-bg my-3 d-flex flex-row justify-content-between gap-3 align-items-center w-100 text-decoration-none">
-                    <div class="dashboard-card-content d-flex flex-column justify-content-center">
-                        <p class="fs-14 fw-medium">{{ __('messages.common.total__deactive_vcards') }}</p>
-                        <h5 class="fw-bold fs-30 mb-0">{{ $deActiveVcard }}</h5>
-                    </div>
-                    <!-- <div class="text-center">
-                    <div class="card-icon d-flex justify-content-center align-items-center">
-                        <img src="{{ asset('assets/img/dashboard/deactive-vcard.svg') }}" alt="" class="w-50 h-50">
-                    </div>
-                </div> -->
-                </a>
-            </div>
-
-            <div class="col-12 col-sm-12 col-md-6 dashboard-card d-flex
-                {{ getPlanFeature(getCurrentSubscription()->plan)['whatsapp_store']
-                    ? 'col-xl-6 col-xxl-3'
-                    : 'five-col-xl' }}">
-                <a href="{{ route('inquiries.index') }}"
-                    class="dashboard-card-bg my-3 d-flex flex-row justify-content-between gap-3 align-items-center w-100 text-decoration-none">
-                    <div class="dashboard-card-content d-flex flex-column justify-content-center">
-                        <p class="fs-14 fw-medium">{{ __('messages.common.today_enquiry') }}</p>
-                        <h5 class="fw-bold fs-30 mb-0">{{ $enquiry }}</h5>
-                    </div>
-                    <!-- <div class="text-center">
-                    <div class="card-icon d-flex justify-content-center align-items-center">
-                        <i class="fa-solid fa-question fs-1-xl text-primary"></i>
-                    </div>
-                </div> -->
-                </a>
-            </div>
-
-            <div class="col-12 col-sm-12 col-md-6 dashboard-card d-flex
-                {{ getPlanFeature(getCurrentSubscription()->plan)['whatsapp_store']
-                    ? 'col-xl-6 col-xxl-3'
-                    : 'five-col-xl' }}">
-                <a href="{{ route('appointments.index') }}"
-                    class="dashboard-card-bg my-3 d-flex flex-row justify-content-between gap-3 align-items-center w-100 text-decoration-none">
-                    <div class="dashboard-card-content d-flex flex-column justify-content-center">
-                        <p class="fs-14 fw-medium">{{ __('messages.common.today_appointments') }}</p>
-                        <h5 class="fw-bold fs-30 mb-0">{{ $appointment }}</h5>
-                    </div>
-                    <!-- <div class="text-center">
-                    <div class="card-icon d-flex justify-content-center align-items-center">
-                        <i class="fa-solid fa-calendar-check fs-1-xl text-white"></i>
-                    </div>
-                </div> -->
-                </a>
-            </div>
-            @if (getPlanFeature(getCurrentSubscription()->plan)['whatsapp_store'])
-                <div class="col-12 col-sm-12 col-md-6 dashboard-card d-flex
-                    {{ getPlanFeature(getCurrentSubscription()->plan)['whatsapp_store']
-                        ? 'col-xl-6 col-xxl-3'
-                        : 'five-col-xl' }}">
-                    <a href="{{ route('whatsapp.stores') }}"
-                        class="dashboard-card-bg my-3 d-flex flex-row justify-content-between gap-3 align-items-center w-100 text-decoration-none">
-                        <div class="dashboard-card-content d-flex flex-column justify-content-center">
-                            <p class="fs-14 fw-medium">{{ __('messages.common.whatsapp_store') }}</p>
-                            <h5 class="fw-bold fs-30 mb-0">{{ $totalWpTemplate }}</h5>
+                {{-- Income card #1: Active vcards --}}
+                <div class="col-xl-6 col-md-3 col-sm-6 des-xl-25">
+                    <a href="{{ route('vcards.index') }}" class="text-decoration-none">
+                        <div class="card income-card card-primary">
+                            <div class="card-body">
+                                <div class="round-box">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448.057 448.057">
+                                        <g><path d="M404.562,7.468c-13.577-11.314-33.755-9.479-45.069,4.099L224.133,174.127,88.66,11.577C77.35-2.031,57.149-3.894,43.54,7.417c-13.608,11.311-15.471,31.512-4.16,45.12l129.6,155.52h-40.96c-17.673,0-32,14.327-32,32s14.327,32,32,32h64v144c0,17.673,14.327,32,32,32c17.673,0,32-14.327,32-32V232.816l152.64-183.04C419.974,38.96,418.139,18.782,404.562,7.468z"></path></g>
+                                        <g><path d="M320.02,208.057h-16c-17.673,0-32,14.327-32,32s14.327,32,32,32h16c17.673,0,32-14.327,32-32S337.694,208.057,320.02,208.057z"></path></g>
+                                    </svg>
+                                </div>
+                                <h5>{{ number_format($activeVcard) }}</h5>
+                                <p>{{ __('messages.common.total__active_vcards') }}</p>
+                                <a class="btn-arrow arrow-primary" href="{{ route('vcards.index') }}">
+                                    <span class="toprightarrow-primary">▲</span>
+                                    {{ number_format(($activeVcard / max(1, $activeVcard + $deActiveVcard)) * 100, 2) }}%
+                                </a>
+                                <div class="parrten">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448.057 448.057">
+                                        <g><path d="M404.562,7.468c-13.577-11.314-33.755-9.479-45.069,4.099L224.133,174.127,88.66,11.577C77.35-2.031,57.149-3.894,43.54,7.417c-13.608,11.311-15.471,31.512-4.16,45.12l129.6,155.52h-40.96c-17.673,0-32,14.327-32,32s14.327,32,32,32h64v144c0,17.673,14.327,32,32,32c17.673,0,32-14.327,32-32V232.816l152.64-183.04C419.974,38.96,418.139,18.782,404.562,7.468z"></path></g>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <!-- <div class="text-center">
-                    <div class="card-icon d-flex justify-content-center align-items-center">
-                        <i class="fa-solid fa-file-alt fs-1-xl text-white"></i>
-                    </div>
-                </div> -->
                     </a>
                 </div>
 
-                <div class="col-12 col-sm-12 col-md-6 dashboard-card d-flex
-                    {{ getPlanFeature(getCurrentSubscription()->plan)['whatsapp_store']
-                        ? 'col-xl-6 col-xxl-3'
-                        : 'five-col-xl' }}">
-                    <a href="{{ route('wp-product-order.index') }}"
-                        class="dashboard-card-bg my-3 d-flex flex-row justify-content-between gap-3 align-items-center w-100 text-decoration-none">
-                        <div class="dashboard-card-content d-flex flex-column justify-content-center">
-                            <p class="fs-14 fw-medium">{{ __('messages.common.whatsapp_store_order') }}</p>
-                            <h5 class="fw-bold fs-30 mb-0">{{ $totalOrder }}</h5>
+                {{-- Income card #2: Deactive vcards --}}
+                <div class="col-xl-6 col-md-3 col-sm-6 des-xl-25">
+                    <a href="{{ route('vcards.index') }}" class="text-decoration-none">
+                        <div class="card income-card card-secondary">
+                            <div class="card-body">
+                                <div class="round-box">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <g><path d="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256s256-114.615,256-256S397.385,0,256,0z M96,100.16c50.315,35.939,80.124,94.008,80,155.84c0.151,61.839-29.664,119.919-80,155.84C11.45,325.148,11.45,186.851,96,100.16z M256,480C206.857,480.007,159.093,463.748,120.16,433.76C175.636,391.51,208.14,325.732,208,256C208.077,186.291,135.511,120.566,80,78.4C160.1,16.495,271.9,16.495,352,78.4C253.826,153.676,235.263,294.285,310.539,392.459C322.483,408.036,336.423,421.976,352,433.92C305.179,463.884,305.179,480.088,256,480z M416,412C329.932,350.82,309.756,231.452,370.936,145.384C383.331,127.947,398.563,112.715,416,100.16C500.654,186.871,500.654,325.289,416,412z"></path></g>
+                                    </svg>
+                                </div>
+                                <h5>{{ number_format($deActiveVcard) }}</h5>
+                                <p>{{ __('messages.common.total__deactive_vcards') }}</p>
+                                <a class="btn-arrow arrow-secondary" href="{{ route('vcards.index') }}">
+                                    <span class="toprightarrow-secondary">▲</span>
+                                    {{ number_format(($deActiveVcard / max(1, $activeVcard + $deActiveVcard)) * 100, 2) }}%
+                                </a>
+                                <div class="parrten">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <g><path d="M256,0C114.615,0,0,114.615,0,256s256-114.615,256-256S397.385,0,256,0z"></path></g>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <!-- <div class="text-center">
-                    <div class="card-icon d-flex justify-content-center align-items-center">
-                        <i class="fa-solid fa-cart-shopping fs-1-xl text-white"></i>
-                    </div>
-                </div> -->
                     </a>
                 </div>
-
-                <div class="col-12 col-sm-12 col-md-6 dashboard-card d-flex
-                    {{ getPlanFeature(getCurrentSubscription()->plan)['whatsapp_store']
-                        ? 'col-xl-6 col-xxl-3'
-                        : 'five-col-xl' }}">
-                    <a href="{{ route('wp-product-order.index') }}"
-                        class="dashboard-card-bg my-3 d-flex flex-row justify-content-between gap-3 align-items-center w-100 text-decoration-none">
-                        <div class="dashboard-card-content d-flex flex-column justify-content-center">
-                            <p class="fs-14 fw-medium">{{ __('messages.common.whatsapp_store_pending_order') }}</p>
-                            <h5 class="fw-bold fs-30 mb-0">{{ $totalPendingOrder }}</h5>
-                        </div>
-                        <!-- <div class="text-center">
-                    <div class="card-icon d-flex justify-content-center align-items-center">
-                        <i class="fa-solid fa-clock fs-1-xl text-white"></i>
-                    </div>
-                </div> -->
-                    </a>
-                </div>
-            @endif
-
+            </div>
         </div>
+
+        {{-- RIGHT COLUMN: Sales overview big card --}}
+        <div class="col-xl-7 des-xl-100 dashboard-sec">
+            <div class="card income-card" style="background: linear-gradient(135deg, #f8fafc 0%, #ecfdf5 100%); color: #1f2937; text-align: left; min-height: 0;">
+                <div class="card-header" style="background: transparent;">
+                    <div class="header-top d-sm-flex align-items-center">
+                        <h5>{{ __('messages.sadmin_dashboard.sales_overview') }}</h5>
+                        <div class="center-content">
+                            <p class="d-sm-flex align-items-center mb-0">
+                                <span class="font-primary m-r-10 f-w-700">{{ number_format($enquiry) }}</span>
+                                <span class="toprightarrow-primary">▲</span>
+                                {{ __('messages.common.today_enquiry') }}
+                            </p>
+                        </div>
+                        <div class="setting-list">
+                            <ul class="setting-option">
+                                <li><div class="setting-primary"><i class="fa fa-cog"></i></div></li>
+                                <li><i class="fa fa-code font-primary"></i></li>
+                                <li><i class="fa fa-expand font-primary"></i></li>
+                                <li><i class="fa fa-minus font-primary"></i></li>
+                                <li><i class="fa fa-refresh font-primary"></i></li>
+                                <li><i class="fa fa-times font-primary"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="row p-3 g-3">
+                        <div class="col-md-3 col-6">
+                            <small class="text-muted">{{ __('messages.common.today_enquiry') }}</small>
+                            <h3 class="mb-0 fw-bold mt-1" style="color:#4338ca;">{{ number_format($enquiry) }}</h3>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <small class="text-muted">{{ __('messages.common.today_appointments') }}</small>
+                            <h3 class="mb-0 fw-bold mt-1" style="color:#047857;">{{ number_format($appointment) }}</h3>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <small class="text-muted">{{ __('messages.common.total__active_vcards') }}</small>
+                            <h3 class="mb-0 fw-bold mt-1" style="color:#4338ca;">{{ number_format($activeVcard) }}</h3>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <small class="text-muted">{{ __('messages.common.total__deactive_vcards') }}</small>
+                            <h3 class="mb-0 fw-bold mt-1" style="color:#047857;">{{ number_format($deActiveVcard) }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- LATEST UPDATE table for today enquiry/appointments --}}
+        <div class="col-xl-12 des-xl-100">
+            <div class="card latest-update-sec">
+                <div class="card-header">
+                    <div class="header-top d-sm-flex align-items-center">
+                        <h5>{{ __('messages.common.today_appointments') }}</h5>
+                        <div class="center-content">
+                            <ul class="week-date">
+                                <li class="font-primary">Today</li>
+                                <li>Month</li>
+                            </ul>
+                        </div>
+                        <div class="setting-list">
+                            <ul class="setting-option">
+                                <li><div class="setting-primary"><i class="fa fa-cog"></i></div></li>
+                                <li><i class="fa fa-refresh font-primary"></i></li>
+                                <li><i class="fa fa-times font-primary"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordernone">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <svg viewBox="0 0 512 512">
+                                                <path d="M362,91v-60H150v60H0v390h512V91H362z M180,61h152v30H180z M482,451H30V248.156l90,36v46.844h90v-30h92v30h90v-46.844l90-36V451z M180,301h-30v-60h30V301z M332,241h30v60h-30C332,293.741,332,248.307,332,241z M482,215.844l-90,36v-40.844h-90v60h-92v-60H120v40.844l-90-36c0-14.163,0-84.634,0-94.844h452C482,131.21,482,200.681,482,215.844z"></path>
+                                            </svg>
+                                            <div class="media-body">
+                                                <span>{{ __('messages.common.today_appointments') }}</span>
+                                                <p>{{ number_format($appointment) }} scheduled today</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="{{ route('appointments.index') }}">View</a></td>
+                                    <td><a href="{{ route('appointments.index') }}">Audit</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <svg viewBox="0 0 512.001 512.001">
+                                                <g><path d="M506.35,80.699c-7.57-7.589-19.834-7.609-27.43-0.052L331.662,227.31l-42.557-42.557c-7.577-7.57-19.846-7.577-27.423,0L89.076,357.36c-7.577,7.57-7.577,19.853,0,27.423c3.782,3.788,8.747,5.682,13.712,5.682c4.958,0,9.93-1.894,13.711-5.682l158.895-158.888l42.531,42.524c7.57,7.57,19.808,7.577,27.397,0.032l160.97-160.323C513.881,100.571,513.907,88.288,506.35,80.699z"></path></g>
+                                            </svg>
+                                            <div class="media-body">
+                                                <span>{{ __('messages.common.today_enquiry') }}</span>
+                                                <p>{{ number_format($enquiry) }} new enquiries today</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="{{ route('inquiries.index') }}">View</a></td>
+                                    <td><a href="{{ route('inquiries.index') }}">Audit</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- WHATSAPP STORE - plan-conditional transaction/recent-orders pattern --}}
+        @if (getPlanFeature(getCurrentSubscription()->plan)['whatsapp_store'])
+            <div class="col-xl-12 des-xl-100 mt-3">
+                <div class="card trasaction-sec d-flex flex-row align-items-stretch" style="overflow:hidden;">
+                    <div style="flex:0 0 35%; padding:1.5rem 1.25rem; background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%); color: #fff;">
+                        <div class="setting-list">
+                            <ul class="setting-option">
+                                <li><div class="setting-primary"><i class="fa fa-cog"></i></div></li>
+                                <li><i class="fa fa-expand font-primary"></i></li>
+                                <li><i class="fa fa-times font-primary"></i></li>
+                            </ul>
+                        </div>
+                        <div class="transaction-totalbal" style="color:#fff;">
+                            <h2 style="color:#fff;">{{ number_format($totalOrder) }}<span class="ms-3"><a class="btn-arrow arrow-primary" href="{{ route('wp-product-order.index') }}"><span class="toprightarrow-primary">▲</span>{{ __('messages.common.whatsapp_store_order') ?? 'Orders' }}</a></span></h2>
+                            <p style="color: rgba(255,255,255,.85);">{{ __('messages.common.whatsapp_store') }}</p>
+                        </div>
+                    </div>
+                    <div style="flex:1; padding:1.25rem;">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <small class="text-muted">{{ __('messages.common.whatsapp_store') }}</small>
+                                <h3 class="mb-0 fw-bold mt-1" style="color:#4338ca;">{{ number_format($totalWpTemplate) }}</h3>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">{{ __('messages.common.whatsapp_store_pending_order') }}</small>
+                                <h3 class="mb-0 fw-bold mt-1" style="color:#4338ca;">{{ number_format($totalPendingOrder) }}</h3>
+                            </div>
+                            <div class="col-12">
+                                <small class="text-muted">{{ __('messages.common.whatsapp_store_order') }}</small>
+                                <h3 class="mb-0 fw-bold mt-1" style="color:#1f2937;">{{ number_format($totalOrder) }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @else
+            <div class="col-xl-12 des-xl-100 mt-3">
+                <div class="card trasaction-sec d-flex flex-row align-items-stretch" style="overflow:hidden;">
+                    <div style="flex:0 0 50%; padding:1.5rem 1.25rem; background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%); color: #fff;">
+                        <div class="transaction-totalbal" style="color:#fff;">
+                            <h2 style="color:#fff;">{{ number_format($appointment + $enquiry) }}<span class="ms-3"><a class="btn-arrow arrow-primary" href="javascript:void(0)"><span class="toprightarrow-primary">▲</span>Today</a></span></h2>
+                            <p style="color: rgba(255,255,255,.85);">Today's activity</p>
+                        </div>
+                    </div>
+                    <div style="flex:1; padding:1.25rem;">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <small class="text-muted">{{ __('messages.common.total__active_vcards') }}</small>
+                                <h3 class="mb-0 fw-bold mt-1" style="color:#4338ca;">{{ number_format($activeVcard) }}</h3>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">{{ __('messages.common.total__deactive_vcards') }}</small>
+                                <h3 class="mb-0 fw-bold mt-1" style="color:#4338ca;">{{ number_format($deActiveVcard) }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
     </div>
+</div>
